@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/theming/styles.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({super.key});
@@ -9,21 +9,12 @@ class AppBarTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
-        style: TextStyle(
-          fontFamily: "poppins",
-          fontSize: 24.sp,
-          fontWeight: FontWeight.w600,
-        ),
+        style: TextStyles.poppins24BlackSemiBold,
         text: "Regis",
         children: [
           TextSpan(
             text: "t",
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 24.sp,
-              color: Theme.of(context).primaryColor,
-              fontFamily: "courgette"
-            )
+            style: TextStyles.courgette24TurquoiseRegular
           ),
           const TextSpan(text: "ration")
         ]

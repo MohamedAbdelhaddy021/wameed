@@ -6,6 +6,7 @@ import 'package:wameed/core/design/arrow_back_button.dart';
 
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/register_button.dart';
+import '../../core/theming/styles.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -38,7 +39,7 @@ class _RegisterViewState extends State<RegisterView> {
                 style: TextStyle(
                     fontSize: 16.sp,
                     color: Colors.black.withOpacity(.28),
-                    fontWeight: FontWeight.w300),
+                    fontWeight: FontWeight.w400),
               ),
               SizedBox(
                 height: 37.h,
@@ -134,10 +135,9 @@ class _RegisterViewState extends State<RegisterView> {
                       onPressed: () {},
                       child: Text(
                         "  log in",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.sp,
-                            color: const Color(0xff86C9C9)),
+                        style: TextStyles.inter16Medium.copyWith(
+                          color: Theme.of(context).primaryColor.withOpacity(.67)
+                        ),
                       ))
                 ],
               ),

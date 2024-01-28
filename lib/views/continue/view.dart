@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../core/theming/styles.dart';
+
 class ContinueView extends StatelessWidget {
   const ContinueView({super.key});
 
@@ -39,7 +41,6 @@ class ContinueView extends StatelessWidget {
                       "Continue As...",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontFamily: "inter",
                         fontSize: 32.sp,
                       ),
                     ),
@@ -97,12 +98,7 @@ class _Item extends StatelessWidget {
           ),
           Text(
             text,
-            style: TextStyle(
-                fontSize: 24.sp,
-                fontFamily: "inter",
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-                letterSpacing: 1.3),
+            style: TextStyles.inter24WhiteBold,
           ),
         ],
       ),

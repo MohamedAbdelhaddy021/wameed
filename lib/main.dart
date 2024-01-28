@@ -15,6 +15,7 @@ import 'package:wameed/views/login/view.dart';
 import 'package:wameed/views/register/view.dart';
 import 'package:wameed/views/reset_password/view.dart';
 import 'package:wameed/views/splash/view.dart';
+import 'package:wameed/views/times_of_work/view.dart';
 import 'package:wameed/views/verfication_otp_code/view.dart';
 
 void main() {
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
           ),
           colorScheme: ColorScheme.fromSwatch(primarySwatch: getMyMaterialColor()),
         ),
-        home: const DoctorRegistrationView(),
+        home: const RegisterView(),
       ),
     );
   }

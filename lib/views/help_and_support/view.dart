@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_filled_button.dart';
+import 'package:wameed/core/theming/styles.dart';
 
 import '../../core/design/arrow_back_button.dart';
 
@@ -14,11 +15,7 @@ class HelpAndSupportView extends StatelessWidget {
         leading: const ArrowBackButton(),
         title: Text(
           "Help&Support",
-          style: TextStyle(
-            fontFamily: "poppins",
-            fontSize: 24.sp,
-            fontWeight: FontWeight.w600,
-          ),
+          style: TextStyles.poppins24BlackSemiBold,
         ),
         actions: [
           Padding(
@@ -58,12 +55,7 @@ class HelpAndSupportView extends StatelessWidget {
                 children: [
                   Text(
                     "Objective",
-                    style: TextStyle(
-                      color: Colors.black.withOpacity(.57),
-                      fontFamily: "poppins",
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: TextStyles.poppins16BlackSemiBold,
                   ),
                 ],
               ),
@@ -78,12 +70,7 @@ class HelpAndSupportView extends StatelessWidget {
                 children: [
                   Text(
                     "Email",
-                    style: TextStyle(
-                      color: Colors.black.withOpacity(.57),
-                      fontFamily: "poppins",
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: TextStyles.poppins16BlackSemiBold,
                   ),
                 ],
               ),
@@ -96,12 +83,7 @@ class HelpAndSupportView extends StatelessWidget {
                 children: [
                   Text(
                     "Problem",
-                    style: TextStyle(
-                      color: Colors.black.withOpacity(.57),
-                      fontFamily: "poppins",
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: TextStyles.poppins16BlackSemiBold,
                   ),
                 ],
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wameed/core/design/arrow_back_button.dart';
+import 'package:wameed/core/theming/styles.dart';
 
 class DoctorSettingsView extends StatefulWidget {
   const DoctorSettingsView({super.key});
@@ -18,17 +18,16 @@ class _DoctorSettingsViewState extends State<DoctorSettingsView> {
         leading: const ArrowBackButton(),
         title: Text(
           "Settings",
-          style: TextStyle(
-            fontFamily: "poppins",
-            fontSize: 24.sp,
-            fontWeight: FontWeight.w600,
-          ),
+          style: TextStyles.poppins24BlackSemiBold,
         ),
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.only(end: 24.w),
-            child: SvgPicture.asset(
-              "assets/icons/svgs/app_logo.svg",
+            child: Image.asset(
+              "assets/images/app_main_logo.png",
+              width: 24.w,
+              height: 24.h,
+              fit: BoxFit.cover,
             ),
           ),
         ],
@@ -101,10 +100,11 @@ class _DoctorSettingsViewState extends State<DoctorSettingsView> {
                   children: [
                     Text("FAQ",
                         style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "poppins",
-                            color: Colors.black.withOpacity(.55))),
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "poppins",
+                          color: Colors.black.withOpacity(.55),
+                        )),
                     const Spacer(),
                     IconButton(
                       onPressed: () {},
@@ -147,12 +147,7 @@ class _DoctorSettingsViewState extends State<DoctorSettingsView> {
                     ]),
                 child: Row(
                   children: [
-                    Text("English",
-                        style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "poppins",
-                            color: Colors.black.withOpacity(.55))),
+                    Text("English", style: TextStyles.poppins14Black55Medium),
                     const Spacer(),
                     IconButton(
                       onPressed: () {},
@@ -173,7 +168,11 @@ class _DoctorSettingsViewState extends State<DoctorSettingsView> {
 }
 
 class _Item extends StatelessWidget {
-  const _Item({super.key, required this.title, this.onPressed});
+  const _Item({
+    super.key,
+    required this.title,
+    this.onPressed,
+  });
 
   final String title;
   final VoidCallback? onPressed;
@@ -184,10 +183,7 @@ class _Item extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16.sp,
-              fontFamily: "poppins"),
+          style: TextStyles.poppins16BlackSemiBold,
         ),
         const Spacer(),
         IconButton(
@@ -195,7 +191,7 @@ class _Item extends StatelessWidget {
             icon: Icon(
               Icons.edit,
               color: Colors.black.withOpacity(.42),
-              size: 26,
+              size: 26.sp,
             ))
       ],
     );
@@ -235,22 +231,13 @@ class _EditFiled extends StatelessWidget {
         children: [
           Text(
             mainText,
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              fontFamily: "poppins",
-            ),
+            style:
+                TextStyles.poppins14Black55Medium.copyWith(color: Colors.black),
           ),
-          // SizedBox(
-          //   height: 8.h,
-          // ),
           Text(
             valueText,
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              fontFamily: "poppins",
-              color: Colors.black.withOpacity(.40),
+            style: TextStyles.poppins14Black55Medium.copyWith(
+              color: Colors.black.withOpacity(.44),
             ),
           ),
         ],

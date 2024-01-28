@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_field.dart';
 import 'package:wameed/core/design/app_filled_button.dart';
 import 'package:wameed/core/design/arrow_back_button.dart';
+import 'package:wameed/core/theming/styles.dart';
 import 'package:wameed/views/doctor_registration/widgets/app_bar_title.dart';
 
 class DoctorRegistrationView extends StatelessWidget {
@@ -33,10 +34,7 @@ class DoctorRegistrationView extends StatelessWidget {
                   ),
                   Text(
                     " Nutri Mind",
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: TextStyles.inter20BlackSemiBold,
                   ),
                 ],
               ),
@@ -116,8 +114,7 @@ class DoctorRegistrationView extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16.sp,
-                            color:
-                                Theme.of(context).primaryColor.withOpacity(.67),
+                            color: Theme.of(context).primaryColor.withOpacity(.67),
                           ),
                         ))
                   ],

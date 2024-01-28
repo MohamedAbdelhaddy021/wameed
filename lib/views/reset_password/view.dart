@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/arrow_back_button.dart';
 import 'package:wameed/core/design/text_logo.dart';
+import 'package:wameed/core/theming/styles.dart';
 
 import '../../core/design/app_field.dart';
 import '../../core/design/app_filled_button.dart';
@@ -37,10 +38,7 @@ class _LoginViewState extends State<ResetPasswordView> {
               ),
               Text(
                 "create your new password to log in!",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.sp,
-                    color: Colors.black.withOpacity(.40),),
+                style: TextStyles.poppins14Black55Medium.copyWith(color: Colors.black.withOpacity(.44),fontFamily: "inter"),
               ),
               SizedBox(height: 44.h,),
               const AppField(labelText: "Password",isPassword: true,bottomPadding: 24,),
