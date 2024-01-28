@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_filled_button.dart';
@@ -54,6 +55,7 @@ class InfoAboutDoctor extends StatelessWidget {
                         blurStyle: BlurStyle.outer,
                         color: Theme.of(context).primaryColor.withOpacity(.83)),
                   ]),
+              child: Center(child: Image.asset("assets/images/doctor_bg.png",fit: BoxFit.contain,))
             ),
             SizedBox(
               height: 24.h,

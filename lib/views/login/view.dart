@@ -69,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                 height: 50.h,
               ),
               const AppFilledButton(
-                text: "Log In",
+                text: "Log In",height: 67,
               ),
               SizedBox(
                 height: 45.h,

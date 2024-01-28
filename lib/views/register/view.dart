@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_field.dart';
+import 'package:wameed/core/design/arrow_back_button.dart';
 
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/register_button.dart';
@@ -18,11 +19,7 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(CupertinoIcons.back, size: 28.w),
-          onPressed: () {},
-          color: Colors.black,
-        ),
+        leading:const ArrowBackButton(),
         title: Text(
           "Registration",
           style: TextStyle(

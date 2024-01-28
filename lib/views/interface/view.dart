@@ -71,7 +71,7 @@ class InterfaceView extends StatelessWidget {
                       width: 17.w,
                     ),
                     SvgPicture.asset(
-                      "assets/icons/arrow_right.svg",
+                      "assets/icons/svgs/arrow_right.svg",
                       width: 24.w,
                       height: 12.h,
                     ),
