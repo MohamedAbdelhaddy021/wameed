@@ -48,8 +48,9 @@ class _LoginViewState extends State<ForgetPasswordView> {
               SizedBox(height: 44.h,),
               const AppField(labelText: "Enter your email"),
               SizedBox(height: 40.h,),
-              const AppFilledButton(
+              AppFilledButton(
                 text: "Send Code",
+                onPressed: (){},
               ),
             ],
           ),

@@ -20,12 +20,12 @@ import 'package:wameed/views/verfication_otp_code/view.dart';
 
 void main() {
   runApp(const MyApp());
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.white, // status bar color
-      statusBarIconBrightness: Brightness.dark,
-    ),
-  );
+  // SystemChrome.setSystemUIOverlayStyle(
+  //   const SystemUiOverlayStyle(
+  //     statusBarColor: Colors.white, // status bar color
+  //     statusBarIconBrightness: Brightness.dark,
+  //   ),
+  // );
 }
 
 class MyApp extends StatelessWidget {
@@ -47,9 +47,20 @@ class MyApp extends StatelessWidget {
           dividerTheme: DividerThemeData(
             color: Colors.black.withOpacity(.20),
           ),
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: getMyMaterialColor()),
+          outlinedButtonTheme: OutlinedButtonThemeData(
+            style: OutlinedButton.styleFrom(
+              side: BorderSide(color: getMyMaterialColor()),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)
+              ),
+            )
+            ),
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: getMyMaterialColor(),
+          ),
+
         ),
-        home: const RegisterView(),
+        home: const TimesOfWorkView(),
       ),
     );
   }

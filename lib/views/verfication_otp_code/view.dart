@@ -82,9 +82,9 @@ class _LoginViewState extends State<OTPVerficationCodeView> {
               SizedBox(
                 height: 40.h,
               ),
-              const AppFilledButton(
+              AppFilledButton(
                 text: "Verify",
-                fontFamily: "poppins",
+                fontFamily: "poppins", onPressed: () {  },
               ),
             ],
           ),

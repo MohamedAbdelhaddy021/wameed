@@ -90,7 +90,7 @@ class HelpAndSupportView extends StatelessWidget {
               SizedBox(height: 16.h,),
               const _Item(hintText: "",maxLines: 5,),
               SizedBox(height: MediaQuery.of(context).size.height/8,),
-              const AppFilledButton(text: "Submit"),
+              AppFilledButton(text: "Submit",onPressed: (){}),
             ],
           ),
         ),

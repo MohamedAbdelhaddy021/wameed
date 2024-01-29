@@ -73,9 +73,10 @@ class _RegisterViewState extends State<RegisterView> {
               SizedBox(
                 height: 15.h,
               ),
-              const AppFilledButton(
+              AppFilledButton(
                 text: "Sign Up",
                 height: 67,
+                onPressed: (){},
               ),
               SizedBox(
                 height: 24.h,

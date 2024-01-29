@@ -40,7 +40,7 @@ class DoctorRegistrationView extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsetsDirectional.only(start: 3.w, top: 24.h),
-                height: 622.h,
+                height: 610.h,
                 child: const SingleChildScrollView(
                   child: Column(
                     children: [
@@ -88,9 +88,10 @@ class DoctorRegistrationView extends StatelessWidget {
               SizedBox(
                 height: 17.h,
               ),
-              const AppFilledButton(
+              AppFilledButton(
                 text: "Register",
                 radius: 15,
+                onPressed: () {},
               ),
               SizedBox(
                 height: 12.h,
@@ -114,7 +115,8 @@ class DoctorRegistrationView extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16.sp,
-                            color: Theme.of(context).primaryColor.withOpacity(.67),
+                            color:
+                                Theme.of(context).primaryColor.withOpacity(.67),
                           ),
                         ))
                   ],

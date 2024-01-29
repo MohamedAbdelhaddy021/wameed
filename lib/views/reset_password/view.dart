@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/core/design/app_dialog.dart';
 import 'package:wameed/core/design/arrow_back_button.dart';
 import 'package:wameed/core/design/text_logo.dart';
 import 'package:wameed/core/theming/styles.dart';
@@ -24,7 +25,7 @@ class _LoginViewState extends State<ResetPasswordView> {
         leading: const ArrowBackButton(),
       ),
       body: Padding(
-        padding: EdgeInsetsDirectional.only(start: 24.w,end: 24.w,top: 72.h),
+        padding: EdgeInsetsDirectional.only(start: 24.w, end: 24.w, top: 72.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,14 +39,36 @@ class _LoginViewState extends State<ResetPasswordView> {
               ),
               Text(
                 "create your new password to log in!",
-                style: TextStyles.poppins14Black55Medium.copyWith(color: Colors.black.withOpacity(.44),fontFamily: "inter"),
+                style: TextStyles.poppins14Black55Medium.copyWith(
+                    color: Colors.black.withOpacity(.44), fontFamily: "inter"),
               ),
-              SizedBox(height: 44.h,),
-              const AppField(labelText: "Password",isPassword: true,bottomPadding: 24,),
-              const AppField(labelText: "Confirm password",isPassword: true,bottomPadding: 48,),
-              const AppFilledButton(
+              SizedBox(
+                height: 44.h,
+              ),
+              const AppField(
+                labelText: "Password",
+                isPassword: true,
+                bottomPadding: 24,
+              ),
+              const AppField(
+                labelText: "Confirm password",
+                isPassword: true,
+                bottomPadding: 48,
+              ),
+              AppFilledButton(
                 text: "set password",
                 fontFamily: "poppins",
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AppDialog(
+                          buttonText: "Back to Log in",
+                          text: "your reset",
+                          onTap: () {},
+                        );
+                      });
+                },
               ),
             ],
           ),
