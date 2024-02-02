@@ -9,7 +9,9 @@ class ArrowBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: Icon(CupertinoIcons.back, size: 28.w),
-      onPressed: () {},
+      onPressed: () {
+        // Navigator.pop(context);
+      },
       color: Colors.black,
     );
   }

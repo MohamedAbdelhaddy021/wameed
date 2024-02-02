@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_filled_button.dart';
+import 'package:wameed/core/design/custome_app_bar.dart';
 import 'package:wameed/core/theming/styles.dart';
 
 import '../../core/design/arrow_back_button.dart';
@@ -11,41 +12,7 @@ class HelpAndSupportView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const ArrowBackButton(),
-        title: Text(
-          "Help&Support",
-          style: TextStyles.poppins24BlackSemiBold,
-        ),
-        actions: [
-          Padding(
-              padding: EdgeInsetsDirectional.only(end: 24.w),
-              child: Container(
-                width: 28.w,
-                height: 28.w,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15.r),
-                    boxShadow: [
-                      BoxShadow(
-                          offset: const Offset(0, 0),
-                          blurRadius: 2,
-                          color: Colors.black.withOpacity(.25)),
-                      BoxShadow(
-                          offset: const Offset(0, 0),
-                          blurRadius: 2,
-                          color: Colors.black.withOpacity(.25)),
-                    ]),
-                child: Center(
-                  child: Image.asset(
-                    "assets/images/help_and_support_screen_logo.png",
-                    width: 16.w,
-                    height: 16.w,
-                  ),
-                ),
-              )),
-        ],
-      ),
+      appBar: const CustomAppBar(appBarTitle: "Help&Support"),
       body: Padding(
         padding: EdgeInsetsDirectional.only(top: 36.w, start: 24.w, end: 24.w),
         child: SingleChildScrollView(

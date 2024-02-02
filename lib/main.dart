@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/logic/helper_methods.dart';
 import 'package:wameed/views/continue/view.dart';
 import 'package:wameed/views/doctor_registration/view.dart';
+import 'package:wameed/views/doctor_report/view.dart';
+import 'package:wameed/views/doctor_schedule/view.dart';
 import 'package:wameed/views/doctor_settings/view.dart';
 import 'package:wameed/views/forget_password/view.dart';
 import 'package:wameed/views/help_and_support/view.dart';
@@ -12,6 +14,7 @@ import 'package:wameed/views/info_about_doctor/view.dart';
 import 'package:wameed/views/interface/view.dart';
 import 'package:wameed/views/language_setting/view.dart';
 import 'package:wameed/views/login/view.dart';
+import 'package:wameed/views/patient_information/view.dart';
 import 'package:wameed/views/register/view.dart';
 import 'package:wameed/views/reset_password/view.dart';
 import 'package:wameed/views/splash/view.dart';
@@ -20,12 +23,12 @@ import 'package:wameed/views/verfication_otp_code/view.dart';
 
 void main() {
   runApp(const MyApp());
-  // SystemChrome.setSystemUIOverlayStyle(
-  //   const SystemUiOverlayStyle(
-  //     statusBarColor: Colors.white, // status bar color
-  //     statusBarIconBrightness: Brightness.dark,
-  //   ),
-  // );
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.white, // status bar color
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -60,7 +63,7 @@ class MyApp extends StatelessWidget {
           ),
 
         ),
-        home: const TimesOfWorkView(),
+        home: const DoctorReportView(),
       ),
     );
   }
