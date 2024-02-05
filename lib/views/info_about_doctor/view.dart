@@ -44,16 +44,24 @@ class InfoAboutDoctor extends StatelessWidget {
                   borderRadius: BorderRadius.circular(28.r),
                   boxShadow: [
                     BoxShadow(
-                      offset: const Offset(0, 0),
+                      color: Color(0xff39A7A7).withOpacity(.29),
+                    ),
+                    BoxShadow(
+                      color: Colors.white70,
+                      offset: Offset(-2, -2),
+                      spreadRadius: -5,
+                      blurRadius: 15.0,
+                    ),
+                    BoxShadow(
+                      blurRadius: 8,
+                      blurStyle: BlurStyle.outer,
+                      color: Theme.of(context).primaryColor.withOpacity(.83),
+                    ),BoxShadow(
                       blurRadius: 8,
                       blurStyle: BlurStyle.outer,
                       color: Theme.of(context).primaryColor.withOpacity(.83),
                     ),
-                    BoxShadow(
-                        offset: const Offset(0, 0),
-                        blurRadius: 8,
-                        blurStyle: BlurStyle.outer,
-                        color: Theme.of(context).primaryColor.withOpacity(.83)),
+
                   ]),
               child: Center(child: Image.asset("assets/images/doctor_bg.png",fit: BoxFit.contain,))
             ),

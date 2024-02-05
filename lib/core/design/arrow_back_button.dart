@@ -8,11 +8,11 @@ class ArrowBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(CupertinoIcons.back, size: 28.w),
+      icon: const Icon(CupertinoIcons.back, size: 28,),
       onPressed: () {
         // Navigator.pop(context);
       },
-      color: Colors.black,
+      color: Colors.black.withOpacity(.90),
     );
   }
 }

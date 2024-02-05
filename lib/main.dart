@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/logic/helper_methods.dart';
 import 'package:wameed/views/continue/view.dart';
+import 'package:wameed/views/doctor_chats/view.dart';
+import 'package:wameed/views/doctor_profile/view.dart';
 import 'package:wameed/views/doctor_registration/view.dart';
 import 'package:wameed/views/doctor_report/view.dart';
 import 'package:wameed/views/doctor_schedule/view.dart';
@@ -51,19 +53,17 @@ class MyApp extends StatelessWidget {
             color: Colors.black.withOpacity(.20),
           ),
           outlinedButtonTheme: OutlinedButtonThemeData(
-            style: OutlinedButton.styleFrom(
-              side: BorderSide(color: getMyMaterialColor()),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12)
-              ),
-            )
-            ),
-          colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: getMyMaterialColor(),
-          ),
-
+              style: OutlinedButton.styleFrom(
+            side: BorderSide(color: getMyMaterialColor()),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          )),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color(0xff39A7A7),
+              primary: const Color(0xff39A7A7),
+              background: const Color(0xff39A7A7)),
         ),
-        home: const DoctorReportView(),
+        home: const DoctorChatsView(),
       ),
     );
   }

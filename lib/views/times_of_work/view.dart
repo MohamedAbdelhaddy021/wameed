@@ -48,14 +48,16 @@ class _TimesOfWorkViewState extends State<TimesOfWorkView> {
                         color: const Color(0xff455A64),
                       ),
                     ),
-                    child: Checkbox(
-                      value: true,
-                      side: BorderSide.none,
-                      onChanged: (value) {},
-                      fillColor: MaterialStateProperty.all(Colors.transparent),
-                      checkColor: Theme.of(context).primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4.r),
+                    child: AbsorbPointer(
+                      child: Checkbox(
+                        value: true,
+                        side: BorderSide.none,
+                        onChanged: (value) {},
+                        fillColor: MaterialStateProperty.all(Colors.transparent),
+                        checkColor: Theme.of(context).primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.r),
+                        ),
                       ),
                     ),
                   ),
@@ -110,7 +112,7 @@ class _TimesOfWorkViewState extends State<TimesOfWorkView> {
                   decoration: BoxDecoration(
                       border: Border.all(
                         color: Theme.of(context).primaryColor,
-                        width: 2.5,
+                        width: 2.w,
                       ),
                       borderRadius: BorderRadius.circular(15.r)),
                   child: Center(
@@ -123,13 +125,16 @@ class _TimesOfWorkViewState extends State<TimesOfWorkView> {
                           contentPadding:
                               EdgeInsetsDirectional.only(start: 12.w)),
                       menuStyle: MenuStyle(
+                        alignment: const Alignment(
+                          -1,1.5
+                        ),
                         visualDensity: VisualDensity.comfortable,
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15.r),
                             side: BorderSide(
                                 color: Theme.of(context).primaryColor,
-                                width: 2.5),
+                                width: 2.w),
                           ),
                         ),
                         elevation: MaterialStateProperty.all(0.0),
@@ -196,8 +201,8 @@ class _ItemState extends State<_Item> {
       child: Row(
         children: [
           Container(
-            width: 18.w,
-            height: 18.w,
+            width: 16.w,
+            height: 16.w,
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: isChecked
