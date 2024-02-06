@@ -25,7 +25,7 @@ class DoctorProfileView extends StatelessWidget {
                   BoxShadow(
                     color: Color(0xff39A7A7).withOpacity(.29),
                   ),
-                  BoxShadow(
+                  const BoxShadow(
                     color: Colors.white70,
                     offset: Offset(-2, -2),
                     spreadRadius: -5,
@@ -34,7 +34,7 @@ class DoctorProfileView extends StatelessWidget {
                   BoxShadow(
                     color: Color(0xff39A7A7).withOpacity(.29),
                   ),
-                  BoxShadow(
+                  const BoxShadow(
                     color: Colors.white70,
                     spreadRadius: -1,
                     blurRadius: 8.0,
@@ -76,7 +76,7 @@ class DoctorProfileView extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.email_outlined,
                               color: Colors.white,
                             ),

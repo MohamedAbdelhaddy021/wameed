@@ -15,13 +15,19 @@ import 'package:wameed/views/home/view.dart';
 import 'package:wameed/views/info_about_doctor/view.dart';
 import 'package:wameed/views/interface/view.dart';
 import 'package:wameed/views/language_setting/view.dart';
+import 'package:wameed/views/library/book/view.dart';
+import 'package:wameed/views/library/podcast/view.dart';
+import 'package:wameed/views/library/view.dart';
 import 'package:wameed/views/login/view.dart';
 import 'package:wameed/views/patient_information/view.dart';
+import 'package:wameed/views/questionnaire/view.dart';
 import 'package:wameed/views/register/view.dart';
 import 'package:wameed/views/reset_password/view.dart';
 import 'package:wameed/views/splash/view.dart';
 import 'package:wameed/views/times_of_work/view.dart';
 import 'package:wameed/views/verfication_otp_code/view.dart';
+
+import 'clock_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,7 +52,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
           appBarTheme: const AppBarTheme(
-              color: Colors.white, centerTitle: true, elevation: 0.0),
+            color: Colors.white,
+            centerTitle: true,
+            elevation: 0.0,
+          ),
           useMaterial3: true,
           fontFamily: "inter",
           dividerTheme: DividerThemeData(
@@ -59,11 +68,13 @@ class MyApp extends StatelessWidget {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           )),
           colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xff39A7A7),
-              primary: const Color(0xff39A7A7),
-              background: const Color(0xff39A7A7)),
+            seedColor: const Color(0xff39A7A7),
+            primary: const Color(0xff39A7A7),
+            background: const Color(0xff39A7A7),
+            // background: const Color(0xff39A7A7),
+          ),
         ),
-        home: const DoctorChatsView(),
+        home: const QuestionnaireView(),
       ),
     );
   }

@@ -15,7 +15,7 @@ class TextLogo extends StatelessWidget {
           TextSpan(
             text: "M",
             style: TextStyle(
-                fontFamily: "satisfy",
+                fontFamily: "courgette",
                 color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.w500,
                 fontSize: 48.sp),

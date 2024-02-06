@@ -45,4 +45,10 @@ class TextStyles{
     fontFamily: "poppins",
     color: Colors.black.withOpacity(.55),
   );
+  static TextStyle poppins18Black69SemiBold =TextStyle(
+    fontSize: 18.sp,
+    color: Colors.black.withOpacity(.69),
+    fontWeight: FontWeight.w600,
+    fontFamily: "poppins",
+  );
 }

@@ -21,158 +21,154 @@ class _TimesOfWorkViewState extends State<TimesOfWorkView> {
           style: TextStyles.inter20BlackSemiBold,
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: EdgeInsetsDirectional.only(start: 24.w, top: 60.h),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    width: 20.w,
-                    height: 20.w,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Theme.of(context).primaryColor.withOpacity(.4),
-                          Theme.of(context).primaryColor.withOpacity(.1),
-                        ],
-                        begin: AlignmentDirectional.topCenter,
-                        end: AlignmentDirectional.bottomCenter,
-                      ),
-                      color: const Color(0xffBFDFDF).withOpacity(.48),
-                      borderRadius: BorderRadius.circular(4.r),
-                      border: Border.all(
-                        width: 2.w,
-                        color: const Color(0xff455A64),
-                      ),
-                    ),
-                    child: AbsorbPointer(
-                      child: Checkbox(
-                        value: true,
-                        side: BorderSide.none,
-                        onChanged: (value) {},
-                        fillColor: MaterialStateProperty.all(Colors.transparent),
-                        checkColor: Theme.of(context).primaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4.r),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 9.w,
-                  ),
-                  Text(
-                    "Choose day\\s work :",
-                    style: TextStyles.poppins16BlackSemiBold.copyWith(
-                      color: Colors.black.withOpacity(.79),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              const _Item(
-                dayTitle: "Saturday",
-              ),
-              const _Item(
-                dayTitle: "Sunday",
-              ),
-              const _Item(
-                dayTitle: "Monday",
-              ),
-              _Item(
-                dayTitle: "Tuesday",
-              ),
-              _Item(
-                dayTitle: "Wednesday",
-              ),
-              _Item(dayTitle: "Thursday"),
-              _Item(
-                dayTitle: "Friday",
-              ),
-              SizedBox(
-                height: 40.h,
-              ),
-              Text(
-                "Choose time work :",
-                style: TextStyles.poppins16BlackSemiBold.copyWith(
-                  color: Colors.black.withOpacity(.79),
-                ),
-              ),
-              SizedBox(
-                height: 18.h,
-              ),
-              Container(
-                  width: 219.w,
-                  height: 64.h,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  width: 20.w,
+                  height: 20.w,
                   decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Theme.of(context).primaryColor,
-                        width: 2.w,
-                      ),
-                      borderRadius: BorderRadius.circular(15.r)),
-                  child: Center(
-                    child: DropdownMenu(
-                      width: 219.w,
-                      menuHeight: 100.h,
-                      inputDecorationTheme: InputDecorationTheme(
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          contentPadding:
-                              EdgeInsetsDirectional.only(start: 12.w)),
-                      menuStyle: MenuStyle(
-                        alignment: const Alignment(
-                          -1,1.5
-                        ),
-                        visualDensity: VisualDensity.comfortable,
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.r),
-                            side: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 2.w),
-                          ),
-                        ),
-                        elevation: MaterialStateProperty.all(0.0),
-                        padding: MaterialStateProperty.all(
-                          EdgeInsetsDirectional.symmetric(
-                            horizontal: 10.w,
-                          ),
-                        ),
-                      ),
-                      hintText: "From - To",
-                      textStyle: TextStyles.poppins16BlackSemiBold.copyWith(
-                        color: Colors.black.withOpacity(.75),
-                      ),
-                      trailingIcon:
-                          SvgPicture.asset("assets/icons/svgs/arrow_down.svg"),
-                      selectedTrailingIcon:
-                          SvgPicture.asset("assets/icons/svgs/arrow_up.svg"),
-                      dropdownMenuEntries: const [
-                        DropdownMenuEntry(
-                          value: 1,
-                          label: "9:00 am : 10:00 am",
-                        ),
-                        DropdownMenuEntry(value: 1, label: "9 : 10 AM"),
-                        DropdownMenuEntry(value: 1, label: "9 : 10 AM"),
-                        DropdownMenuEntry(value: 1, label: "9 : 10 AM"),
+                    gradient: LinearGradient(
+                      colors: [
+                        Theme.of(context).primaryColor.withOpacity(.4),
+                        Theme.of(context).primaryColor.withOpacity(.1),
                       ],
+                      begin: AlignmentDirectional.topCenter,
+                      end: AlignmentDirectional.bottomCenter,
                     ),
-                  )),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 6,
+                    color: const Color(0xffBFDFDF).withOpacity(.48),
+                    borderRadius: BorderRadius.circular(4.r),
+                    border: Border.all(
+                      width: 2.w,
+                      color: const Color(0xff455A64),
+                    ),
+                  ),
+                  child: AbsorbPointer(
+                    child: Checkbox(
+                      value: true,
+                      side: BorderSide.none,
+                      onChanged: (value) {},
+                      fillColor: MaterialStateProperty.all(Colors.transparent),
+                      checkColor: Theme.of(context).primaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.r),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 9.w,
+                ),
+                Text(
+                  "Choose day\\s work :",
+                  style: TextStyles.poppins16BlackSemiBold.copyWith(
+                    color: Colors.black.withOpacity(.79),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            const _Item(
+              dayTitle: "Saturday",
+            ),
+            const _Item(
+              dayTitle: "Sunday",
+            ),
+            const _Item(
+              dayTitle: "Monday",
+            ),
+            _Item(
+              dayTitle: "Tuesday",
+            ),
+            _Item(
+              dayTitle: "Wednesday",
+            ),
+            _Item(dayTitle: "Thursday"),
+            _Item(
+              dayTitle: "Friday",
+            ),
+            SizedBox(
+              height: 40.h,
+            ),
+            Text(
+              "Choose time work :",
+              style: TextStyles.poppins16BlackSemiBold.copyWith(
+                color: Colors.black.withOpacity(.79),
               ),
-              AppFilledButton(
-                text: "Back",
-                onPressed: () {},
-                fontFamily: "poppins",
-              ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 18.h,
+            ),
+            Container(
+                width: 219.w,
+                height: 64.h,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Theme.of(context).primaryColor,
+                      width: 2.w,
+                    ),
+                    borderRadius: BorderRadius.circular(15.r)),
+                child: DropdownMenu(
+                  width: 219.w,
+                  menuHeight: 100.h,
+                  inputDecorationTheme: InputDecorationTheme(
+                      border: const OutlineInputBorder(
+                          borderSide: BorderSide.none),
+                      contentPadding:
+                          EdgeInsetsDirectional.only(start: 12.w)),
+                  menuStyle: MenuStyle(
+                    alignment: const Alignment(
+                      -1,1.5
+                    ),
+                    visualDensity: VisualDensity.comfortable,
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.r),
+                        side: BorderSide(
+                            color: Theme.of(context).primaryColor,
+                            width: 2.w),
+                      ),
+                    ),
+                    elevation: MaterialStateProperty.all(0.0),
+                    padding: MaterialStateProperty.all(
+                      EdgeInsetsDirectional.symmetric(
+                        horizontal: 10.w,
+                      ),
+                    ),
+                  ),
+                  hintText: "From - To",
+                  textStyle: TextStyles.poppins16BlackSemiBold.copyWith(
+                    color: Colors.black.withOpacity(.75),
+                  ),
+                  trailingIcon:
+                      SvgPicture.asset("assets/icons/svgs/arrow_down.svg"),
+                  selectedTrailingIcon:
+                      SvgPicture.asset("assets/icons/svgs/arrow_up.svg"),
+                  dropdownMenuEntries: const [
+                    DropdownMenuEntry(
+                      value: 1,
+                      label: "9:00 am : 10:00 am",
+                    ),
+                    DropdownMenuEntry(value: 1, label: "9 : 10 AM"),
+                    DropdownMenuEntry(value: 1, label: "9 : 10 AM"),
+                    DropdownMenuEntry(value: 1, label: "9 : 10 AM"),
+                  ],
+                )),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 6,
+            ),
+            AppFilledButton(
+              text: "Back",
+              onPressed: () {},
+              fontFamily: "poppins",
+            ),
+          ],
         ),
       ),
     );
