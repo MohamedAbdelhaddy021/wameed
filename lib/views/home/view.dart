@@ -1,5 +1,6 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -9,37 +10,85 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int currentIndex=1;
+  final iconList = <IconData>[
+    Icons.home,
+    Icons.message,
+    Icons.email,
+    Icons.person,
+  ];
+  int _currentIndex = 0;
+  final titleList = <String>[
+    "Home",
+    "Chats",
+    "Motivzone",
+    "Profile",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0,0),
-              blurRadius: 8,
-              blurStyle: BlurStyle.inner,
-              color: Colors.black.withOpacity(.06)
-            )
-          ]
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: SizedBox(
+        width: 70.w,
+        height: 70.w,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(.25),
+                  blurStyle: BlurStyle.inner,
+                  blurRadius: 8,
+                  offset: const Offset(1, 1))
+            ],
+          ),
+          child: FloatingActionButton(
+            backgroundColor: const Color(0xffFAFAFA),
+            onPressed: () {},
+            shape: const CircleBorder(),
+            child: Icon(Icons.qr_code_scanner, color: Colors.grey, size: 32.sp),
+          ),
         ),
-        child: CurvedNavigationBar(
-            color: Color(0xffF9F9F9),
-            backgroundColor: Colors.transparent,
-            buttonBackgroundColor:  const Color(0xffF9F9F9),
-            onTap: (int index) {
-              currentIndex =index;
-              setState(() {
-              });
-            },
-            letIndexChange: (index) => true,
-            items: [
-          Icon(Icons.person_off,size:30,),
-          Icon(Icons.person_off),
-          Icon(Icons.home),
-        ]),
       ),
+      bottomNavigationBar: AnimatedBottomNavigationBar.builder(
+        height: 99.h,
+        tabBuilder: (index, isActive) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                iconList[index],
+                color: isActive ? Theme.of(context).primaryColor : Colors.grey,
+              ),
+              SizedBox(
+                height: 4.h,
+              ),
+              Text(
+                titleList[index],
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    fontFamily: "poppins",
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500),
+              )
+            ],
+          );
+        },
+        activeIndex: _currentIndex,
+        shadow: BoxShadow(blurRadius: 8.r, color: Colors.grey.withOpacity(.35)),
+        gapLocation: GapLocation.center,
+        notchSmoothness: NotchSmoothness.smoothEdge,
+        leftCornerRadius: 20.r,
+        rightCornerRadius: 20.r,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+            print(index);
+          });
+        },
+        itemCount: titleList.length,
+      ),
+      // body: ,
     );
   }
 }

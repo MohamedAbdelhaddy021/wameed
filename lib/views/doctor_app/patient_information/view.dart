@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/theming/styles.dart';
 
-import '../../core/design/custome_app_bar.dart';
+import '../../../core/design/custom_app_bar.dart';
 
 class PatientInformationView extends StatefulWidget {
   const PatientInformationView({super.key});
@@ -124,9 +124,11 @@ class _PatientInformationViewState extends State<PatientInformationView> {
                 height: 24.h,
               ),
               ...List.generate(list.length, (index) => Padding(
-                padding: const EdgeInsets.only(bottom: 12.0),
+                padding:  EdgeInsetsDirectional.only(bottom: 12.h,start: 8.w),
                 child: Row(
                   children: [
+                    const CircleAvatar(radius: 2.5,backgroundColor: Colors.grey,),
+                    SizedBox(width: 8.w,),
                     Text(
                       list[index],
                       maxLines: 1,

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/core/design/custome_app_bar.dart';
+import 'package:wameed/core/design/custom_app_bar.dart';
+import 'package:wameed/core/logic/helper_methods.dart';
 import 'package:wameed/core/theming/styles.dart';
+import 'package:wameed/views/auth/login/view.dart';
+
+import '../doctor_chats/view.dart';
+import '../doctor_schedule/view.dart';
+import '../doctor_settings/view.dart';
 
 class DoctorProfileView extends StatelessWidget {
   const DoctorProfileView({super.key});
@@ -23,7 +29,7 @@ class DoctorProfileView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(28.r),
                 boxShadow: [
                   BoxShadow(
-                    color: Color(0xff39A7A7).withOpacity(.29),
+                    color: const Color(0xff39A7A7).withOpacity(.29),
                   ),
                   const BoxShadow(
                     color: Colors.white70,
@@ -32,7 +38,7 @@ class DoctorProfileView extends StatelessWidget {
                     blurRadius: 8.0,
                   ),
                   BoxShadow(
-                    color: Color(0xff39A7A7).withOpacity(.29),
+                    color: const Color(0xff39A7A7).withOpacity(.29),
                   ),
                   const BoxShadow(
                     color: Colors.white70,
@@ -43,7 +49,7 @@ class DoctorProfileView extends StatelessWidget {
                   BoxShadow(
                       blurRadius: 11,
                       color: Colors.black.withOpacity(.42),
-                      blurStyle: BlurStyle.outer)
+                      blurStyle: BlurStyle.outer),
                 ],
               ),
               child: Row(
@@ -103,12 +109,16 @@ class DoctorProfileView extends StatelessWidget {
             _Item(
               imgPath: "assets/icons/calendar.png",
               title: "My schedule",
-              onPressed: () {},
+              onPressed: () {
+                navigateTo(const DoctorScheduleView());
+              },
             ),
             _Item(
               imgPath: "assets/icons/message.png",
               title: "My Chats",
-              onPressed: () {},
+              onPressed: () {
+                navigateTo(const DoctorChatsView());
+              },
             ),
             _Item(
               imgPath: "assets/icons/bill.png",
@@ -118,12 +128,20 @@ class DoctorProfileView extends StatelessWidget {
             _Item(
               imgPath: "assets/icons/setting.png",
               title: "Setting",
-              onPressed: () {},
+              onPressed: () {
+                navigateTo(const DoctorSettingsView());
+              },
             ),
             _Item(
               imgPath: "assets/icons/logout.png",
               title: "Log out",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginView(),
+                    ));
+              },
             ),
           ],
         ),
@@ -133,47 +151,47 @@ class DoctorProfileView extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  const _Item(
-      {super.key, required this.imgPath, required this.title, this.onPressed});
+  const _Item({required this.imgPath, required this.title, this.onPressed});
 
   final String imgPath, title;
   final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 54.h,
-      padding: EdgeInsetsDirectional.only(start: 16.w),
-      margin: EdgeInsetsDirectional.only(bottom: 24.w),
-      decoration: BoxDecoration(
-        color: const Color(0xffF2F2F2).withOpacity(.63),
-        borderRadius: BorderRadius.circular(15.r),
-        border: Border.all(color: const Color(0xffBFDFDF), width: 1.w),
-      ),
-      child: Row(
-        children: [
-          Image.asset(
-            imgPath,
-            width: 22.w,
-            height: 22.w,
-          ),
-          SizedBox(
-            width: 8.w,
-          ),
-          Text(
-            title,
-            style: TextStyles.poppins14Black55Medium
-                .copyWith(color: Colors.black.withOpacity(.40)),
-          ),
-          const Spacer(),
-          IconButton(
-              onPressed: onPressed,
-              icon: Icon(
-                Icons.arrow_forward_ios_outlined,
-                color: Colors.black.withOpacity(.50),
-                size: 22.sp,
-              ))
-        ],
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        height: 54.h,
+        padding: EdgeInsetsDirectional.only(start: 16.w, end: 16.w),
+        margin: EdgeInsetsDirectional.only(bottom: 24.w),
+        decoration: BoxDecoration(
+          color: const Color(0xffF2F2F2).withOpacity(.63),
+          borderRadius: BorderRadius.circular(15.r),
+          border: Border.all(color: const Color(0xffBFDFDF), width: 1.w),
+        ),
+        child: Row(
+          children: [
+            Image.asset(
+              imgPath,
+              width: 22.w,
+              height: 22.w,
+            ),
+            SizedBox(
+              width: 8.w,
+            ),
+            Text(
+              title,
+              style: TextStyles.poppins14Black55Medium
+                  .copyWith(color: Colors.black.withOpacity(.40)),
+            ),
+            const Spacer(),
+            Icon(
+              Icons.arrow_forward_ios_outlined,
+              color: Colors.black.withOpacity(.50),
+              size: 22.sp,
+            )
+          ],
+        ),
       ),
     );
   }

@@ -2,20 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:wameed/core/design/text_logo.dart';
+import 'package:wameed/core/logic/helper_methods.dart';
+import 'package:wameed/core/theming/styles.dart';
+import '../../../core/design/app_filled_button.dart';
 
-import '../../core/design/app_field.dart';
-import '../../core/design/app_filled_button.dart';
-import '../../core/design/register_button.dart';
-
-class OTPVerficationCodeView extends StatefulWidget {
-  const OTPVerficationCodeView({super.key});
+class OTPVerificationCodeView extends StatefulWidget {
+  const OTPVerificationCodeView({super.key});
 
   @override
-  State<OTPVerficationCodeView> createState() => _LoginViewState();
+  State<OTPVerificationCodeView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<OTPVerficationCodeView> {
+class _LoginViewState extends State<OTPVerificationCodeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +49,26 @@ class _LoginViewState extends State<OTPVerficationCodeView> {
               SizedBox(
                 height: 44.h,
               ),
-              PinCodeTextField(appContext: context, length: 4),
-              SizedBox(height: 15.h,),
+              PinCodeTextField(
+                appContext: context,
+                length: 4,
+                textStyle: TextStyles.poppins24BlackSemiBold,
+                keyboardType: TextInputType.number,
+                cursorColor: const Color(0xff39A7A7).withOpacity(.88),
+                cursorHeight: 25.h,
+                pinTheme: PinTheme(
+                  shape: PinCodeFieldShape.box,
+                  borderRadius: BorderRadius.circular(6.r),
+                  fieldHeight: 55.h,
+                  fieldWidth: 71.h,
+                  inactiveColor: const Color(0xffBFDFDF),
+                  selectedColor: const Color(0xff39A7A7),
+                  activeColor:   const Color(0xffBFDFDF),
+                ),
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -84,7 +100,9 @@ class _LoginViewState extends State<OTPVerficationCodeView> {
               ),
               AppFilledButton(
                 text: "Verify",
-                fontFamily: "poppins", onPressed: () {  },
+                height: 67,
+                fontFamily: "poppins",
+                onPressed: () {},
               ),
             ],
           ),

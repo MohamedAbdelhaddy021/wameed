@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../core/theming/styles.dart';
+
+import '../../../../core/theming/styles.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({super.key});

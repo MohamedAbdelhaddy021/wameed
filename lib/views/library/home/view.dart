@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/theming/styles.dart';
 
-import '../../core/design/custome_app_bar_with_text_logo.dart';
+import '../../../core/design/custom_app_bar_with_text_logo.dart';
 
 class LibraryView extends StatelessWidget {
   const LibraryView({super.key});

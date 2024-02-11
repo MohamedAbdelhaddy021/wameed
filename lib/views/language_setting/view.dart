@@ -44,7 +44,9 @@ class _LanguageSettingViewState extends State<LanguageSettingView> {
                   isEnglish = !isEnglish;
                   setState(() {});
                 }),
-            SizedBox(height: 28.h,),
+            SizedBox(
+              height: 28.h,
+            ),
             _Item(
                 text: "Arabic",
                 isEnglish: !isEnglish,

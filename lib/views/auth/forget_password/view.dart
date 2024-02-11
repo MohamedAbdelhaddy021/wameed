@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/core/design/text_logo.dart';
-
-import '../../core/design/app_field.dart';
-import '../../core/design/app_filled_button.dart';
-import '../../core/design/register_button.dart';
+import 'package:wameed/core/logic/helper_methods.dart';
+import '../../../core/design/app_field.dart';
+import '../../../core/design/app_filled_button.dart';
+import '../verification_otp_code/view.dart';
 
 class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});
@@ -50,7 +49,10 @@ class _LoginViewState extends State<ForgetPasswordView> {
               SizedBox(height: 40.h,),
               AppFilledButton(
                 text: "Send Code",
-                onPressed: (){},
+                height: 67,
+                onPressed: (){
+                  navigateTo(const OTPVerificationCodeView());
+                },
               ),
             ],
           ),

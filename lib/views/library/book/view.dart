@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/core/design/custome_app_bar_with_text_logo.dart';
+import 'package:wameed/core/design/custom_app_bar_with_text_logo.dart';
 
 import '../../../core/theming/styles.dart';
 

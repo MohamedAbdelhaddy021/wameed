@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wameed/core/design/text_logo.dart';
+import 'package:wameed/core/logic/cache_helper.dart';
+import 'package:wameed/core/logic/helper_methods.dart';
+import 'package:wameed/views/continue/view.dart';
 
 class InterfaceView extends StatelessWidget {
   const InterfaceView({super.key});
@@ -50,7 +53,10 @@ class InterfaceView extends StatelessWidget {
                 height: 74.h,
               ),
               FilledButton(
-                onPressed: () {},
+                onPressed: () {
+                  CacheHelper.setIsFirstTime();
+                  navigateTo(const ContinueView());
+                },
                 style: FilledButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.r)),

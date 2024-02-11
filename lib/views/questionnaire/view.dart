@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wameed/core/design/app_filled_button.dart';
-import 'package:wameed/core/design/arrow_back_button.dart';
+import 'package:wameed/core/logic/helper_methods.dart';
 import 'package:wameed/core/theming/styles.dart';
-import 'package:wameed/views/login/view.dart';
+import 'package:wameed/views/questionnaire_result/view.dart';
 
 class QuestionnaireView extends StatefulWidget {
   const QuestionnaireView({super.key});
@@ -17,17 +17,33 @@ class QuestionnaireView extends StatefulWidget {
 }
 
 class _QuestionnaireViewState extends State<QuestionnaireView> {
-  double _progress = 1 / 50;
+
   int currentIndex = 0;
-  List<String> questions =
-      List.generate(50, (index) => "Question  ${index + 1}");
+  late List<String> questions;
+  double _progress = 0;
+@override
+  void initState() {
+  questions =
+  List.generate(50, (index) => "Have you experienced changes in your abilityto form and maintain friendship ?");
+    super.initState();
+  _progress = 1 / questions.length;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: _progress > 1 / 50
-            ? IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new))
+        leading: _progress > 1 / questions.length
+            ? IconButton(
+                onPressed: () {
+                  if(_progress>0) {
+                    setState(() {
+                      currentIndex = currentIndex - 1;
+                      _progress -= 1.0 / questions.length;
+                      print(_progress);
+                    });
+                  }
+                }, icon: const Icon(Icons.arrow_back_ios_new))
             : null,
         titleSpacing: 0,
         title: Text.rich(
@@ -61,7 +77,7 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
             Padding(
               padding: EdgeInsetsDirectional.only(end: 73.w),
               child: Text(
-                _progress == 1 / 50 ? "Let’s Start..." : "Continue",
+                _progress == 1 / questions.length ? "Let’s Start..." :currentIndex==questions.length-1? "Let’s end":"Continue",
                 style: TextStyles.poppins18Black69SemiBold.copyWith(
                   color: Colors.black,
                 ),
@@ -109,13 +125,13 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
                   showDialog(
                     context: context,
                     builder: (context) => BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 2,sigmaY: 2),
+                      filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
                       child: Dialog(
                         elevation: 100,
                         child: Container(
                           width: 295.w,
-                          padding:
-                              EdgeInsetsDirectional.only(top: 33.w, bottom: 47.h),
+                          padding: EdgeInsetsDirectional.only(
+                              top: 33.w, bottom: 47.h),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15.r)),
@@ -166,10 +182,13 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
                                 height: 40.h,
                               ),
                               InkWell(
-                                onTap: (){},
+                                onTap: () {
+                                  navigateTo(const QuestionnaireResultView());
+                                },
                                 child: Container(
                                   height: 60.h,
-                                  margin: EdgeInsets.symmetric(horizontal: 32.w),
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 32.w),
                                   decoration: BoxDecoration(
                                       boxShadow: [
                                         BoxShadow(
@@ -227,12 +246,12 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
                 BoxShadow(
                   blurRadius: 8,
                   blurStyle: BlurStyle.outer,
-                  color: Color(0xff39A7A7).withOpacity(.33),
+                  color: const Color(0xff39A7A7).withOpacity(.33),
                 ),
                 BoxShadow(
                   blurRadius: 8,
                   blurStyle: BlurStyle.outer,
-                  color: Color(0xff39A7A7).withOpacity(.33),
+                  color: const Color(0xff39A7A7).withOpacity(.33),
                 ),
               ]),
               child: FloatingActionButton(
@@ -240,7 +259,7 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
                 backgroundColor: Theme.of(context).primaryColor,
                 shape: const CircleBorder(),
                 child: SvgPicture.asset(
-                    "assets/icons/svgs/questionnaire_floating_arrow_forword.svg"),
+                    "assets/icons/svgs/questionnaire_floating_arrow_forward.svg"),
               ),
             ),
     );
@@ -260,12 +279,11 @@ class _Item extends StatelessWidget {
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-            minimumSize: Size(double.infinity, 54.h),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.r),
-                side: BorderSide(
-                  width: 2.w,
-                ))),
+          minimumSize: Size(double.infinity, 54.h),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+        ),
         child: Text(
           text,
           style: TextStyle(
@@ -277,4 +295,8 @@ class _Item extends StatelessWidget {
       ),
     );
   }
+}
+
+enum Gender {
+  firstQuestion,continueQuestions,lastQuestion,
 }

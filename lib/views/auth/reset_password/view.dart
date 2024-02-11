@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_dialog.dart';
 import 'package:wameed/core/design/arrow_back_button.dart';
-import 'package:wameed/core/design/text_logo.dart';
 import 'package:wameed/core/theming/styles.dart';
 
-import '../../core/design/app_field.dart';
-import '../../core/design/app_filled_button.dart';
-import '../../core/design/register_button.dart';
+import '../../../core/design/app_field.dart';
+import '../../../core/design/app_filled_button.dart';
 
 class ResetPasswordView extends StatefulWidget {
   const ResetPasswordView({super.key});
@@ -57,6 +55,7 @@ class _LoginViewState extends State<ResetPasswordView> {
               ),
               AppFilledButton(
                 text: "set password",
+                height: 67,
                 fontFamily: "poppins",
                 onPressed: () {
                   showDialog(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/core/design/custome_app_bar.dart';
+import 'package:wameed/core/design/custom_app_bar.dart';
+import 'package:wameed/core/logic/helper_methods.dart';
 import 'package:wameed/core/theming/styles.dart';
+import '../patient_information/view.dart';
 
 class DoctorScheduleView extends StatefulWidget {
   const DoctorScheduleView({super.key});
@@ -16,33 +18,65 @@ class _DoctorScheduleViewState extends State<DoctorScheduleView> {
     return Scaffold(
       appBar: const CustomAppBar(appBarTitle: "My schedule"),
       body: Padding(
-        padding: EdgeInsetsDirectional.only( top: 36.h),
+        padding: EdgeInsetsDirectional.only(top: 36.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding:  EdgeInsetsDirectional.only(start: 24.w),
+              padding: EdgeInsetsDirectional.only(start: 24.w),
               child: Text(
-                "All Patients",
+                "New consultation",
                 style: TextStyles.inter20BlackSemiBold.copyWith(
                   color: Colors.black.withOpacity(.58),
                 ),
               ),
             ),
-            SizedBox(height: 24.h,),
+            SizedBox(
+              height: 24.h,
+            ),
             Expanded(
               child: ListView.separated(
-                padding: EdgeInsets.only(left: 24.w,right: 24.w,bottom: 24.h),
+                  padding:
+                      EdgeInsets.only(left: 24.w, right: 24.w, bottom: 24.h,top: 24.h),
                   physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => _Item(patientName: "Mohamed Abdelhady"),
+                  itemBuilder: (context, index) => GestureDetector(
+                    onTap: (){
+                      navigateTo(const PatientInformationView());
+                    },
+                      child: _Item(patientName: "Mohamed Abdelhady")),
                   separatorBuilder: (context, index) => SizedBox(
                         height: 24.h,
                       ),
                   itemCount: 5),
             ),
-          ],
-        ),
-      ),
+            SizedBox(height: 16.h,),
+            Padding(
+              padding: EdgeInsetsDirectional.only(start: 24.w),
+              child: Text(
+                "Old consultation",
+                style: TextStyles.inter20BlackSemiBold.copyWith(
+                  color: Colors.black.withOpacity(.58),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 24.h,
+            ),
+            Expanded(
+              child: ListView.separated(
+                  padding: EdgeInsets.only(left:24.w,right: 24.w,bottom: 24.h),
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemBuilder: (context, index) => GestureDetector(
+                    onTap: (){
+                      navigateTo(const PatientInformationView());
+                    },
+                      child: _Item(patientName: "Mohamed Abdelhady")),
+                  separatorBuilder: (context, index) => SizedBox(
+                        height: 24.h,
+                      ),
+                  itemCount: 5),
+            ),
+        ])),
     );
   }
 }
@@ -57,6 +91,7 @@ class _Item extends StatelessWidget {
     return Container(
       height: 132,
       width: double.infinity,
+      padding: EdgeInsetsDirectional.only(end: 16.w),
       decoration: BoxDecoration(
         color: const Color(0xffF9F9F9),
         boxShadow: [
@@ -72,28 +107,12 @@ class _Item extends StatelessWidget {
           Container(
             width: 64.w,
             height: 64.w,
-            margin: EdgeInsetsDirectional.only(start: 24.w),
+            margin: EdgeInsetsDirectional.only(
+              start: 24.w,
+            ),
             decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor.withOpacity(.22),
-                borderRadius: BorderRadius.circular(40.r),
-                // boxShadow: [
-                //   BoxShadow(
-                //     color: Colors.black.withOpacity(.20),
-                //   ),
-                //   BoxShadow(
-                //       color: Theme.of(context).primaryColor.withOpacity(.22),
-                //       offset: const Offset(0, 4),
-                //       blurRadius: 4,
-                //       spreadRadius: -4,
-                //       blurStyle: BlurStyle.inner),
-                //   BoxShadow(
-                //       color: Theme.of(context).primaryColor.withOpacity(.22),
-                //       offset: const Offset(0, 4),
-                //       blurRadius: 4,
-                //       spreadRadius: -4,
-                //       blurStyle: BlurStyle.inner),
-                // ]
-              ),
+                shape: BoxShape.circle),
             child: Center(
                 child: Image.asset(
               "assets/images/user.png",
@@ -106,7 +125,7 @@ class _Item extends StatelessWidget {
           ),
           Expanded(
               child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 24.h),
+            padding: EdgeInsetsDirectional.symmetric(vertical: 24.h),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,9 +168,9 @@ class _Item extends StatelessWidget {
               ],
             ),
           )),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_forward_ios_outlined, weight: 4),
+          const Icon(
+            Icons.arrow_forward_ios_outlined,
+            weight: 4,
             color: Colors.grey,
           ),
         ],

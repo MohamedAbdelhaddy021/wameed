@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/core/design/app_field.dart';
 import 'package:wameed/core/design/app_filled_button.dart';
-import 'package:wameed/core/design/custome_app_bar.dart';
-
-import '../../core/theming/styles.dart';
+import 'package:wameed/core/design/custom_app_bar.dart';
+import '../../../core/theming/styles.dart';
 
 class DoctorReportView extends StatefulWidget {
   const DoctorReportView({super.key});
@@ -22,6 +22,7 @@ class _DoctorReportViewState extends State<DoctorReportView> {
     "changes in appetite or weight",
     "feeling very tired or low in energy.",
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,37 +64,72 @@ class _DoctorReportViewState extends State<DoctorReportView> {
               ],
             ),
           ),
-          SizedBox(height: 24.h,),
+          SizedBox(
+            height: 24.h,
+          ),
           Text(
             "Diagnosis of his state",
             style: TextStyles.inter20BlackSemiBold,
           ),
-          SizedBox(height: 16.h,),
+          SizedBox(
+            height: 16.h,
+          ),
           Text(
             "Anxity ( Depression )",
-            style: TextStyles.inter16Medium.copyWith(color: Colors.black.withOpacity(.46),fontWeight: FontWeight.w600),
+            style: TextStyles.inter16Medium.copyWith(
+                color: Colors.black.withOpacity(.46),
+                fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 32.h,),
+          SizedBox(
+            height: 32.h,
+          ),
           Text(
             "Description :",
             style: TextStyles.inter20BlackSemiBold,
           ),
-          SizedBox(height: 16.h,),
-          ...List.generate(list.length, (index) => Padding(
-            padding: const EdgeInsets.only(bottom: 12.0),
-            child: Row(
-              children: [
-                Text(
-                  list[index],
-                  maxLines: 1,
-                  style: TextStyles.inter20BlackSemiBold.copyWith(
-                      color: Colors.grey, fontSize: 12.sp),
-                )
-              ],
+          SizedBox(
+            height: 16.h,
+          ),
+          Container(
+            margin: EdgeInsetsDirectional.only(end: 47.w),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15.r),
+                boxShadow: [
+                  BoxShadow(
+                      offset: const Offset(2, 2),
+                      color: Colors.black.withOpacity(.15),
+                      blurRadius: 2),
+                  BoxShadow(
+                      offset: const Offset(2, 2),
+                      color: Colors.black.withOpacity(.15),
+                      blurRadius: 2),
+                ]),
+            child: TextFormField(
+              onTapOutside: (event) {
+                FocusManager.instance.primaryFocus!.unfocus();
+              },
+              maxLines: 6,
+              decoration: InputDecoration(
+                filled: true,
+                hintStyle: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14.sp,
+                  fontFamily: "poppins",
+                  color: Colors.black,
+                ),
+                fillColor: const Color(0xffD9D9D9).withOpacity(.25),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(15.r),
+                ),
+              ),
             ),
-          )),
-          SizedBox(height: MediaQuery.of(context).size.height/5,),
-          AppFilledButton(text: "Save", onPressed: (){}),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 5,
+          ),
+          AppFilledButton(text: "Save", onPressed: () {}),
         ],
       ),
     );

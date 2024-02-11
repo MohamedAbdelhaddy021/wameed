@@ -16,13 +16,14 @@ class _TimesOfWorkViewState extends State<TimesOfWorkView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Times of work",
           style: TextStyles.inter20BlackSemiBold,
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsetsDirectional.only(start: 24.w, top: 60.h),
+        padding: EdgeInsetsDirectional.only(start: 30.w, top: 60.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -74,23 +75,23 @@ class _TimesOfWorkViewState extends State<TimesOfWorkView> {
             SizedBox(
               height: 20.h,
             ),
-            const _Item(
+             _Item(
               dayTitle: "Saturday",
             ),
-            const _Item(
+             _Item(
               dayTitle: "Sunday",
             ),
-            const _Item(
+             _Item(
               dayTitle: "Monday",
             ),
-            _Item(
+             _Item(
               dayTitle: "Tuesday",
             ),
-            _Item(
+             _Item(
               dayTitle: "Wednesday",
             ),
-            _Item(dayTitle: "Thursday"),
-            _Item(
+             _Item(dayTitle: "Thursday"),
+             _Item(
               dayTitle: "Friday",
             ),
             SizedBox(
@@ -165,7 +166,9 @@ class _TimesOfWorkViewState extends State<TimesOfWorkView> {
             ),
             AppFilledButton(
               text: "Back",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               fontFamily: "poppins",
             ),
           ],
@@ -177,7 +180,6 @@ class _TimesOfWorkViewState extends State<TimesOfWorkView> {
 
 class _Item extends StatefulWidget {
   const _Item({
-    super.key,
     required this.dayTitle,
   });
 
@@ -193,29 +195,22 @@ class _ItemState extends State<_Item> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 16.h),
+      padding: EdgeInsetsDirectional.only(bottom: 16.h,),
       child: Row(
         children: [
           Container(
-            width: 16.w,
-            height: 16.w,
+            width: 20.w,
+            height: 20.w,
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: isChecked
-                    ? Border.all(color: const Color(0xffCAE9E1), width: 2)
+                    ? Border.all(color: Colors.transparent, width: 0)
                     : Border.all(
-                        width: 2.w,
+                        width: 1.5.w,
                         strokeAlign: BorderSide.strokeAlignInside,
                         color: const Color(0xff707070),
                       ),
-                borderRadius: BorderRadius.circular(4.r),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.20),
-                    blurRadius: 1,
-                    offset: const Offset(1, 1), // changes position of shadow
-                  ),
-                ]),
+                borderRadius: BorderRadius.circular(4.r),),
             child: Checkbox(
               value: isChecked,
               side: BorderSide.none,
@@ -223,9 +218,8 @@ class _ItemState extends State<_Item> {
                 isChecked = value!;
                 setState(() {});
               },
-              fillColor: isChecked
-                  ? MaterialStateProperty.all(
-                      const Color(0xff96D9C9).withOpacity(.46))
+              fillColor: isChecked ? MaterialStateProperty.all(
+                      const Color(0xff96D9C9).withOpacity(.7))
                   : MaterialStateProperty.all(Colors.transparent),
               checkColor: Theme.of(context).primaryColor,
               shape: RoundedRectangleBorder(

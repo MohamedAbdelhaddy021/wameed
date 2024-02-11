@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_filled_button.dart';
-import 'package:wameed/core/design/custome_app_bar.dart';
+import 'package:wameed/core/design/custom_app_bar.dart';
 import 'package:wameed/core/theming/styles.dart';
 
 import '../../core/design/arrow_back_button.dart';
