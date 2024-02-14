@@ -63,7 +63,7 @@ class ContinueView extends StatelessWidget {
                     text: "Doctor",
                     img: "assets/icons/doctor_ico.png",
                     onTap: () {
-                      navigateTo(const DoctorRegistrationView());
+                      navigateTo( DoctorRegistrationView());
                     },
                   ),
                 ],

@@ -14,6 +14,8 @@ class ForgetPasswordView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<ForgetPasswordView> {
+  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class _LoginViewState extends State<ForgetPasswordView> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsetsDirectional.only(start: 24.w,end: 24.w,top: 72.h),
+        padding: EdgeInsetsDirectional.only(start: 24.w, end: 24.w, top: 72.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,18 +42,39 @@ class _LoginViewState extends State<ForgetPasswordView> {
               Text(
                 "Please enter your email address!",
                 style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.sp,
-                    color: Colors.black.withOpacity(.40),),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14.sp,
+                  color: Colors.black.withOpacity(.40),
+                ),
               ),
-              SizedBox(height: 44.h,),
-              const AppField(labelText: "Enter your email"),
-              SizedBox(height: 40.h,),
+              SizedBox(
+                height: 44.h,
+              ),
+              Form(
+                key: _formKey,
+                child: AppField(
+                  height: 67,
+                  labelText: "Enter your email",
+                  controller: emailController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "enter your email";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 40.h,
+              ),
               AppFilledButton(
                 text: "Send Code",
                 height: 67,
-                onPressed: (){
-                  navigateTo(const OTPVerificationCodeView());
+                onPressed: () {
+                  if(_formKey.currentState!.validate()){
+                    navigateTo(const OTPVerificationCodeView());
+                  }
                 },
               ),
             ],

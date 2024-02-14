@@ -10,13 +10,17 @@ class AppField extends StatefulWidget {
     this.prefixImgPath = "",
     this.isPrefix = false,
     this.radius = 8,
-    this.keyboardType = TextInputType.text, this.controller, this.height=67,
+    this.keyboardType = TextInputType.text,
+    this.controller,
+    required this.height,
+    this.validator,
   });
 
   final String labelText, prefixImgPath;
   final bool isPassword, isPrefix;
-  final double bottomPadding, radius,height;
+  final double bottomPadding, radius, height;
   final TextInputType keyboardType;
+  final FormFieldValidator<String>? validator;
   final TextEditingController? controller;
 
   @override
@@ -28,18 +32,24 @@ class _AppFieldState extends State<AppField> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: widget.bottomPadding.h),
-      child: SizedBox(
-        height: widget.height.h,
+    return SizedBox(
+      child: Padding(
+        padding: EdgeInsets.only(bottom: widget.bottomPadding.h),
         child: TextFormField(
           controller: widget.controller,
           keyboardType: widget.keyboardType,
-          obscureText: isHidden&&widget.isPassword,
+          obscureText: isHidden && widget.isPassword,
+          validator: widget.validator,
           onTapOutside: (event) {
             FocusManager.instance.primaryFocus!.unfocus();
           },
           decoration: InputDecoration(
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(widget.radius.r),
+              borderSide: BorderSide(
+                  color: const Color(0xff39A7A7).withOpacity(.29),
+                  width: 1.5.w),
+            ),
             filled: true,
             suffixIcon: widget.isPassword
                 ? IconButton(
@@ -48,8 +58,9 @@ class _AppFieldState extends State<AppField> {
                       setState(() {});
                     },
                     icon: Icon(
-                        color: Colors.black.withOpacity(.30),
-                        isHidden ? Icons.visibility_off : Icons.visibility),
+                      color: Colors.black.withOpacity(.30),
+                      isHidden ? Icons.visibility_off : Icons.visibility,
+                    ),
                   )
                 : null,
             prefixIcon: widget.isPrefix
@@ -72,10 +83,12 @@ class _AppFieldState extends State<AppField> {
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(widget.radius.r),
               borderSide: BorderSide(
-                  color: const Color(0xff39A7A7).withOpacity(.29), width: 1.5.w),
+                  color: const Color(0xff39A7A7).withOpacity(.29),
+                  width: 1.5.w),
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.height==54?15.r:widget.radius.r),
+              borderRadius: BorderRadius.circular(
+                  widget.height == 54 ? 15.r : widget.radius.r),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(widget.radius.r),

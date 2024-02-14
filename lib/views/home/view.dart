@@ -16,13 +16,13 @@ class _HomeViewState extends State<HomeView> {
     Icons.email,
     Icons.person,
   ];
-  int _currentIndex = 0;
   final titleList = <String>[
     "Home",
     "Chats",
     "Motivzone",
     "Profile",
   ];
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +36,11 @@ class _HomeViewState extends State<HomeView> {
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                  color: Colors.black.withOpacity(.25),
-                  blurStyle: BlurStyle.inner,
-                  blurRadius: 8,
-                  offset: const Offset(1, 1))
+                color: Colors.black.withOpacity(.25),
+                blurStyle: BlurStyle.inner,
+                blurRadius: 8,
+                offset: const Offset(1, 1),
+              )
             ],
           ),
           child: FloatingActionButton(

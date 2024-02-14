@@ -57,21 +57,24 @@ class _RegisterViewState extends State<RegisterView> {
                       physics: BouncingScrollPhysics(),
                       child: Column(
                         children: [
-                          AppField(labelText: "Username"),
-                          AppField(labelText: "Email"),
+                          AppField(labelText: "Username",height: 67,),
+                          AppField(labelText: "Email",height: 67),
                           AppField(
                               labelText: "Credit number",
                               isPrefix: true,
+                              height: 67,
                               prefixImgPath: "assets/icons/visa_logo.png"),
-                          AppField(labelText: "Age"),
-                          AppField(labelText: "Gender"),
+                          AppField(labelText: "Age",height: 67),
+                          AppField(labelText: "Gender",height: 67),
                           AppField(
                             labelText: "Password",
+                            height: 67,
                             isPassword: true,
                           ),
                           AppField(
                             labelText: "Confirm password",
                             isPassword: true,
+                              height: 67
                           ),
                         ],
                       ),

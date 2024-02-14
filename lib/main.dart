@@ -25,10 +25,11 @@ import 'package:wameed/views/questionnaire/view.dart';
 import 'package:wameed/views/splash/view.dart';
 
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
   await CacheHelper.init();
+  await ScreenUtil.ensureScreenSize();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.white, // status bar color
@@ -44,13 +45,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(428, 926),
-      builder: (context, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        navigatorKey: navigatorKey,
-        theme: AppTheme.appTheme,
-        home: child,
-      ),
-      child:  const SplashView(),
+      builder: (context, child) =>
+          MaterialApp(
+            debugShowCheckedModeBanner: false,
+            navigatorKey: navigatorKey,
+            theme: AppTheme.appTheme,
+            home: child,
+          ),
+      child:  DoctorRegistrationView(),
     );
   }
 }
