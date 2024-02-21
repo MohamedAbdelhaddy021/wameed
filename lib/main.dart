@@ -24,7 +24,6 @@ import 'package:wameed/views/library/podcast/view.dart';
 import 'package:wameed/views/questionnaire/view.dart';
 import 'package:wameed/views/splash/view.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -45,14 +44,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(428, 926),
-      builder: (context, child) =>
-          MaterialApp(
-            debugShowCheckedModeBanner: false,
-            navigatorKey: navigatorKey,
-            theme: AppTheme.appTheme,
-            home: child,
-          ),
-      child:  DoctorRegistrationView(),
+      builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        navigatorKey: navigatorKey,
+        theme: AppTheme.appTheme,
+        home: child,
+      ),
+      child: DoctorRegistrationView(),
     );
   }
 }

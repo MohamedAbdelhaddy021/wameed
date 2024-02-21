@@ -53,6 +53,7 @@ class _HomeViewState extends State<HomeView> {
       ),
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
         height: 99.h,
+        // notchAndCornersAnimation: borderRadiusAnimation,
         tabBuilder: (index, isActive) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -76,7 +77,7 @@ class _HomeViewState extends State<HomeView> {
           );
         },
         activeIndex: _currentIndex,
-        shadow: BoxShadow(blurRadius: 8.r, color: Colors.grey.withOpacity(.35)),
+        shadow: BoxShadow(blurRadius: 8.r, color: Colors.grey.withOpacity(.35),),
         gapLocation: GapLocation.center,
         notchSmoothness: NotchSmoothness.smoothEdge,
         leftCornerRadius: 20.r,
