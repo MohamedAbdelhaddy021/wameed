@@ -1,28 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/core/logic/cache_helper.dart';
-import 'package:wameed/core/logic/helper_methods.dart';
-import 'package:wameed/core/theming/app_theme.dart';
-import 'package:wameed/views/auth/forget_password/view.dart';
-import 'package:wameed/views/auth/login/view.dart';
-import 'package:wameed/views/auth/register/view.dart';
-import 'package:wameed/views/auth/reset_password/view.dart';
-import 'package:wameed/views/chat_call/view.dart';
 import 'package:wameed/views/continue/view.dart';
-import 'package:wameed/views/doctor_app/doctor_profile/view.dart';
 import 'package:wameed/views/doctor_app/doctor_registration/view.dart';
-import 'package:wameed/views/doctor_app/doctor_settings/view.dart';
-import 'package:wameed/views/doctor_app/times_of_work/view.dart';
-import 'package:wameed/views/home/view.dart';
-import 'package:wameed/views/info_about_doctor/view.dart';
-import 'package:wameed/views/interface/view.dart';
-import 'package:wameed/views/language_setting/view.dart';
-import 'package:wameed/views/library/book/view.dart';
-import 'package:wameed/views/library/home/view.dart';
-import 'package:wameed/views/library/podcast/view.dart';
-import 'package:wameed/views/questionnaire/view.dart';
+import 'package:wameed/views/patient_app/auth/login/view.dart';
+import 'package:wameed/views/patient_app/library/book/view.dart';
+import 'package:wameed/views/patient_app/library/home/view.dart';
 import 'package:wameed/views/splash/view.dart';
+
+import 'core/logic/cache_helper.dart';
+import 'core/logic/helper_methods.dart';
+import 'core/theming/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,7 +38,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.appTheme,
         home: child,
       ),
-      child: DoctorRegistrationView(),
+      child:  const LoginView(),
     );
   }
 }

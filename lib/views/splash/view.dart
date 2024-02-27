@@ -1,3 +1,4 @@
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -5,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/text_logo.dart';
 import 'package:wameed/core/logic/cache_helper.dart';
-import 'package:wameed/views/auth/login/view.dart';
 import 'package:wameed/views/continue/view.dart';
 import 'package:wameed/views/interface/view.dart';
 

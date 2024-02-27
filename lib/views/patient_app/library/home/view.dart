@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/core/logic/helper_methods.dart';
 import 'package:wameed/core/theming/styles.dart';
+import 'package:wameed/views/patient_app/library/book/view.dart';
+import 'package:wameed/views/patient_app/library/podcast/view.dart';
 
-import '../../../core/design/custom_app_bar_with_text_logo.dart';
+import '../../../../core/design/custom_app_bar_with_text_logo.dart';
 
 class LibraryView extends StatelessWidget {
   const LibraryView({super.key});
@@ -44,7 +47,9 @@ class LibraryView extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => _Item(),
+              itemBuilder: (context, index) => GestureDetector(onTap: (){
+                navigateTo(const BookView());
+              },child: _Item()),
               separatorBuilder: (context, index) => SizedBox(
                 width: 32.w,
               ),
@@ -70,7 +75,9 @@ class LibraryView extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => _PodCastItem(),
+              itemBuilder: (context, index) => GestureDetector(onTap:(){
+                navigateTo(const PodCastView());
+              },child: _PodCastItem()),
               separatorBuilder: (context, index) => SizedBox(
                 width: 32.w,
               ),

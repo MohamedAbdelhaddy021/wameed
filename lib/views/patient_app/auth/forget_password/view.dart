@@ -1,9 +1,11 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/core/logic/helper_methods.dart';
-import '../../../core/design/app_field.dart';
-import '../../../core/design/app_filled_button.dart';
+
+import '../../../../core/design/app_field.dart';
+import '../../../../core/design/app_filled_button.dart';
+import '../../../../core/logic/helper_methods.dart';
 import '../verification_otp_code/view.dart';
 
 class ForgetPasswordView extends StatefulWidget {

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/custom_app_bar.dart';
 import 'package:wameed/core/logic/helper_methods.dart';
 import 'package:wameed/core/theming/styles.dart';
-import 'package:wameed/views/auth/login/view.dart';
 
+import '../../patient_app/auth/login/view.dart';
 import '../doctor_chats/view.dart';
 import '../doctor_schedule/view.dart';
 import '../doctor_settings/view.dart';

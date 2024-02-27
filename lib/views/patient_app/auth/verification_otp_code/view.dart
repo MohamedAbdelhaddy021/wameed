@@ -1,10 +1,11 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:wameed/core/logic/helper_methods.dart';
-import 'package:wameed/core/theming/styles.dart';
-import '../../../core/design/app_filled_button.dart';
+
+import '../../../../core/design/app_filled_button.dart';
+import '../../../../core/theming/styles.dart';
 
 class OTPVerificationCodeView extends StatefulWidget {
   const OTPVerificationCodeView({super.key});

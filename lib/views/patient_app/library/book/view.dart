@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/custom_app_bar_with_text_logo.dart';
 
-import '../../../core/theming/styles.dart';
+import '../../../../core/theming/styles.dart';
+
 
 class BookView extends StatelessWidget {
   const BookView({super.key});
@@ -23,7 +24,7 @@ class BookView extends StatelessWidget {
                 margin: EdgeInsetsDirectional.only(start: 3.w),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.r),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       image: AssetImage("assets/images/book_cover_test.png"),
                       fit: BoxFit.fill),
                 ),

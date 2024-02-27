@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static var appTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
-    appBarTheme: const AppBarTheme(
+    appBarTheme:  const AppBarTheme(
       color: Colors.white,
       centerTitle: true,
       elevation: 0,
       titleSpacing: 0,
+      surfaceTintColor: Colors.transparent
     ),
     useMaterial3: true,
     fontFamily: "inter",

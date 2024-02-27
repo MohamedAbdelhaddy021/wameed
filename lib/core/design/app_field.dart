@@ -58,12 +58,12 @@ class _AppFieldState extends State<AppField> {
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.radius.r),
             borderSide: BorderSide(
-                color: const Color(0xff39A7A7).withOpacity(.29), width: 1.5.w),
+                color: const Color(0xff39A7A7).withOpacity(.29), width: 1.w),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.radius.r),
             borderSide: BorderSide(
-                color: const Color(0xff39A7A7).withOpacity(.29), width: 1.5.w),
+                color: const Color(0xff39A7A7).withOpacity(.29), width: 1.w),
           ),
           // errorStyle: TextStyle(color: Colors.redAccent,fontSize: 12.sp,fontWeight: FontWeight.w500,fontFamily: 'poppins'),
           filled: true,
@@ -100,7 +100,7 @@ class _AppFieldState extends State<AppField> {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.radius.r),
             borderSide: BorderSide(
-                color: const Color(0xff39A7A7).withOpacity(.29), width: 1.5.w),
+                color: const Color(0xff39A7A7).withOpacity(.29), width: 1.w),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
@@ -110,7 +110,7 @@ class _AppFieldState extends State<AppField> {
             borderRadius: BorderRadius.circular(widget.radius.r),
             borderSide: BorderSide(
                 color: Theme.of(context).primaryColor.withOpacity(.29),
-                width: 1.5.w),
+                width: 1.w),
           ),
         ),
       ),

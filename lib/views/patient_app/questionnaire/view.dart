@@ -7,7 +7,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wameed/core/design/app_filled_button.dart';
 import 'package:wameed/core/logic/helper_methods.dart';
 import 'package:wameed/core/theming/styles.dart';
-import 'package:wameed/views/questionnaire_result/view.dart';
+
+import '../questionnaire_result/view.dart';
 
 class QuestionnaireView extends StatefulWidget {
   const QuestionnaireView({super.key});
