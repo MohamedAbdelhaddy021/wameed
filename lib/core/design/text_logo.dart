@@ -1,36 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../theming/app_theme.dart';
+
 class TextLogo extends StatelessWidget {
-  const TextLogo({super.key});
+  final bool withDesc;
+
+  const TextLogo({super.key, this.withDesc = true});
 
   @override
   Widget build(BuildContext context) {
-    return Text.rich(
-      style: TextStyle(
-          fontSize: 48.sp, fontWeight: FontWeight.w600, fontFamily: "poppins"),
-      TextSpan(
-        text: "Wa",
-        children: [
-          TextSpan(
-            text: "M",
-            style: TextStyle(
-                fontFamily: "courgette",
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.w500,
-                fontSize: 48.sp),
-          ),
-          const TextSpan(text: "ee"),
-          TextSpan(
-            text: "d",
-            style: TextStyle(
-              fontFamily: "courgette",
-              fontWeight: FontWeight.w500,
+    return Column(
+      children: [
+        Text.rich(
+          style: TextStyle(
               fontSize: 48.sp,
-            ),
+              fontWeight: FontWeight.w600,
+              fontFamily: "poppins"),
+          TextSpan(
+            text: "Wa",
+            children: [
+              TextSpan(
+                  text: "M",
+                  style: TextStyle(
+                      fontFamily: "courgette",
+                      color: AppTheme.primaryColor,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 48.sp)),
+              const TextSpan(text: "ee"),
+              TextSpan(
+                  text: "d",
+                  style: TextStyle(
+                      fontFamily: "courgette",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 48.sp)),
+            ],
           ),
-        ],
-      ),
+        ),
+        if (withDesc)
+          Text("mental health care",
+              style: TextStyle(
+                  fontSize: 28.sp,
+                  color: AppTheme.primaryColor.withOpacity(.57),
+                  fontFamily: "satisfy")),
+      ],
     );
   }
 }

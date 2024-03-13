@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppFilledButton extends StatelessWidget {
-  const AppFilledButton({
-    super.key,
-    required this.text,
-    this.fontFamily = "inter",
-    this.radius = 10,
-    this.height = 54,
-    required this.onPressed, this.paddingBottom=0,
-  });
+import '../theming/app_theme.dart';
+
+class AppButton extends StatelessWidget {
+  const AppButton(
+      {super.key,
+      required this.text,
+      this.fontFamily = "inter",
+      required this.onPressed,
+      this.paddingBottom = 0});
 
   final String text, fontFamily;
-  final double radius, height,paddingBottom;
-  final VoidCallback onPressed;
+  final double paddingBottom;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +22,13 @@ class AppFilledButton extends StatelessWidget {
       child: FilledButton(
         onPressed: onPressed,
         style: FilledButton.styleFrom(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(radius.r)),
-          minimumSize: Size(380.w, height.h),
-          maximumSize: Size(380.w, height.h),
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-              fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
-              fontFamily: fontFamily),
-        ),
+            disabledBackgroundColor: AppTheme.primaryColor.withOpacity(.46),
+            disabledForegroundColor: Colors.white),
+        child: Text(text,
+            style: TextStyle(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold,
+                fontFamily: fontFamily)),
       ),
     );
   }

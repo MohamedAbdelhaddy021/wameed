@@ -45,5 +45,14 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>Privacy - Camera Usage Description</key>
+    <string>wammed requires access to your phone’s camera.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>This app requires access to the photo library.</string>
+
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>This app requires read and write access to the photo library.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>The application does not use this feature</string>
 </dict>
 </plist>

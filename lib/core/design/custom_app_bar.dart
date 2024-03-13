@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../theming/styles.dart';
-import 'arrow_back_button.dart';
+import 'app_back.dart';
+import 'app_image.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.appBarTitle});
+  final bool withActions;
+  final String title;
 
-  final String appBarTitle;
+  const CustomAppBar({super.key,  this.title="", this.withActions = false});
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: const ArrowBackButton(),
-      elevation: 0.0,
-      title: Text(
-        appBarTitle,
-        style: TextStyles.poppins24BlackSemiBold,
-      ),
+      leading: const AppBack(),
+      title: Text(title),
       actions: [
+        if(withActions)
         Padding(
             padding: EdgeInsetsDirectional.only(end: 24.w),
             child: Container(
@@ -37,8 +37,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         color: Colors.black.withOpacity(.15)),
                   ]),
               child: Center(
-                child: Image.asset(
-                  "assets/images/help_and_support_screen_logo.png",
+                child: AppImage(
+                  "help_and_support_screen_logo.png",
                   width: 16.w,
                   height: 16.w,
                 ),
@@ -49,6 +49,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize =>  Size.fromHeight(60.h);
-
+  Size get preferredSize => Size.fromHeight(60.h);
 }

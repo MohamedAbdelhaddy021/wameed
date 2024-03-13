@@ -11,11 +11,11 @@ class CacheHelper {
     await _prefs.setBool("isFirstTime", false);
   }
 
-  static bool isFirstTime() {
+  static bool get isFirstTime {
     return _prefs.getBool("isFirstTime") ?? true;
   }
 
-  static bool isAuth() {
+  static bool get isAuth {
     return _prefs.getBool("isAuth") ?? false;
   }
 

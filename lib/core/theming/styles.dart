@@ -30,13 +30,13 @@ class TextStyles{
   );
   static TextStyle inter24WhiteBold =TextStyle(
     fontSize: 24.sp,
-    fontFamily: "inter",
+
     fontWeight: FontWeightHelper.bold,
     color: Colors.white,
   );
   static TextStyle inter16Medium =TextStyle(
     fontSize: 16.sp,
-    fontFamily: "inter",
+
     fontWeight: FontWeightHelper.medium,
   );
   static TextStyle poppins14Black55Medium =TextStyle(
