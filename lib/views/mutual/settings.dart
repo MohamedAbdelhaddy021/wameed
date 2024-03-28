@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_back.dart';
 import 'package:wameed/core/logic/helper_methods.dart';
 import 'package:wameed/core/theming/styles.dart';
-import 'package:wameed/views/patient/help_and_support.dart';
+import 'package:wameed/views/mutual/help_and_support.dart';
 
 import '../../core/design/app_image.dart';
 import 'language.dart';

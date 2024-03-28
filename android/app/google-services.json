@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "300870793977",
+    "project_id": "wameed-60373",
+    "storage_bucket": "wameed-60373.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300870793977:android:121da0a2f0482cc7db4028",
+        "android_client_info": {
+          "package_name": "com.example.wameed"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7VJ3n0Xy29-sNtOCW25Qa5owfdt7Ar7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

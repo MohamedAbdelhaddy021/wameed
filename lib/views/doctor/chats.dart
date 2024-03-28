@@ -21,10 +21,9 @@ class DoctorChatsView extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsetsDirectional.only(start: 24.w),
-            child: Text(
-              "Messages",
-              style: TextStyles.inter20BlackSemiBold.copyWith(fontSize: 18.sp),
-            ),
+            child: Text("Messages",
+                style:
+                    TextStyles.inter20BlackSemiBold.copyWith(fontSize: 18.sp)),
           ),
           Expanded(
             child: ListView.separated(

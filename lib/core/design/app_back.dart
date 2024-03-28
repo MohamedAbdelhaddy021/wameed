@@ -9,15 +9,10 @@ class AppBack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(
-        CupertinoIcons.back,
-        size: 28.w,
-        color: Colors.black.withOpacity(.9),
-        grade: 10,
-      ),
-      onPressed: () {
-        Navigator.pop(context);
-      },
-    );
+        icon: Icon(CupertinoIcons.back,
+            size: 28.w, color: Colors.black.withOpacity(.9), grade: 10),
+        onPressed: () {
+          Navigator.pop(context);
+        });
   }
 }

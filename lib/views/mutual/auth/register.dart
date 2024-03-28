@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -94,41 +95,28 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 8.h,
-              ),
+              SizedBox(height: 8.h),
               AppInput(
-                labelText: "Username",
-                validator: InputValidator.userName,
-              ),
-              AppInput(
-                labelText: "Email",
-                validator: InputValidator.email,
-              ),
+                  labelText: "Username", validator: InputValidator.userName),
+              AppInput(labelText: "Email", validator: InputValidator.email),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                       child: AppDropDown(
                           list: ["Male", "Female"], hint: "Gender")),
-                  SizedBox(width: 16.h),
+                  SizedBox(width: 16.w),
                   if (!widget.isDoctor)
                     Expanded(child: AppInput(labelText: "Age")),
                   if (widget.isDoctor)
-                    Expanded(
-                      child: AppDropDown(
-                        list: qualifications,
-                        hint: "Qualifications",
-                      ),
-                    ),
+                    // SizedBox(width: 16),
+                    Expanded(child: AppDropDown(list: qualifications, hint: "Qualifications")),
                 ],
               ),
               AppInput(
-                labelText: "Password",
-                isPassword: true,
-                controller: passController,
-                validator: InputValidator.password,
-              ),
+                  labelText: "Password",
+                  isPassword: true,
+                  controller: passController,
+                  validator: InputValidator.password),
               AppInput(
                 labelText: "Confirm password",
                 isPassword: true,

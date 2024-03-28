@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../core/design/app_filled_button.dart';
 import '../../core/design/app_image.dart';
-import '../../core/theming/app_theme.dart';
 
 class BeforeScanView extends StatefulWidget {
   const BeforeScanView({super.key});
@@ -58,12 +60,24 @@ class _ScanViewState extends State<BeforeScanView> {
             left: 45.w,
             right: 45.w),
         child: FilledButton(
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                builder: (context) => Container(
+                  padding: EdgeInsetsDirectional.symmetric(vertical: 100.h,horizontal: 32.w),
+                  child: Row(
+                        children: [
+                          Expanded(child: AppButton(text: "Gallery", onPressed: (){})),
+                          SizedBox(width: 24.h),
+                          Expanded(child: AppButton(text: "Camera", onPressed: (){})),
+                        ],
+                      ),
+                ));
+          },
           style: FilledButton.styleFrom(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.r)),
-              fixedSize: Size(double.infinity, 70.h),
-              backgroundColor: AppTheme.primaryColor),
+              fixedSize: Size(double.infinity, 70.h)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
