@@ -19,23 +19,25 @@ class QuestionnaireView extends StatefulWidget {
 }
 
 class _QuestionnaireViewState extends State<QuestionnaireView> {
-
   int currentIndex = 0;
   late List<String> questions;
   double _progress = 0;
-@override
+
+  @override
   void initState() {
-  questions =
-  List.generate(5, (index) => "Have you experienced changes in your abilityto form and maintain friendship ?");
+    questions = List.generate(
+        5,
+        (index) =>
+            "Have you experienced changes in your abilityto form and maintain friendship ?");
     super.initState();
-  _progress = 1 / questions.length;
+    _progress = 1 / questions.length;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:AppBack(),
+        leading: AppBack(),
         titleSpacing: 0,
         title: Text.rich(
           style: TextStyle(
@@ -68,7 +70,11 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
             Padding(
               padding: EdgeInsetsDirectional.only(end: 73.w),
               child: Text(
-                _progress == 1 / questions.length ? "Let’s Start..." :currentIndex==questions.length-1? "Let’s end":"Continue",
+                _progress == 1 / questions.length
+                    ? "Let’s Start..."
+                    : currentIndex == questions.length - 1
+                        ? "Let’s end"
+                        : "Continue",
                 style: TextStyles.poppins18Black69SemiBold.copyWith(
                   color: Colors.black,
                 ),
@@ -79,8 +85,8 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
               child: LinearProgressIndicator(
                 value: _progress,
                 backgroundColor: Colors.grey[300],
-                valueColor: AlwaysStoppedAnimation<Color>(
-                    AppTheme.primaryColor),
+                valueColor:
+                    AlwaysStoppedAnimation<Color>(AppTheme.primaryColor),
               ),
             ),
             Text(
@@ -105,15 +111,17 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
             SizedBox(
               height: 24.h,
             ),
-            _Item(text: "No", onPressed: () {
-              setState(() {
-                if (_progress < 1.0) {
-                  _progress += 1.0 / questions.length;
-                  print(_progress);
-                  currentIndex += 1;
-                }
-              });
-            }),
+            _Item(
+                text: "No",
+                onPressed: () {
+                  setState(() {
+                    if (_progress < 1.0) {
+                      _progress += 1.0 / questions.length;
+                      print(_progress);
+                      currentIndex += 1;
+                    }
+                  });
+                }),
             SizedBox(
               height: MediaQuery.of(context).size.height / 4,
             ),
@@ -165,9 +173,7 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              SizedBox(
-                                height: 24.h,
-                              ),
+                              SizedBox(height: 24.h),
                               Text(
                                 "Waiting the Result.......",
                                 style: TextStyle(
@@ -177,9 +183,7 @@ class _QuestionnaireViewState extends State<QuestionnaireView> {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              SizedBox(
-                                height: 40.h,
-                              ),
+                              SizedBox(height: 40.h),
                               InkWell(
                                 onTap: () {
                                   navigateTo(const QuestionnaireResultView());
@@ -296,5 +300,7 @@ class _Item extends StatelessWidget {
 }
 
 enum Gender {
-  firstQuestion,continueQuestions,lastQuestion,
+  firstQuestion,
+  continueQuestions,
+  lastQuestion,
 }

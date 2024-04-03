@@ -12,7 +12,20 @@
           "package_name": "com.example.wameed"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "300870793977-ktbru6kr24i3vdrcaqi9tqnlavmbuiqb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wameed",
+            "certificate_hash": "ef6b6984285c804ce9c590ca23e52d1139489fec"
+          }
+        },
+        {
+          "client_id": "300870793977-ci2vs744ao67l64fa0lj87bqn0dokf48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA7VJ3n0Xy29-sNtOCW25Qa5owfdt7Ar7M"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300870793977-ci2vs744ao67l64fa0lj87bqn0dokf48.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "300870793977-00ocfack4t9jqbrokrdrd9q9erb7rog4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wameed"
+              }
+            }
+          ]
         }
       }
     }

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/design/app_dialog.dart';
@@ -29,6 +27,7 @@ class _LoginViewState extends State<ChangePasswordView> {
         padding: EdgeInsetsDirectional.only(start: 24.w, end: 24.w, top: 72.h),
         child: Form(
           key: formKey,
+          autovalidateMode: AutovalidateMode.always,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,23 +37,18 @@ class _LoginViewState extends State<ChangePasswordView> {
                   style:
                       TextStyle(fontWeight: FontWeight.w600, fontSize: 24.sp),
                 ),
-                SizedBox(
-                  height: 16.h,
-                ),
+                SizedBox(height: 16.h),
                 Text(
                   "create your new password to log in!",
                   style: TextStyles.poppins14Black55Medium.copyWith(
                       color: Colors.black.withOpacity(.44),
                       fontFamily: "inter"),
                 ),
-                SizedBox(
-                  height: 44.h,
-                ),
+                SizedBox(height: 44.h),
                 AppInput(
                   labelText: "Password",
                   isPassword: true,
                   bottomPadding: 24,
-
                   controller: passwordController,
                   validator: (pass) {
                     if (pass!.isEmpty) {
@@ -67,14 +61,13 @@ class _LoginViewState extends State<ChangePasswordView> {
                   },
                 ),
                 AppInput(
-
                     labelText: "Confirm password",
                     isPassword: true,
                     bottomPadding: 48,
                     validator: (pass) {
                       if (pass!.isEmpty) {
                         return "enter the password again";
-                      } else if ( passwordController.text!=pass) {
+                      } else if (passwordController.text != pass) {
                         return "password is not identical ";
                       } else {
                         return null;
@@ -92,7 +85,7 @@ class _LoginViewState extends State<ChangePasswordView> {
                             buttonText: "Back to Log in",
                             text: "your reset",
                             onTap: () {
-                              navigateTo(LoginView(),removeHistory: true);
+                              navigateTo(LoginView(), removeHistory: true);
                             },
                           );
                         },

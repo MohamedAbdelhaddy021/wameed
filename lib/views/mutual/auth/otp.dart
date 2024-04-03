@@ -27,7 +27,6 @@ class _LoginViewState extends State<OTPView> {
 
   final pinFieldsController = TextEditingController();
   StreamController<ErrorAnimationType>? errorController;
-  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   String currentText = "";
   final formKey = GlobalKey<FormState>();
 
@@ -56,7 +55,7 @@ class _LoginViewState extends State<OTPView> {
               SizedBox(height: 44.h),
               Form(
                   key: formKey,
-                  autovalidateMode: autoValidateMode,
+                  autovalidateMode: AutovalidateMode.always,
                   child: PinCodeTextField(
                     controller: pinFieldsController,
                     appContext: context,
@@ -126,8 +125,6 @@ class _LoginViewState extends State<OTPView> {
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     navigateTo(ChangePasswordView());
-                  } else {
-                    autoValidateMode = AutovalidateMode.always;
                   }
                 },
               ),

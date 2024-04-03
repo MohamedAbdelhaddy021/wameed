@@ -22,4 +22,11 @@ class CacheHelper {
   static Future<void> setIsAuth() async {
     await _prefs.setBool("isAuth", true);
   }
+
+  static Future<void> saveProfileImg(String? imgPath) async {
+    await _prefs.setString("imgPath", imgPath ?? "");
+  }
+  static String? get profileImage {
+    return _prefs.getString("imgPath");
+  }
 }

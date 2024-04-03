@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../core/design/app_dialog.dart';
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/app_image.dart';
 import '../../core/design/custom_app_bar.dart';
@@ -76,18 +77,17 @@ class _VodafoneView2State extends State<VodafoneUploadView> {
                             }
                           },
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              AppImage("image_before_upload.png",
-                                  height: 30.h, width: 46.w),
-                              SizedBox(height: 5.h),
-                              Text("Upload the receipt..",
-                                  style: TextStyles.poppins16BlackSemiBold
-                                      .copyWith(color: Colors.black)),
-                              Text("be careful it’s clear",
-                                  style: TextStyles.poppins14Black55Medium)
-                            ],
-                          ),
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                AppImage("image_before_upload.png",
+                                    height: 30.h, width: 46.w),
+                                SizedBox(height: 5.h),
+                                Text("Upload the receipt..",
+                                    style: TextStyles.poppins16BlackSemiBold
+                                        .copyWith(color: Colors.black)),
+                                Text("be careful it’s clear",
+                                    style: TextStyles.poppins14Black55Medium)
+                              ]),
                         ),
                 )),
             SizedBox(height: 78.h),
@@ -117,7 +117,17 @@ class _VodafoneView2State extends State<VodafoneUploadView> {
             SizedBox(height: MediaQuery.of(context).size.height / 3),
             AppButton(
                 text: "Send Receipt",
-                onPressed: isImageUploaded ? () {} : null),
+                onPressed: isImageUploaded
+                    ? () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AppDialog(
+                              text: "Your receipt send",
+                              buttonText: "Back to confirm",
+                              onTap: () {}),
+                        );
+                      }
+                    : null),
           ],
         ),
       ),

@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/app_image.dart';
@@ -14,6 +13,8 @@ class BeforeScanView extends StatefulWidget {
 }
 
 class _ScanViewState extends State<BeforeScanView> {
+
+  String? imgToScan;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,9 +68,21 @@ class _ScanViewState extends State<BeforeScanView> {
                   padding: EdgeInsetsDirectional.symmetric(vertical: 100.h,horizontal: 32.w),
                   child: Row(
                         children: [
-                          Expanded(child: AppButton(text: "Gallery", onPressed: (){})),
+                          Expanded(child: AppButton(text: "Gallery", onPressed: ()async{
+                            var file = await ImagePicker.platform.getImageFromSource(source: ImageSource.gallery);
+                            if (file != null){
+                              imgToScan = file.path;
+                              setState(() {});
+                            }
+                          })),
                           SizedBox(width: 24.h),
-                          Expanded(child: AppButton(text: "Camera", onPressed: (){})),
+                          Expanded(child: AppButton(text: "Camera", onPressed: () async{
+                            var file = await ImagePicker.platform.getImageFromSource(source: ImageSource.camera);
+                            if (file != null){
+                              imgToScan = file.path;
+                              setState(() {});
+                            }
+                          })),
                         ],
                       ),
                 ));

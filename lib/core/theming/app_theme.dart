@@ -29,7 +29,7 @@ class AppTheme {
           fillColor: const Color(0xffACACAC).withOpacity(.10),
           filled: true,
           contentPadding: EdgeInsetsDirectional.symmetric(
-              vertical: 20.h, horizontal: 16.w)),
+              vertical: 18.h, horizontal: 16.w)),
       appBarTheme: AppBarTheme(
           color: Colors.white,
           centerTitle: true,

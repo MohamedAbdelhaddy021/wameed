@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/core/design/custom_app_bar.dart';
-import 'package:wameed/core/logic/helper_methods.dart';
-import 'package:wameed/core/theming/styles.dart';
+
 import '../../core/design/app_image.dart';
+import '../../core/design/custom_app_bar.dart';
+import '../../core/logic/helper_methods.dart';
 import '../../core/theming/app_theme.dart';
+import '../../core/theming/styles.dart';
 import '../mutual/patient_info.dart';
 
 class DoctorScheduleView extends StatefulWidget {
@@ -19,57 +20,54 @@ class _DoctorScheduleViewState extends State<DoctorScheduleView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: "My schedule"),
-      body: Padding(
-          padding: EdgeInsetsDirectional.only(top: 36.h),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Padding(
-              padding: EdgeInsetsDirectional.only(start: 24.w),
-              child: Text(
-                "New consultation",
-                style: TextStyles.inter20BlackSemiBold
-                    .copyWith(color: Colors.black.withOpacity(.58)),
+      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Padding(
+          padding: EdgeInsetsDirectional.only(start: 24.w),
+          child: Text(
+            "New consultation",
+            style: TextStyles.inter20BlackSemiBold
+                .copyWith(color: Colors.black.withOpacity(.58)),
+          ),
+        ),
+        SizedBox(height: 24.h),
+        Expanded(
+          child: ListView.separated(
+              padding: EdgeInsets.only(
+                left: 24.w,
+                right: 24.w,
+                bottom: 24.h,
               ),
-            ),
-            SizedBox(height: 24.h),
-            Expanded(
-              child: ListView.separated(
-                  padding: EdgeInsets.only(
-                      left: 24.w, right: 24.w, bottom: 24.h, top: 24.h),
-                  itemBuilder: (context, index) => GestureDetector(
-                      onTap: () {
-                        navigateTo(const PatientInfoView());
-                      },
-                      child: _Item(patientName: "Mohamed Abdelhady")),
-                  separatorBuilder: (context, index) => SizedBox(
-                        height: 24.h,
-                      ),
-                  itemCount: 5),
-            ),
-            SizedBox(height: 16.h),
-            Padding(
-              padding: EdgeInsetsDirectional.only(start: 24.w),
-              child: Text(
-                "Old consultation",
-                style: TextStyles.inter20BlackSemiBold
-                    .copyWith(color: Colors.black.withOpacity(.58)),
-              ),
-            ),
-            SizedBox(height: 24.h),
-            Expanded(
-              child: ListView.separated(
-                  padding:
-                      EdgeInsets.only(left: 24.w, right: 24.w, bottom: 24.h),
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => GestureDetector(
-                      onTap: () {
-                        navigateTo(const PatientInfoView());
-                      },
-                      child: _Item(patientName: "Mohamed Abdelhady")),
-                  separatorBuilder: (context, index) => SizedBox(height: 24.h),
-                  itemCount: 5),
-            ),
-          ])),
+              itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    navigateTo(const PatientInfoView());
+                  },
+                  child: _Item(patientName: "Mohamed Abdelhady")),
+              separatorBuilder: (context, index) => SizedBox(height: 24.h),
+              itemCount: 5),
+        ),
+        SizedBox(height: 16.h),
+        Padding(
+          padding: EdgeInsetsDirectional.only(start: 24.w),
+          child: Text(
+            "Old consultation",
+            style: TextStyles.inter20BlackSemiBold
+                .copyWith(color: Colors.black.withOpacity(.58)),
+          ),
+        ),
+        SizedBox(height: 24.h),
+        Expanded(
+          child: ListView.separated(
+              padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 24.h),
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    navigateTo(const PatientInfoView());
+                  },
+                  child: _Item(patientName: "Mohamed Abdelhady")),
+              separatorBuilder: (context, index) => SizedBox(height: 24.h),
+              itemCount: 5),
+        ),
+      ]),
     );
   }
 }
@@ -100,22 +98,14 @@ class _Item extends StatelessWidget {
           Container(
             width: 64.w,
             height: 64.w,
-            margin: EdgeInsetsDirectional.only(
-              start: 24.w,
-            ),
+            margin: EdgeInsetsDirectional.only(start: 24.w),
             decoration: BoxDecoration(
                 color: AppTheme.primaryColor.withOpacity(.22),
                 shape: BoxShape.circle),
             child: Center(
-                child: AppImage(
-              "profile.png",
-              width: 29.w,
-              height: 29.w,
-            )),
+                child: AppImage("profile.png", width: 29.w, height: 29.w)),
           ),
-          SizedBox(
-            width: 16.w,
-          ),
+          SizedBox(width: 16.w),
           Expanded(
               child: Padding(
             padding: EdgeInsetsDirectional.symmetric(vertical: 24.h),
@@ -123,15 +113,13 @@ class _Item extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  patientName,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                Text(patientName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                    )),
                 Text(
                   "Anexity patient",
                   maxLines: 1,

@@ -28,47 +28,35 @@ class SelectUserTypeView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.r),
                     boxShadow: [
                       BoxShadow(
-                        offset: const Offset(1, -3),
-                        blurRadius: 4,
-                        color: Colors.black.withOpacity(.25),
-                      ),
+                          offset: const Offset(1, -3),
+                          blurRadius: 4,
+                          color: Colors.black.withOpacity(.25)),
                       BoxShadow(
-                        offset: const Offset(0, 4),
-                        blurRadius: 4,
-                        color: Colors.black.withOpacity(.25),
-                      )
+                          offset: const Offset(0, 4),
+                          blurRadius: 4,
+                          color: Colors.black.withOpacity(.25))
                     ]),
-                child: Column(
-                  children: [
-                    Text(
-                      "Continue As...",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 32.sp,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 32.h,
-                    ),
-                    _Item(
+                child: Column(children: [
+                  Text(
+                    "Continue As...",
+                    style:
+                        TextStyle(fontWeight: FontWeight.w600, fontSize: 32.sp),
+                  ),
+                  SizedBox(height: 32.h),
+                  _Item(
                       text: "Patient",
                       img: "profile.png",
                       onTap: () {
                         navigateTo(RegisterView(isDoctor: false));
-                      },
-                    ),
-                    SizedBox(
-                      height: 32.h,
-                    ),
-                    _Item(
+                      }),
+                  SizedBox(height: 32.h),
+                  _Item(
                       text: "Doctor",
                       img: "doctor.png",
                       onTap: () {
                         navigateTo(RegisterView(isDoctor: true));
-                      },
-                    ),
-                  ],
-                ),
+                      }),
+                ]),
               )
             ],
           ),
@@ -79,8 +67,7 @@ class SelectUserTypeView extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  const _Item(
-      {super.key, required this.text, required this.img, required this.onTap});
+  const _Item({required this.text, required this.img, required this.onTap});
 
   final String text, img;
   final VoidCallback onTap;
@@ -96,16 +83,11 @@ class _Item extends StatelessWidget {
           color: AppTheme.primaryColor,
           borderRadius: BorderRadius.circular(10.r),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AppImage(img, width: 85.w, height: 85.w, color: Colors.white),
-            SizedBox(
-              height: 15.h,
-            ),
-            Text(text, style: TextStyles.inter24WhiteBold),
-          ],
-        ),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          AppImage(img, width: 85.w, height: 85.w, color: Colors.white),
+          SizedBox(height: 15.h),
+          Text(text, style: TextStyles.inter24WhiteBold),
+        ]),
       ),
     );
   }

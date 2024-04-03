@@ -23,8 +23,11 @@ class AppDialog extends StatelessWidget {
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
       child: Dialog(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         child: Container(
           width: double.infinity,
+          margin: EdgeInsets.symmetric(horizontal: 24.w),
           padding: EdgeInsetsDirectional.only(top: 60.w, bottom: 60.h),
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(15.r)),
@@ -36,7 +39,7 @@ class AppDialog extends StatelessWidget {
               Text(text,
                   style: TextStyle(
                       fontFamily: "poppins",
-                      fontSize: 20.sp,
+                      fontSize: 18.sp,
                       color: Colors.black.withOpacity(.48),
                       fontWeight: FontWeight.w500)),
               Text(subText,

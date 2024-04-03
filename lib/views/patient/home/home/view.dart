@@ -5,7 +5,7 @@ import '../../../../core/design/doctor_item.dart';
 import '../../../../core/logic/helper_methods.dart';
 import '../../../../core/theming/app_theme.dart';
 import '../../all_doctors.dart';
-import '../../library/home/view.dart';
+import '../../library.dart';
 import '../../questionnaire.dart';
 
 class HomePage extends StatelessWidget {
@@ -53,9 +53,8 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Row(
-              children: [
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Row(children: [
                 Expanded(
                     child: _Item(
                         title: "Community", icon: Icons.groups, onTap: () {})),
@@ -68,16 +67,13 @@ class HomePage extends StatelessWidget {
                         })),
                 Expanded(
                   child: _Item(
-                    title: "Library",
-                    icon: Icons.library_books,
-                    onTap: () {
-                      navigateTo(LibraryView());
-                    },
-                  ),
+                      title: "Library",
+                      icon: Icons.library_books,
+                      onTap: () {
+                        navigateTo(LibraryView());
+                      }),
                 ),
-              ],
-            ),
-          ),
+              ])),
           Padding(
             padding:
                 EdgeInsetsDirectional.only(start: 24.w, end: 24.w, top: 24.h),
@@ -127,9 +123,8 @@ class _Item extends StatelessWidget {
       child: Container(
         margin: EdgeInsetsDirectional.only(end: 16.w),
         decoration: BoxDecoration(
-          color: const Color(0xffF2F2F2),
-          borderRadius: BorderRadius.circular(20.r),
-        ),
+            color: const Color(0xffF2F2F2),
+            borderRadius: BorderRadius.circular(20.r)),
         height: 116.h,
         width: 116.h,
         child: Column(

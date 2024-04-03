@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/design/register_button.dart';
+import '../../../../core/logic/firebase_auth_services.dart';
 import '../../../../core/logic/helper_methods.dart';
 import '../select_user_type.dart';
 
@@ -26,28 +27,22 @@ class HaveAccountOrNot extends StatelessWidget {
               isFromLogin ? "Or Log in with" : "Or Sign Up with",
               style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
             ),
-            Expanded(
-                child: Divider(
-              indent: 10.w,
-              thickness: 1.5.h,
-            ))
+            Expanded(child: Divider(indent: 10.w, thickness: 1.5.h))
           ],
         ),
         SizedBox(height: 48.h),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const RegistrationButton(
-              imgPath: "facebook_logo.png",
-            ),
-            SizedBox(
-              width: 18.w,
-            ),
-            const RegistrationButton(
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          RegistrationButton(
+            imgPath: "facebook_logo.png",
+            onTap: () {},
+          ),
+          SizedBox(width: 18.w),
+          RegistrationButton(
               imgPath: "google_logo.png",
-            ),
-          ],
-        ),
+              onTap: () {
+                FirebaseAuthServices.signInWithGoogle();
+              }),
+        ]),
         SizedBox(height: 16.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -56,10 +51,7 @@ class HaveAccountOrNot extends StatelessWidget {
               isFromLogin
                   ? "Don’t have an account ?"
                   : "Already have an account?",
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 16.sp,
-              ),
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.sp),
             ),
             TextButton(
               onPressed: () {
@@ -71,12 +63,11 @@ class HaveAccountOrNot extends StatelessWidget {
                 }
               },
               child: Text(
-                isFromLogin?"Sign up":"Log in",
+                isFromLogin ? "Sign up" : "Log in",
                 style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.sp,
-                  color: const Color(0xff86C9C9),
-                ),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.sp,
+                    color: const Color(0xff86C9C9)),
               ),
             )
           ],

@@ -12,7 +12,7 @@ import '../../../core/logic/input_validator.dart';
 import '../../../core/theming/app_theme.dart';
 import '../../../core/theming/styles.dart';
 import '../../doctor/time_of_work.dart';
-import 'components/have_accout_or_not.dart';
+import 'components/have_account_or_not.dart';
 
 class RegisterView extends StatefulWidget {
   final bool isDoctor;

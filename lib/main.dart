@@ -1,14 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/logic/cache_helper.dart';
 import 'core/logic/helper_methods.dart';
 import 'core/theming/app_theme.dart';
+import 'firebase_options.dart';
 import 'views/mutual/auth/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
@@ -17,6 +20,7 @@ void main() async {
       systemNavigationBarIconBrightness: Brightness.dark));
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -24,15 +28,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(428, 926),
-      builder: (context, child) =>
-          MaterialApp(
-              debugShowCheckedModeBanner: false,
-              navigatorKey: navigatorKey,
-              theme: AppTheme.appTheme,
-              home: child),
+      builder: (context, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          navigatorKey: navigatorKey,
+          theme: AppTheme.appTheme,
+          home: child),
       child: SplashView(),
     );
   }
 }
-
-

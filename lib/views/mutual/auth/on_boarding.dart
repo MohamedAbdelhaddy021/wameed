@@ -6,7 +6,6 @@ import '../../../core/design/app_image.dart';
 import '../../../core/design/text_logo.dart';
 import '../../../core/logic/cache_helper.dart';
 import '../../../core/logic/helper_methods.dart';
-import 'select_user_type.dart';
 
 class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});
@@ -48,21 +47,13 @@ class OnBoardingView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Get Started",
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 17.w,
-                    ),
-                    AppImage(
-                      "arrow_right.svg",
-                      width: 24.w,
-                      height: 12.h,
-                    ),
+                    Text("Get Started",
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    SizedBox(width: 17.w),
+                    AppImage("arrow_right.svg", width: 24.w, height: 12.h),
                   ],
                 ),
               ),

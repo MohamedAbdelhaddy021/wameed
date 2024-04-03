@@ -1,23 +1,33 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../core/design/app_image.dart';
 import '../../core/design/custom_app_bar.dart';
+import '../../core/logic/cache_helper.dart';
 import '../../core/logic/helper_methods.dart';
 import '../../core/theming/app_theme.dart';
 import '../../core/theming/styles.dart';
 import '../mutual/auth/login.dart';
 import '../mutual/settings.dart';
 import 'chats.dart';
+import 'reservation_receipts.dart';
 import 'schedule.dart';
 
-class DoctorProfileView extends StatelessWidget {
+class DoctorProfileView extends StatefulWidget {
   const DoctorProfileView({super.key});
 
+  @override
+  State<DoctorProfileView> createState() => _DoctorProfileViewState();
+}
+
+class _DoctorProfileViewState extends State<DoctorProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: "Profile"),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(24.w),
         child: Column(
           children: [
@@ -26,112 +36,97 @@ class DoctorProfileView extends StatelessWidget {
               height: 147.h,
               padding: EdgeInsetsDirectional.only(start: 24.w),
               decoration: BoxDecoration(
-                color: AppTheme.primaryColor.withOpacity(.29),
-                borderRadius: BorderRadius.circular(28.r),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xff39A7A7).withOpacity(.29),
-                  ),
-                  const BoxShadow(
-                      color: Colors.white70,
-                      offset: Offset(-2, -2),
-                      spreadRadius: -5,
-                      blurRadius: 8.0),
-                  BoxShadow(color: const Color(0xff39A7A7).withOpacity(.29)),
-                  const BoxShadow(
-                      color: Colors.white70,
-                      spreadRadius: -1,
-                      blurRadius: 8.0,
-                      offset: Offset(2, 2)),
-                  BoxShadow(
-                      blurRadius: 11,
-                      color: Colors.black.withOpacity(.42),
-                      blurStyle: BlurStyle.outer),
-                ],
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: 84.w,
-                    height: 84.w,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
+                  color: AppTheme.primaryColor.withOpacity(.29),
+                  borderRadius: BorderRadius.circular(28.r),
+                  boxShadow: [
+                    BoxShadow(color: const Color(0xff39A7A7).withOpacity(.29)),
+                    const BoxShadow(
+                        color: Colors.white70,
+                        offset: Offset(-2, -2),
+                        spreadRadius: -5,
+                        blurRadius: 8.0),
+                    BoxShadow(
+                      color: const Color(0xff39A7A7).withOpacity(.29),
                     ),
-                    child: AppImage(
-                      "https://kid-z.de/wp-content/uploads/2016/10/img8-1.jpg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(start: 18.w, top: 49.h),
-                    child: Column(
+                    const BoxShadow(
+                        color: Colors.white70,
+                        spreadRadius: -1,
+                        blurRadius: 8.0,
+                        offset: Offset(2, 2)),
+                    BoxShadow(
+                        blurRadius: 11,
+                        color: Colors.black.withOpacity(.42),
+                        blurStyle: BlurStyle.outer)
+                  ]),
+              child: Row(children: [
+                Stack(
+                  alignment: AlignmentDirectional.bottomEnd,
+                  children: [
+                    Container(
+                        width: 84.w,
+                        height: 84.w,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.white),
+                        child: CacheHelper.profileImage == null
+                            ? AppImage(
+                                "https://pbs.twimg.com/profile_images/1767101324884115457/q8QaIZRe_400x400.jpg",
+                                fit: BoxFit.cover)
+                            : Image.file(
+                                File(CacheHelper.profileImage!),
+                                fit: BoxFit.cover,
+                              )),
+                    GestureDetector(
+                        onTap: () async {
+                          var file = await ImagePicker.platform
+                              .getImageFromSource(source: ImageSource.gallery);
+                          if (file != null) {
+                            CacheHelper.saveProfileImg(file.path);
+                            setState(() {});
+                          }
+                        },
+                        child: CircleAvatar(
+                          radius: 14.r,
+                          backgroundColor: Colors.white,
+                          child: Icon(Icons.edit, size: 18.sp),
+                        ))
+                  ],
+                ),
+                Expanded(
+                    child: Padding(
+                  padding: EdgeInsetsDirectional.only(
+                      start: 18.w, top: 49.h, end: 16.w),
+                  child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Dr. john smith",
-                          style: TextStyles.inter16Medium
-                              .copyWith(fontSize: 14.sp),
-                        ),
+                        Text("Dr.john smith",
+                            style: TextStyles.inter16Medium
+                                .copyWith(fontSize: 18.sp)),
                         SizedBox(height: 12.h),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.email_outlined,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              width: 8.w,
-                            ),
-                            Text(
-                              "Drjohn_23@gmail.com",
-                              style: TextStyles.inter16Medium.copyWith(
-                                  color: Colors.black.withOpacity(.56),
-                                  fontSize: 14.sp),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                        Row(children: [
+                          const Icon(Icons.email_outlined, color: Colors.white),
+                          SizedBox(width: 8.w),
+                          Expanded(
+                              child: Text("Drjohn_23@gmail.com",
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyles.inter16Medium.copyWith(
+                                    color: Colors.black.withOpacity(.56),
+                                    fontSize: 14.sp,
+                                  )))
+                        ])
+                      ]),
+                ))
+              ]),
             ),
-            SizedBox(height: 36.h),
-            _Item(
-              imgPath: "calendar.png",
-              title: "My schedule",
-              onPressed: () {
-                navigateTo(const DoctorScheduleView());
-              },
-            ),
-            _Item(
-              imgPath: "message.png",
-              title: "My Chats",
-              onPressed: () {
-                navigateTo(const DoctorChatsView());
-              },
-            ),
-            _Item(
-              imgPath: "bill.png",
-              title: "Reservation receipts",
-              onPressed: () {},
-            ),
-            _Item(
-              imgPath: "setting.png",
-              title: "Setting",
-              onPressed: () {
-                navigateTo(const SettingsView());
-              },
-            ),
-            _Item(
-              imgPath: "logout.png",
-              title: "Log out",
-              onPressed: () {
-                navigateTo(LoginView(), isReplacement: true);
-              },
-            ),
+            SizedBox(height: 24.h),
+            _Item(DoctorScheduleView(),
+                imgPath: "calendar.png", title: "My schedule"),
+            _Item(DoctorChatsView(), imgPath: "message.png", title: "My Chats"),
+            _Item(ReceiptsView(),
+                imgPath: "bill.png", title: "Reservation receipts"),
+            _Item(SettingsView(), imgPath: "setting.png", title: "Setting"),
+            _Item(LoginView(), imgPath: "logout.png", title: "Log out"),
           ],
         ),
       ),
@@ -140,15 +135,17 @@ class DoctorProfileView extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  const _Item({required this.imgPath, required this.title, this.onPressed});
+  const _Item(this.page, {required this.imgPath, required this.title});
 
   final String imgPath, title;
-  final VoidCallback? onPressed;
+  final Widget page;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed,
+      onTap: () {
+        navigateTo(page);
+      },
       child: Container(
         height: 54.h,
         padding: EdgeInsetsDirectional.only(start: 16.w, end: 16.w),
@@ -160,14 +157,8 @@ class _Item extends StatelessWidget {
         ),
         child: Row(
           children: [
-            AppImage(
-              imgPath,
-              width: 22.w,
-              height: 22.w,
-            ),
-            SizedBox(
-              width: 8.w,
-            ),
+            AppImage(imgPath, width: 22.w, height: 22.w),
+            SizedBox(width: 8.w),
             Text(
               title,
               style: TextStyles.poppins14Black55Medium

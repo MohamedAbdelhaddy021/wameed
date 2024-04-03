@@ -7,8 +7,8 @@ import '../../../core/design/app_input.dart';
 import '../../../core/logic/helper_methods.dart';
 import '../../../core/theming/app_theme.dart';
 import '../payment/view.dart';
-import 'calendar_day_item/view.dart';
-import 'time_item/stl.dart';
+import 'components/calendar_item.dart';
+import 'components/time_item.dart';
 
 class BookAppointmentView extends StatefulWidget {
   const BookAppointmentView({super.key});
@@ -70,13 +70,14 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
                 child: GridView.builder(
                     scrollDirection: Axis.horizontal,
                     padding: EdgeInsets.symmetric(vertical: 24.h),
+                    shrinkWrap: true,
                     physics: BouncingScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 36.w / 96.h,
+                        childAspectRatio: 30.w / 80.w,
                         crossAxisSpacing: 12.h,
                         mainAxisSpacing: 15.w,
                         crossAxisCount: 3),
-                    itemCount: 15,
+                    itemCount: 11,
                     itemBuilder: (context, index) => SelectTimeItem())),
             SizedBox(height: 16.h),
             Text("Patient Details",
@@ -102,10 +103,7 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
                   color: Colors.black.withOpacity(.51),
                 )),
             SizedBox(height: 16.h),
-            AppInput(
-              labelText: "",
-              height: 14.h,
-            ),
+            AppInput(labelText: "", height: 14.h),
             SizedBox(height: 4.h),
             Text("Payment Method",
                 style: TextStyle(

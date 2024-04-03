@@ -13,13 +13,11 @@ class PatientReviewView extends StatefulWidget {
 }
 
 class _ReviewViewState extends State<PatientReviewView> {
-  // late TextEditingController _ratingController;
   String? _rating;
   String? _imagePath;
 
   @override
   void initState() {
-    // _ratingController = TextEditingController(text: "3.0");
     _imagePath = "hi.png";
 
     super.initState();

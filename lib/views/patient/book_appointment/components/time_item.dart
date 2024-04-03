@@ -28,27 +28,24 @@ class _SelectTimeItemState extends State<SelectTimeItem> {
         setState(() {});
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 4.w),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.r),
+            borderRadius: BorderRadius.circular(8.r),
             color: indexes.contains(newIndex)
                 ? AppTheme.primaryColor.withOpacity(.7)
                 : Colors.black.withOpacity(.06)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.watch_later_outlined,
-                color: indexes.contains(newIndex)
-                    ? Colors.white
-                    : AppTheme.primaryColor.withOpacity(.7),size: 22,),
-            SizedBox(width: 4.w),
-            Text("09:00AM",
-                style: indexes.contains(newIndex)
-                    ? TextStyles.poppins14Black55Medium.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w600)
-                    : TextStyles.poppins14Black55Medium)
-          ],
-        ),
+        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Icon(Icons.watch_later_outlined,
+              color: indexes.contains(newIndex)
+                  ? Colors.white
+                  : AppTheme.primaryColor.withOpacity(.7),
+              size: 21.sp),
+          SizedBox(width: 4.w),
+          Text("09:00AM",
+              style: indexes.contains(newIndex)
+                  ? TextStyles.poppins14Black55Medium.copyWith(
+                      color: Colors.white, fontWeight: FontWeight.w600)
+                  : TextStyles.poppins14Black55Medium)
+        ]),
       ),
     );
   }

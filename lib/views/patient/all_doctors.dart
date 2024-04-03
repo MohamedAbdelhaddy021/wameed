@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/core/design/custom_app_bar.dart';
 
+import '../../core/design/custom_app_bar.dart';
 import '../../core/design/doctor_item.dart';
 
 class AllDoctorsView extends StatefulWidget {
@@ -20,7 +20,6 @@ class _DoctorState extends State<AllDoctorsView> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 28.h),
           Padding(
             padding: EdgeInsetsDirectional.only(start: 24.w),
             child: Text("All Doctors",
@@ -28,8 +27,7 @@ class _DoctorState extends State<AllDoctorsView> {
           ),
           Expanded(
             child: ListView.separated(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                 itemBuilder: (context, index) => DoctorItem(),
                 separatorBuilder: (context, index) => SizedBox(height: 24.h),
                 itemCount: 5),

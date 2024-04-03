@@ -26,3 +26,8 @@ navigateTo(Widget page,
     );
   }
 }
+
+void showToast(String? msg) {
+  ScaffoldMessenger.of(navigatorKey.currentState!.context)
+      .showSnackBar(SnackBar(content: Text(msg??"")));
+}

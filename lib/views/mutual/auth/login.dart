@@ -5,7 +5,7 @@ import '../../../core/design/app_filled_button.dart';
 import '../../../core/design/text_logo.dart';
 import '../../../core/logic/helper_methods.dart';
 import '../../patient/home/view.dart';
-import 'components/have_accout_or_not.dart';
+import 'components/have_account_or_not.dart';
 import 'forget_password.dart';
 
 class LoginView extends StatefulWidget {
@@ -16,10 +16,8 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final emailController =
-      TextEditingController(text: "mohamedabdelhady021@gmail.com");
-  final passwordController = TextEditingController(text: "Blanco666");
-
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -28,68 +26,60 @@ class _LoginViewState extends State<LoginView> {
       body: SafeArea(
           child: Form(
         key: formKey,
+        autovalidateMode: AutovalidateMode.always,
         child: Center(
           child: SingleChildScrollView(
-            padding:
-                EdgeInsets.only(left: 24.w, right: 24.w, bottom: 10.h, top: 60.h),
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  "Welcome To",
-                  style: TextStyle(
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "poppins",
-                  ),
-                ),
+                Text("Welcome To",
+                    style: TextStyle(
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: "poppins")),
                 const TextLogo(withDesc: false),
                 SizedBox(height: 30.h),
                 AppInput(
-                  labelText: "Enter your email",
-                  controller: emailController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "enter an email";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                SizedBox(
-                  height: 24.h,
-                ),
+                    labelText: "Enter your email",
+                    controller: emailController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "enter an email";
+                      } else {
+                        return null;
+                      }
+                    }),
+                SizedBox(height: 16.h),
                 AppInput(
-                  labelText: "Password",
-                  isPassword: true,
-                  controller: passwordController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "enter your password";
-                    } else if (value.length < 8) {
-                      return "password must have 8 or more characters";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
+                    labelText: "Password",
+                    isPassword: true,
+                    bottomPadding: 12,
+                    controller: passwordController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "enter your password";
+                      } else if (value.length < 8) {
+                        return "password must have 8 or more characters";
+                      } else {
+                        return null;
+                      }
+                    }),
                 Align(
-                  alignment: AlignmentDirectional.bottomEnd,
+                  alignment: AlignmentDirectional.topEnd,
                   child: TextButton(
-                    onPressed: () {
-                      navigateTo(const ForgetPasswordView());
-                    },
-                    child: Text(
-                      "Forgot Password ?",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16.sp,
-                        color: Colors.black.withOpacity(.67),
-                      ),
-                    ),
-                  ),
+                      onPressed: () {
+                        navigateTo(const ForgetPasswordView());
+                      },
+                      child: Text(
+                        "Forgot Password ?",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.sp,
+                            color: Colors.black.withOpacity(.67)),
+                      )),
                 ),
-                SizedBox(height: 36.h),
+                SizedBox(height: 24.h),
                 AppButton(
                   text: "Log In",
                   onPressed: () {
@@ -106,4 +96,12 @@ class _LoginViewState extends State<LoginView> {
       )),
     );
   }
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 }
+
+

@@ -35,10 +35,9 @@ class _ChatDetailState extends State<ChatDetailView> {
           flexibleSpace: SafeArea(
             child: Container(
               decoration: BoxDecoration(
-                color: const Color(0xffF7F7F7).withOpacity(.60),
-              ),
+                  color: const Color(0xffF7F7F7).withOpacity(.60)),
               child: Padding(
-                padding: const EdgeInsets.only(right: 16),
+                padding: EdgeInsets.only(right: 16.w),
                 child: Row(
                   children: <Widget>[
                     const AppBack(),
@@ -179,7 +178,8 @@ class _ChatDetailState extends State<ChatDetailView> {
                           child: TextField(
                             decoration: InputDecoration(
                                 hintText: "Type your message",
-                                contentPadding: EdgeInsets.symmetric(vertical: 4.h,horizontal: 16.w),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 4.h, horizontal: 16.w),
                                 hintStyle: TextStyle(
                                     color: Colors.black.withOpacity(.33)),
                                 fillColor:
@@ -187,10 +187,8 @@ class _ChatDetailState extends State<ChatDetailView> {
                                 filled: true,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide.none,
-                                    borderRadius:
-                                        BorderRadius.circular(18.r)),
-                                suffixIcon: Icon(
-                                    Icons.emoji_emotions_outlined,
+                                    borderRadius: BorderRadius.circular(18.r)),
+                                suffixIcon: Icon(Icons.emoji_emotions_outlined,
                                     color: const Color(0xffBEBEBE)
                                         .withOpacity(.34))),
                           ),

@@ -5,20 +5,19 @@ import 'package:wameed/core/theming/styles.dart';
 import 'app_image.dart';
 
 class AppInput extends StatefulWidget {
-  const AppInput({
-    super.key,
-    required this.labelText,
-    this.isPassword = false,
-    this.bottomPadding = 20,
-    this.prefixImgPath = "",
-    this.isPrefix = false,
-    this.keyboardType = TextInputType.text,
-    this.controller,
-    this.validator,
-    this.suffixIcon,
-    this.prefixIcon,
-    this.height = 20,
-  });
+  const AppInput(
+      {super.key,
+      required this.labelText,
+      this.isPassword = false,
+      this.bottomPadding = 20,
+      this.prefixImgPath = "",
+      this.isPrefix = false,
+      this.keyboardType = TextInputType.text,
+      this.controller,
+      this.validator,
+      this.suffixIcon,
+      this.prefixIcon,
+      this.height = 20});
 
   final String labelText, prefixImgPath;
   final bool isPassword, isPrefix;
@@ -60,7 +59,7 @@ class _AppInputState extends State<AppInput> {
                     setState(() {});
                   },
                   icon: Icon(
-                    color: Colors.black.withOpacity(.30),
+                    color: Colors.black.withOpacity(.5),
                     isHidden ? Icons.visibility_off : Icons.visibility,
                     size: 22,
                   ),

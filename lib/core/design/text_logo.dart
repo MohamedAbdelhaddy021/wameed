@@ -14,7 +14,7 @@ class TextLogo extends StatelessWidget {
       children: [
         Text.rich(
           style: TextStyle(
-              fontSize: 48.sp,
+              fontSize: 46.sp,
               fontWeight: FontWeight.w600,
               fontFamily: "poppins"),
           TextSpan(
@@ -26,14 +26,14 @@ class TextLogo extends StatelessWidget {
                       fontFamily: "courgette",
                       color: AppTheme.primaryColor,
                       fontWeight: FontWeight.w500,
-                      fontSize: 48.sp)),
+                      fontSize: 46.sp)),
               const TextSpan(text: "ee"),
               TextSpan(
                   text: "d",
                   style: TextStyle(
                       fontFamily: "courgette",
                       fontWeight: FontWeight.w500,
-                      fontSize: 48.sp)),
+                      fontSize: 46.sp)),
             ],
           ),
         ),
