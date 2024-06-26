@@ -7,8 +7,8 @@ import '../../core/design/app_back.dart';
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/app_image.dart';
 import '../../core/logic/helper_methods.dart';
-import '../../core/theming/app_theme.dart';
-import '../../core/theming/styles.dart';
+import '../../core/utils/app_theme.dart';
+import '../../core/utils/styles.dart';
 import 'questionnaire_result.dart';
 
 class QuestionnaireView extends StatefulWidget {

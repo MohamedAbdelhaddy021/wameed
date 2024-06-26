@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/design/app_back.dart';
 import '../../core/design/app_image.dart';
-import '../../core/theming/app_theme.dart';
+import '../../core/utils/app_theme.dart';
 
 class ChatCallView extends StatefulWidget {
   const ChatCallView({super.key});

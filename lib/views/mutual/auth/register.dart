@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/features/cubits/auth/register.dart';
 
 import '../../../core/design/app_back.dart';
 import '../../../core/design/app_drop_down.dart';
@@ -9,8 +10,8 @@ import '../../../core/design/app_input.dart';
 import '../../../core/design/app_filled_button.dart';
 import '../../../core/logic/helper_methods.dart';
 import '../../../core/logic/input_validator.dart';
-import '../../../core/theming/app_theme.dart';
-import '../../../core/theming/styles.dart';
+import '../../../core/utils/app_theme.dart';
+import '../../../core/utils/styles.dart';
 import '../../doctor/time_of_work.dart';
 import 'components/have_account_or_not.dart';
 
@@ -24,13 +25,14 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passController = TextEditingController();
-  final nationalIDController = TextEditingController();
-  final priceController = TextEditingController();
-  final vodafoneNumController = TextEditingController();
-  final experienceController = TextEditingController();
+  late RegisterCubit bloc;
+
+  @override
+  void initState() {
+    bloc = BlocProvider.of(context);
+    super.initState();
+  }
+
   List<String> qualifications = ["item 1", "item 2", "item 3", "item 4"];
   List<String> genders = ["Male", "Female"];
   String? selectedItem = "item 1";
@@ -50,7 +52,7 @@ class _RegisterViewState extends State<RegisterView> {
             ])),
       ),
       body: Form(
-        key: formKey,
+        key: bloc.formKey,
         child: SingleChildScrollView(
           padding: EdgeInsetsDirectional.only(
               start: 19.w, end: 29.w, bottom: 16.h, top: 24.h),
@@ -97,8 +99,13 @@ class _RegisterViewState extends State<RegisterView> {
               ),
               SizedBox(height: 8.h),
               AppInput(
-                  labelText: "Username", validator: InputValidator.userName),
-              AppInput(labelText: "Email", validator: InputValidator.email),
+                labelText: "Username",
+                controller: bloc.nameController,
+              ),
+              AppInput(
+                labelText: "Email",
+                controller: bloc.emailController,
+              ),
               Row(
                 children: [
                   Expanded(
@@ -108,21 +115,24 @@ class _RegisterViewState extends State<RegisterView> {
                   if (!widget.isDoctor)
                     Expanded(child: AppInput(labelText: "Age")),
                   if (widget.isDoctor)
-                    // SizedBox(width: 16),
-                    Expanded(child: AppDropDown(list: qualifications, hint: "Qualifications")),
+                    Expanded(
+                        child: AppDropDown(
+                            list: qualifications, hint: "Qualifications")),
                 ],
               ),
               AppInput(
-                  labelText: "Password",
-                  isPassword: true,
-                  controller: passController,
-                  validator: InputValidator.password),
+                labelText: "Password",
+                isPassword: true,
+                controller: bloc.passController,
+              ),
               AppInput(
                 labelText: "Confirm password",
                 isPassword: true,
                 validator: (value) {
-                  return InputValidator.confirmPassword(
-                      value, passController.text);
+                  if (value != bloc.passController.text) {
+                    return "Password is not identical";
+                  }
+                  return null;
                 },
               ),
               if (widget.isDoctor)
@@ -138,25 +148,22 @@ class _RegisterViewState extends State<RegisterView> {
                       AppInput(
                           labelText: "Vodafone cash number",
                           keyboardType: TextInputType.number,
-                          controller: vodafoneNumController,
-                          validator: InputValidator.phoneNumber,
+                          controller: bloc.vodafoneNumController,
                           prefixIcon: AppImage("vodafone_cash_logo.svg",
                               width: 22.w, height: 22.w)),
                       Row(
                         children: [
                           Expanded(
                               child: AppInput(
-                                  labelText: "Experience year",
-                                  keyboardType: TextInputType.number,
-                                  controller: experienceController,
-                                  validator: InputValidator.experience)),
+                            labelText: "Experience year",
+                            keyboardType: TextInputType.number,
+                          )),
                           SizedBox(width: 16.w),
                           Expanded(
                               child: AppInput(
-                                  labelText: "Price of Session",
-                                  keyboardType: TextInputType.number,
-                                  controller: priceController,
-                                  validator: InputValidator.priceOfSession)),
+                            labelText: "Price of Session",
+                            keyboardType: TextInputType.number,
+                          )),
                         ],
                       ),
                       GestureDetector(
@@ -186,16 +193,16 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                 ),
               SizedBox(height: 16.h),
-              AppButton(
-                text: "Register",
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    showDialog(
-                      context: context,
-                      builder: (context) => Text("data"),
-                    );
-                  }
-                },
+              BlocBuilder(
+                bloc: bloc,
+                builder: (context, state) => AppButton(
+                  text: "Register",
+                  onPressed: () {
+                    if (bloc.formKey.currentState!.validate()) {
+                      widget.isDoctor ? bloc.signUPDoctor() : bloc.signUP();
+                    }
+                  },
+                ),
               ),
               HaveAccountOrNot()
             ],

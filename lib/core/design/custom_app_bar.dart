@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theming/styles.dart';
+import '../utils/styles.dart';
 import 'app_back.dart';
 import 'app_image.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final bool withActions;
+  final bool withActions,withLeading;
   final String title;
 
-  const CustomAppBar({super.key,  this.title="", this.withActions = false});
+  const CustomAppBar({super.key,  this.title="", this.withActions = false,  this.withLeading=true});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: const AppBack(),
+      leading: withLeading?const AppBack():null,
       title: Text(title),
       actions: [
         if(withActions)

@@ -9,7 +9,7 @@ import '../select_user_type.dart';
 class HaveAccountOrNot extends StatelessWidget {
   final bool isFromLogin;
 
-  const HaveAccountOrNot({super.key, this.isFromLogin = false});
+  const HaveAccountOrNot({super.key, this.isFromLogin = true});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class HaveAccountOrNot extends StatelessWidget {
             TextButton(
               onPressed: () {
                 if (isFromLogin) {
-                  navigateTo(SelectUserTypeView());
+                  navigateTo(SelectUserTypeView(isFormLogin: true,));
                 } else {
                   Navigator.pop(context);
                   Navigator.pop(context);

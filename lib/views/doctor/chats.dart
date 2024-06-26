@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/design/app_image.dart';
 import '../../core/design/custom_app_bar.dart';
-import '../../core/theming/app_theme.dart';
-import '../../core/theming/styles.dart';
+import '../../core/utils/app_theme.dart';
+import '../../core/utils/styles.dart';
 
 class DoctorChatsView extends StatelessWidget {
   const DoctorChatsView({super.key});

@@ -6,7 +6,7 @@ import '../../core/design/app_dialog.dart';
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/app_image.dart';
 import '../../core/design/custom_app_bar.dart';
-import '../../core/theming/styles.dart';
+import '../../core/utils/styles.dart';
 
 class VodafoneUploadView extends StatefulWidget {
   const VodafoneUploadView({super.key});

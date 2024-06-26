@@ -2,7 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/logic/helper_methods.dart';
-import '../../../core/theming/app_theme.dart';
+import '../../../core/utils/app_theme.dart';
 import '../../doctor/chats.dart';
 import '../before_scan.dart';
 import '../motivzone.dart';
@@ -30,6 +30,9 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       body: pages.elementAt(_currentIndex),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      resizeToAvoidBottomInset: false,
+      extendBody: true,
+
       floatingActionButton: Padding(
           padding: EdgeInsets.only(top: 20.h, bottom: 8.h),
           child: SizedBox(

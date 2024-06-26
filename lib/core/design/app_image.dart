@@ -7,9 +7,10 @@ class AppImage extends StatelessWidget {
   final double? height, width;
   final BoxFit fit;
   final Color? color;
+  final Widget Function(BuildContext, String)? placeholder;
 
   const AppImage(this.url,
-      {super.key, this.height, this.width, this.fit = BoxFit.scaleDown, this.color});
+      {super.key, this.height, this.width, this.fit = BoxFit.scaleDown, this.color, this.placeholder, });
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class AppImage extends StatelessWidget {
         fit: fit,
         height: height,
         color: color,
+        placeholder: placeholder,
       );
     } else {
       return Image.asset(

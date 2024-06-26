@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theming/app_theme.dart';
-import '../theming/styles.dart';
+import '../utils/app_theme.dart';
+import '../utils/styles.dart';
 import 'app_image.dart';
 
 // class AppDropDown extends StatefulWidget {

@@ -5,7 +5,7 @@ import '../../../core/design/app_back.dart';
 import '../../../core/design/app_filled_button.dart';
 import '../../../core/design/app_input.dart';
 import '../../../core/logic/helper_methods.dart';
-import '../../../core/theming/app_theme.dart';
+import '../../../core/utils/app_theme.dart';
 import '../payment/view.dart';
 import 'components/calendar_item.dart';
 import 'components/time_item.dart';

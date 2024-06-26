@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_back.dart';
 
-import '../../features/chat/model.dart';
+import '../../features/models/chat_message.dart';
 
 class ChatDetailView extends StatefulWidget {
   const ChatDetailView({super.key});

@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/design/app_dialog.dart';
 import '../../../core/design/app_input.dart';
 import '../../../core/design/app_filled_button.dart';
 import '../../../core/design/custom_app_bar.dart';
 import '../../../core/logic/helper_methods.dart';
-import '../../../core/theming/styles.dart';
+import '../../../core/utils/styles.dart';
+import '../../../features/cubits/auth/change_password.dart';
 import 'login.dart';
 
 class ChangePasswordView extends StatefulWidget {
-  const ChangePasswordView({super.key});
+  const ChangePasswordView({super.key, required this.email});
+
+  final String email;
 
   @override
   State<ChangePasswordView> createState() => _LoginViewState();
 }
 
 class _LoginViewState extends State<ChangePasswordView> {
-  final formKey = GlobalKey<FormState>();
-  final passwordController = TextEditingController();
+  late ChangePasswordCubit bloc;
+  @override
+  void initState() {
+    bloc = BlocProvider.of(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +34,7 @@ class _LoginViewState extends State<ChangePasswordView> {
       body: Padding(
         padding: EdgeInsetsDirectional.only(start: 24.w, end: 24.w, top: 72.h),
         child: Form(
-          key: formKey,
+          key: bloc.formKey,
           autovalidateMode: AutovalidateMode.always,
           child: SingleChildScrollView(
             child: Column(
@@ -49,7 +57,7 @@ class _LoginViewState extends State<ChangePasswordView> {
                   labelText: "Password",
                   isPassword: true,
                   bottomPadding: 24,
-                  controller: passwordController,
+                  controller: bloc.passwordController,
                   validator: (pass) {
                     if (pass!.isEmpty) {
                       return "enter a new password";
@@ -67,7 +75,7 @@ class _LoginViewState extends State<ChangePasswordView> {
                     validator: (pass) {
                       if (pass!.isEmpty) {
                         return "enter the password again";
-                      } else if (passwordController.text != pass) {
+                      } else if (bloc.passwordController.text != pass) {
                         return "password is not identical ";
                       } else {
                         return null;
@@ -77,7 +85,7 @@ class _LoginViewState extends State<ChangePasswordView> {
                   text: "set password",
                   fontFamily: "poppins",
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
+                    if (bloc.formKey.currentState!.validate()) {
                       showDialog(
                         context: context,
                         builder: (context) {

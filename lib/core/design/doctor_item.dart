@@ -3,10 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../views/patient/doctor_details.dart';
 import '../logic/helper_methods.dart';
-import '../theming/app_theme.dart';
+import '../utils/app_theme.dart';
 
 class DoctorItem extends StatelessWidget {
-  const DoctorItem({super.key});
+  const DoctorItem({super.key, required this.name, required this.price, required this.qualification, required this.experience});
+  final String name;
+  final int price;
+  final String qualification;
+  final int experience;
 
   @override
   Widget build(BuildContext context) {
@@ -44,20 +48,18 @@ class DoctorItem extends StatelessWidget {
                   padding: EdgeInsets.only(top: 8.h),
                   child: Row(
                     children: [
-                      Text("Dr. John Smith",
+                      Text(name,
                           style: TextStyle(
                               fontSize: 18.sp, fontWeight: FontWeight.w600)),
                       const Spacer(),
                       const Text("4.6"),
-                      SizedBox(
-                        width: 4.w,
-                      ),
+                      SizedBox(width: 4.w),
                       const Icon(Icons.star, size: 20, color: Colors.amber)
                     ],
                   ),
                 ),
                 SizedBox(height: 4.h),
-                Text("Psychiatrist",
+                Text(qualification,
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontFamily: "poppins",

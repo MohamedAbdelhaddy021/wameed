@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../core/design/app_back.dart';
-import '../../core/theming/app_theme.dart';
+import '../../core/utils/app_theme.dart';
 
 class LanguageSettingView extends StatefulWidget {
   const LanguageSettingView({super.key});

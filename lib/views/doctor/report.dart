@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/custom_app_bar.dart';
-import '../../core/theming/styles.dart';
+import '../../core/utils/styles.dart';
 
 class DoctorReportView extends StatefulWidget {
   const DoctorReportView({super.key});

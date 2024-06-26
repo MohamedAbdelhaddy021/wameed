@@ -8,11 +8,13 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../core/design/app_filled_button.dart';
 import '../../../core/design/custom_app_bar.dart';
 import '../../../core/logic/helper_methods.dart';
-import '../../../core/theming/styles.dart';
+import '../../../core/utils/styles.dart';
 import 'change_password.dart';
 
 class OTPView extends StatefulWidget {
-  const OTPView({super.key});
+  const OTPView({super.key, required this.email});
+
+  final String email;
 
   @override
   State<OTPView> createState() => _LoginViewState();
@@ -124,7 +126,7 @@ class _LoginViewState extends State<OTPView> {
                 fontFamily: "poppins",
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    navigateTo(ChangePasswordView());
+                    navigateTo(ChangePasswordView(email: widget.email,));
                   }
                 },
               ),

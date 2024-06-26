@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_image.dart';
 
-import '../../../../core/theming/app_theme.dart';
+import '../../../../core/utils/app_theme.dart';
 import 'pay_with_visa_item.dart';
 import 'pay_with_vodafone.dart';
 

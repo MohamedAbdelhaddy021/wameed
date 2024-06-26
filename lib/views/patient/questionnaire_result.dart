@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/app_image.dart';
 import '../../core/logic/helper_methods.dart';
-import '../../core/theming/app_theme.dart';
-import '../../core/theming/styles.dart';
+import '../../core/utils/app_theme.dart';
+import '../../core/utils/styles.dart';
 import 'home/view.dart';
 
 class QuestionnaireResultView extends StatelessWidget {

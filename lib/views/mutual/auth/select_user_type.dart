@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/core/logic/cache_helper.dart';
+import 'package:wameed/views/mutual/auth/login.dart';
 import '../../../core/design/app_image.dart';
 import '../../../core/design/custom_app_bar.dart';
 import '../../../core/logic/helper_methods.dart';
-import '../../../core/theming/app_theme.dart';
-import '../../../core/theming/styles.dart';
+import '../../../core/utils/app_theme.dart';
+import '../../../core/utils/styles.dart';
 import 'register.dart';
 
 class SelectUserTypeView extends StatelessWidget {
-  const SelectUserTypeView({super.key});
-
+   SelectUserTypeView({super.key, required this.isFormLogin});
+  final bool isFormLogin;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,14 +49,16 @@ class SelectUserTypeView extends StatelessWidget {
                       text: "Patient",
                       img: "profile.png",
                       onTap: () {
-                        navigateTo(RegisterView(isDoctor: false));
+                        isFormLogin? navigateTo(RegisterView(isDoctor: CacheHelper.isDoctor,)):navigateTo(LoginView());
+                        CacheHelper.setIsDoctor(bool: false);
                       }),
                   SizedBox(height: 32.h),
                   _Item(
                       text: "Doctor",
                       img: "doctor.png",
                       onTap: () {
-                        navigateTo(RegisterView(isDoctor: true));
+                        isFormLogin? navigateTo(RegisterView(isDoctor: CacheHelper.isDoctor,)):navigateTo(LoginView());
+                        CacheHelper.setIsDoctor(bool: true);
                       }),
                 ]),
               )

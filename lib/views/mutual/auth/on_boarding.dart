@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/views/mutual/auth/login.dart';
+import 'package:wameed/views/mutual/auth/select_user_type.dart';
 
 import '../../../core/design/app_image.dart';
 import '../../../core/design/text_logo.dart';
@@ -41,8 +42,8 @@ class OnBoardingView extends StatelessWidget {
               SizedBox(height: 74.h),
               FilledButton(
                 onPressed: () {
+                  navigateTo(SelectUserTypeView(isFormLogin: false,));
                   CacheHelper.setIsFirstTime();
-                  navigateTo(const LoginView());
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

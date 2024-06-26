@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_image.dart';
 import '../../../core/design/custom_app_bar_with_text_logo.dart';
 import '../../../core/logic/helper_methods.dart';
-import '../../../core/theming/styles.dart';
+import '../../../core/utils/styles.dart';
 import 'book_details.dart';
 import 'podcast.dart';
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/features/cubits/auth/sendOTP.dart';
 
 import '../../../core/design/app_input.dart';
 import '../../../core/design/app_filled_button.dart';
@@ -15,6 +17,13 @@ class ForgetPasswordView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<ForgetPasswordView> {
+  late OTPCubit bloc;
+  @override
+  void initState() {
+    bloc=BlocProvider.of(context);
+    super.initState();
+
+  }
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
 
@@ -56,13 +65,16 @@ class _LoginViewState extends State<ForgetPasswordView> {
                 ),
               ),
               SizedBox(height: 40.h),
-              AppButton(
-                text: "Send Code",
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    navigateTo(const OTPView());
-                  }
-                },
+              BlocBuilder(
+                bloc: bloc,
+                builder: (context, state) =>  AppButton(
+                  text: "Send Code",
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      bloc.sendCode();
+                    }
+                  },
+                ),
               ),
             ],
           ),

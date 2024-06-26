@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theming/app_theme.dart';
+import '../utils/app_theme.dart';
 
 class TextLogo extends StatelessWidget {
   final bool withDesc;

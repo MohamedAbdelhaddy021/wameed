@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/design/app_image.dart';
 import 'package:wameed/core/design/custom_app_bar_with_text_logo.dart';
 
-import '../../core/theming/styles.dart';
+import '../../core/utils/styles.dart';
 
 class BookView extends StatelessWidget {
   const BookView({super.key});

@@ -1,9 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:wameed/core/logic/helper_methods.dart';
+import 'package:wameed/features/cubits/scan_image.dart';
 
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/app_image.dart';
+import 'scanning.dart';
 
 class BeforeScanView extends StatefulWidget {
   const BeforeScanView({super.key});
@@ -15,6 +21,12 @@ class BeforeScanView extends StatefulWidget {
 class _ScanViewState extends State<BeforeScanView> {
 
   String? imgToScan;
+  late ScanImageCubit bloc;
+  @override
+  void initState() {
+    bloc =BlocProvider.of(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,16 +83,17 @@ class _ScanViewState extends State<BeforeScanView> {
                           Expanded(child: AppButton(text: "Gallery", onPressed: ()async{
                             var file = await ImagePicker.platform.getImageFromSource(source: ImageSource.gallery);
                             if (file != null){
-                              imgToScan = file.path;
-                              setState(() {});
+                              bloc.img =File(file.path);
+                              // setState(() {});
                             }
                           })),
                           SizedBox(width: 24.h),
                           Expanded(child: AppButton(text: "Camera", onPressed: () async{
                             var file = await ImagePicker.platform.getImageFromSource(source: ImageSource.camera);
                             if (file != null){
-                              imgToScan = file.path;
-                              setState(() {});
+                              bloc.img =File(file.path) ;
+                              bloc.scanImage();
+                              // setState(() {});
                             }
                           })),
                         ],

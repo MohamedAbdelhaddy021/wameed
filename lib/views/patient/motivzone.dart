@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/design/app_back.dart';
-import '../../core/theming/app_theme.dart';
-import '../../core/theming/styles.dart';
+import '../../core/utils/app_theme.dart';
+import '../../core/utils/styles.dart';
 
 class MotivzonePage extends StatefulWidget {
  const  MotivzonePage({super.key});

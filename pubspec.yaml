@@ -27,6 +27,10 @@ dependencies:
   firebase_auth: ^4.17.9
   google_sign_in: ^6.2.1
   flutter_facebook_auth: ^6.0.4
+  get_it: ^7.6.8
+  firebase_storage: ^11.7.0
+  cloud_firestore: ^4.16.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1
@@ -35,7 +39,6 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/images/splash_app_logo.png"
   min_sdk_android: 21
-
 
   flutter_test:
     sdk: flutter

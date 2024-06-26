@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/design/doctor_item.dart';
 import '../../../../core/logic/helper_methods.dart';
-import '../../../../core/theming/app_theme.dart';
+import '../../../../core/utils/app_theme.dart';
+import '../../../../features/models/doctor.dart';
 import '../../all_doctors.dart';
 import '../../library.dart';
 import '../../questionnaire.dart';
@@ -99,7 +100,15 @@ class HomePage extends StatelessWidget {
           Expanded(
               child: ListView.separated(
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
-            itemBuilder: (context, index) => DoctorItem(),
+                itemBuilder: (context, index) {
+                  final doctorData = docList[index];
+                  return DoctorItem(
+                    name: doctorData['Name'],
+                    experience: doctorData['Years of Experience'],
+                    price: doctorData["Price"],
+                    qualification: doctorData['Qualification'],
+                  );
+                },
             separatorBuilder: (context, index) => SizedBox(height: 24.h),
             itemCount: 2,
           )),

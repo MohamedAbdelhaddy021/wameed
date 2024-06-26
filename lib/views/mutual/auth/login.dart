@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/design/app_input.dart';
 import '../../../core/design/app_filled_button.dart';
 import '../../../core/design/text_logo.dart';
 import '../../../core/logic/helper_methods.dart';
+import '../../../core/logic/input_validator.dart';
+import '../../../features/cubits/auth/login.dart';
 import '../../patient/home/view.dart';
 import 'components/have_account_or_not.dart';
 import 'forget_password.dart';
@@ -16,9 +19,15 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  late LoginCubit bloc;
+
   final formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    bloc = BlocProvider.of(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,30 +50,17 @@ class _LoginViewState extends State<LoginView> {
                 const TextLogo(withDesc: false),
                 SizedBox(height: 30.h),
                 AppInput(
-                    labelText: "Enter your email",
-                    controller: emailController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "enter an email";
-                      } else {
-                        return null;
-                      }
-                    }),
+                  labelText: "Enter your email",
+                  controller: bloc.emailController,
+                  validator: InputValidator.email,
+                ),
                 SizedBox(height: 16.h),
                 AppInput(
                     labelText: "Password",
                     isPassword: true,
                     bottomPadding: 12,
-                    controller: passwordController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "enter your password";
-                      } else if (value.length < 8) {
-                        return "password must have 8 or more characters";
-                      } else {
-                        return null;
-                      }
-                    }),
+                    controller: bloc.passwordController,
+                    validator: InputValidator.password),
                 Align(
                   alignment: AlignmentDirectional.topEnd,
                   child: TextButton(
@@ -80,14 +76,21 @@ class _LoginViewState extends State<LoginView> {
                       )),
                 ),
                 SizedBox(height: 24.h),
-                AppButton(
-                  text: "Log In",
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      navigateTo(const HomeView(), removeHistory: true);
-                    }
-                  },
-                ),
+                BlocBuilder(
+                    bloc: bloc,
+                    builder: (context, state) {
+                      return AppButton(
+                        text: "Log In",
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            print(bloc.emailController);
+                            print(bloc.passwordController);
+                            bloc.logIn(
+                                bloc.isDoctor ? "doc-auth/login" : "auth/login");
+                          }
+                        },
+                      );
+                    }),
                 HaveAccountOrNot(isFromLogin: true)
               ],
             ),
@@ -96,12 +99,4 @@ class _LoginViewState extends State<LoginView> {
       )),
     );
   }
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
 }
-
-

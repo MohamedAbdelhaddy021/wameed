@@ -27,7 +27,7 @@ navigateTo(Widget page,
   }
 }
 
-void showToast(String? msg) {
+void showToast(String msg) {
   ScaffoldMessenger.of(navigatorKey.currentState!.context)
-      .showSnackBar(SnackBar(content: Text(msg??"")));
+      .showSnackBar(SnackBar(content: Text(msg)));
 }

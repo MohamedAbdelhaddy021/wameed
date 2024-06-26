@@ -5,7 +5,7 @@ import '../../core/design/app_back.dart';
 import '../../core/design/app_filled_button.dart';
 import '../../core/design/app_image.dart';
 import '../../core/logic/helper_methods.dart';
-import '../../core/theming/app_theme.dart';
+import '../../core/utils/app_theme.dart';
 import 'book_appointment/view.dart';
 import 'patient_reviews.dart';
 
@@ -67,9 +67,7 @@ class DoctorDetailsView extends StatelessWidget {
                     ]),
                 child: Center(
                     child: AppImage("doctor_bg.png", fit: BoxFit.contain))),
-            SizedBox(
-              height: 24.h,
-            ),
+            SizedBox(height: 24.h),
             Row(
               children: [
                 Text(

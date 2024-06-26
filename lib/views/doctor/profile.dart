@@ -1,14 +1,16 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:wameed/features/cubits/auth/logout.dart';
 import '../../core/design/app_image.dart';
 import '../../core/design/custom_app_bar.dart';
 import '../../core/logic/cache_helper.dart';
 import '../../core/logic/helper_methods.dart';
-import '../../core/theming/app_theme.dart';
-import '../../core/theming/styles.dart';
+import '../../core/utils/app_theme.dart';
+import '../../core/utils/styles.dart';
 import '../mutual/auth/login.dart';
 import '../mutual/settings.dart';
 import 'chats.dart';
@@ -23,10 +25,19 @@ class DoctorProfileView extends StatefulWidget {
 }
 
 class _DoctorProfileViewState extends State<DoctorProfileView> {
+  late LogoutCubit bloc;
+  @override
+  void initState() {
+    bloc=BlocProvider.of(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: "Profile"),
+      appBar: const CustomAppBar(
+        title: "Profile",
+        withLeading: false,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(24.w),
         child: Column(
@@ -120,13 +131,37 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
               ]),
             ),
             SizedBox(height: 24.h),
-            _Item(DoctorScheduleView(),
-                imgPath: "calendar.png", title: "My schedule"),
-            _Item(DoctorChatsView(), imgPath: "message.png", title: "My Chats"),
-            _Item(ReceiptsView(),
-                imgPath: "bill.png", title: "Reservation receipts"),
-            _Item(SettingsView(), imgPath: "setting.png", title: "Setting"),
-            _Item(LoginView(), imgPath: "logout.png", title: "Log out"),
+            _Item(
+                onTap: () {
+                  navigateTo(DoctorScheduleView());
+                },
+                imgPath: "calendar.png",
+                title: "My schedule"),
+            _Item(
+                onTap: () {
+                  navigateTo(DoctorChatsView());
+                },
+                imgPath: "message.png",
+                title: "My Chats"),
+            _Item(
+                onTap: () {
+                  navigateTo(DoctorScheduleView());
+                },
+                imgPath: "bill.png",
+                title: "Reservation receipts"),
+            _Item(
+                onTap: () {
+                  navigateTo(SettingsView());
+                },
+                imgPath: "setting.png",
+                title: "Setting"),
+            BlocBuilder(
+              bloc: bloc,
+                builder: (context, state) => _Item(
+                    onTap: () {
+                      bloc.logOut("doc-auth");
+
+                    }, imgPath: "logout.png", title: "Log out")),
           ],
         ),
       ),
@@ -135,17 +170,15 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
 }
 
 class _Item extends StatelessWidget {
-  const _Item(this.page, {required this.imgPath, required this.title});
+  const _Item({required this.imgPath, required this.title, this.onTap});
 
   final String imgPath, title;
-  final Widget page;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        navigateTo(page);
-      },
+      onTap: onTap,
       child: Container(
         height: 54.h,
         padding: EdgeInsetsDirectional.only(start: 16.w, end: 16.w),
