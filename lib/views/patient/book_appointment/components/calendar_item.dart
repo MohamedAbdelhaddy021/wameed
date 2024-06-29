@@ -16,6 +16,15 @@ class CalendarDayItem extends StatefulWidget {
 
 class _CalendarDayItemState extends State<CalendarDayItem> {
   List<int> days = List.generate(30, (index) => index+1 );
+  late List<String> daysName;
+  @override
+  void initState() {
+    // TODO: implement initState
+    List<String> daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+      daysName = List.generate(30, (index) => daysOfWeek[index % 7]);
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +56,7 @@ class _CalendarDayItemState extends State<CalendarDayItem> {
                           ? Colors.black.withOpacity(.26)
                           : AppTheme.primaryColor)),
               SizedBox(height: 4.h),
-              Text("Mon",
+              Text(daysName[widget.index],
                   style: TextStyle(
                       fontFamily: 'poppins',
                       fontWeight: FontWeight.w500,

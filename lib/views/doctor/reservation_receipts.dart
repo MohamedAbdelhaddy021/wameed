@@ -12,6 +12,19 @@ class ReceiptsView extends StatefulWidget {
 class _ReceiptsViewState extends State<ReceiptsView> {
   int selectedContainerIndex = 0;
 
+  List<String>names=[
+    "Ahmed Ali",
+    "Mohamed Ibrahim",
+    "Kareem Essayed",
+    "Wael Ahmed",
+  ];
+  List<String>phoneNumbers=[
+    "01098603578",
+    "01013050956",
+    "01221558039",
+    "01002359545",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,13 +87,13 @@ class _ReceiptsViewState extends State<ReceiptsView> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Ahmed",
+                              Text(names[index],
                                   style: TextStyle(
                                       color: Colors.black.withOpacity(.54),
                                       fontSize: 16.sp,
                                       fontFamily: "poppins",
                                       fontWeight: FontWeight.w600)),
-                              Text("0109876456",
+                              Text(phoneNumbers[index],
                                   style: TextStyle(
                                       color: Colors.black.withOpacity(.54),
                                       fontSize: 16.sp,

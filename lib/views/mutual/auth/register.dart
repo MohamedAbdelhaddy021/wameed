@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/features/cubits/auth/register.dart';
+import 'package:wameed/features/states/auth/register.dart';
 
 import '../../../core/design/app_back.dart';
 import '../../../core/design/app_drop_down.dart';
@@ -116,8 +117,7 @@ class _RegisterViewState extends State<RegisterView> {
                     Expanded(child: AppInput(labelText: "Age")),
                   if (widget.isDoctor)
                     Expanded(
-                        child: AppDropDown(
-                            list: qualifications, hint: "Qualifications")),
+                        child: AppInput(labelText: "Qualifications",controller: bloc.qualificationsController,)),
                 ],
               ),
               AppInput(
@@ -143,7 +143,7 @@ class _RegisterViewState extends State<RegisterView> {
                       AppInput(
                         labelText: "National ID",
                         keyboardType: TextInputType.number,
-                        validator: InputValidator.id,
+                        controller: bloc.nationalIDController,
                       ),
                       AppInput(
                           labelText: "Vodafone cash number",
@@ -157,12 +157,14 @@ class _RegisterViewState extends State<RegisterView> {
                               child: AppInput(
                             labelText: "Experience year",
                             keyboardType: TextInputType.number,
+                                controller: bloc.experianceYearsController,
                           )),
                           SizedBox(width: 16.w),
                           Expanded(
                               child: AppInput(
                             labelText: "Price of Session",
                             keyboardType: TextInputType.number,
+                                controller: bloc.priceController,
                           )),
                         ],
                       ),
@@ -195,20 +197,35 @@ class _RegisterViewState extends State<RegisterView> {
               SizedBox(height: 16.h),
               BlocBuilder(
                 bloc: bloc,
-                builder: (context, state) => AppButton(
-                  text: "Register",
-                  onPressed: () {
-                    if (bloc.formKey.currentState!.validate()) {
-                      widget.isDoctor ? bloc.signUPDoctor() : bloc.signUP();
-                    }
-                  },
-                ),
+                builder: (context, state) {
+                  if(state is RegisterLoadingState){
+                    return CircularProgressIndicator();
+                  }else{
+                    return AppButton(
+                      text: "Register",
+                      onPressed: () {
+                        widget.isDoctor ? bloc.signUPDoctor() : bloc.signUP();
+                      },
+                    );
+                  }
+                }
               ),
-              HaveAccountOrNot()
+              HaveAccountOrNot(isFromLogin: false,)
             ],
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    bloc.emailController.clear();
+    bloc.passController.clear();
+    bloc.qualificationsController.clear();
+    bloc.nationalIDController.clear();
+    bloc.vodafoneNumController.clear();
+    bloc.nameController.clear();
+    super.dispose();
   }
 }

@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/core/design/app_dialog.dart';
+import 'package:wameed/views/patient/home/view.dart';
 
 import '../../../core/design/app_back.dart';
 import '../../../core/design/app_filled_button.dart';
@@ -11,7 +15,9 @@ import 'components/calendar_item.dart';
 import 'components/time_item.dart';
 
 class BookAppointmentView extends StatefulWidget {
-  const BookAppointmentView({super.key});
+  const BookAppointmentView({required this.name});
+
+  final String name;
 
   @override
   State<BookAppointmentView> createState() => _BookAppointmentViewState();
@@ -19,6 +25,9 @@ class BookAppointmentView extends StatefulWidget {
 
 class _BookAppointmentViewState extends State<BookAppointmentView> {
   int? selectedIndex;
+
+  int timeSelectedIndex = 0;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +38,7 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
               color: Colors.black,
               fontFamily: 'poppins',
               fontWeight: FontWeight.w600),
-          title: Text("Dr.John Smith"),
+          title: Text(widget.name),
           centerTitle: false,
           leading: AppBack()),
       body: SingleChildScrollView(
@@ -37,7 +46,7 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Aug, 2023",
+            Text("July, 2024",
                 style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w600,
@@ -46,7 +55,6 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
             SizedBox(
                 height: 75.h,
                 child: ListView.separated(
-                    // padding: EdgeInsetsDirectional.symmetric(horizontal: 24.w),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) => GestureDetector(
                         onTap: () {
@@ -77,8 +85,21 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
                         crossAxisSpacing: 12.h,
                         mainAxisSpacing: 15.w,
                         crossAxisCount: 3),
-                    itemCount: 11,
-                    itemBuilder: (context, index) => SelectTimeItem())),
+                    itemCount: 8,
+                    itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            print("helloo");
+                            setState(() {
+                              timeSelectedIndex = index;
+                              print(index);
+                              print(timeSelectedIndex);
+                            });
+                          },
+                          child: SelectTimeItem(
+                            index: index,
+                            selectedIndex: timeSelectedIndex,
+                          ),
+                        ))),
             SizedBox(height: 16.h),
             Text("Patient Details",
                 style: TextStyle(
@@ -137,7 +158,29 @@ class _BookAppointmentViewState extends State<BookAppointmentView> {
                   ])),
             ),
             SizedBox(height: 30.h),
-            AppButton(text: "Set an appointment", onPressed: () {})
+            isLoading?Center(child: CircularProgressIndicator()):AppButton(
+                text: "Set an appointment",
+                onPressed: () async{
+                  setState(() {
+                    isLoading=true;
+                  });
+                  await Future.delayed(Duration(seconds: 1,milliseconds: 400));
+                  setState(() {
+                    isLoading = false;
+                  });
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AppDialog(
+                        buttonText: "Done",
+                        text: "Successfully booked",
+                        onTap: () {
+                          navigateTo(HomeView(), removeHistory: true);
+                        },
+                      );
+                    },
+                  );
+                }),
           ],
         ),
       ),

@@ -3,25 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/features/cubits/auth/change_password.dart';
-import 'package:wameed/features/cubits/auth/profile.dart';
-import 'package:wameed/features/cubits/auth/sendOTP.dart';
-import 'package:wameed/features/cubits/auth/logout.dart';
-import 'package:wameed/features/cubits/auth/register.dart';
-import 'package:wameed/features/cubits/edit_settings.dart';
-import 'package:wameed/features/cubits/scan_image.dart';
 import 'core/logic/cache_helper.dart';
 import 'core/logic/helper_methods.dart';
 import 'core/utils/app_theme.dart';
+import 'features/cubits/auth/change_password.dart';
 import 'features/cubits/auth/login.dart';
+import 'features/cubits/auth/logout.dart';
+import 'features/cubits/auth/profile.dart';
+import 'features/cubits/auth/register.dart';
+import 'features/cubits/auth/sendOTP.dart';
+import 'features/cubits/edit_settings.dart';
+import 'features/cubits/scan_image.dart';
+import 'features/cubits/user_report.dart';
 import 'firebase_options.dart';
 import 'views/mutual/auth/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
-  // await CacheHelper.clear();
-
+  await CacheHelper.clear();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -52,7 +52,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => EditSettingsCubit()),
 
         //ai
-        BlocProvider(create: (context) => ScanImageCubit())
+        BlocProvider(create: (context) => ScanImageCubit()),
+        BlocProvider(create: (context) => UserReportCubit()),
 
 
       ],

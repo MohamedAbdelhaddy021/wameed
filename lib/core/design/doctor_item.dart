@@ -6,7 +6,13 @@ import '../logic/helper_methods.dart';
 import '../utils/app_theme.dart';
 
 class DoctorItem extends StatelessWidget {
-  const DoctorItem({super.key, required this.name, required this.price, required this.qualification, required this.experience});
+  const DoctorItem(
+      {super.key,
+      required this.name,
+      required this.price,
+      required this.qualification,
+      required this.experience});
+
   final String name;
   final int price;
   final String qualification;
@@ -33,10 +39,11 @@ class DoctorItem extends StatelessWidget {
           Column(
             children: [
               CircleAvatar(
-                  radius: 36.w,
-                  backgroundColor: AppTheme.primaryColor.withOpacity(.29),
-                  backgroundImage: NetworkImage(
-                      "https://kid-z.de/wp-content/uploads/2016/10/img8-1.jpg"))
+                radius: 36.w,
+                backgroundColor: AppTheme.primaryColor.withOpacity(.29),
+                backgroundImage: AssetImage(
+                    "assets/images/doctor_logo.png"),
+              )
             ],
           ),
           SizedBox(width: 8.w),
@@ -68,7 +75,12 @@ class DoctorItem extends StatelessWidget {
                 const Spacer(),
                 OutlinedButton(
                     onPressed: () {
-                      navigateTo(DoctorDetailsView());
+                      navigateTo(DoctorDetailsView(
+                        name: name,
+                        price: price,
+                        experience: experience,
+                        details: qualification,
+                      ));
                     },
                     style: OutlinedButton.styleFrom(
                         minimumSize: Size(127.w, 38.h),

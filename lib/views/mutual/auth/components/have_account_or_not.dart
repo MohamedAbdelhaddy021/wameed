@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/core/logic/cache_helper.dart';
 
 import '../../../../core/design/register_button.dart';
 import '../../../../core/logic/firebase_auth_services.dart';
@@ -8,8 +9,9 @@ import '../select_user_type.dart';
 
 class HaveAccountOrNot extends StatelessWidget {
   final bool isFromLogin;
+  bool isFromFirebase=true;
 
-  const HaveAccountOrNot({super.key, this.isFromLogin = true});
+   HaveAccountOrNot({super.key, this.isFromLogin = true});
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,7 @@ class HaveAccountOrNot extends StatelessWidget {
               imgPath: "google_logo.png",
               onTap: () {
                 FirebaseAuthServices.signInWithGoogle();
+                CacheHelper.isFromFirebase(bool: isFromFirebase);
               }),
         ]),
         SizedBox(height: 16.h),
@@ -56,10 +59,9 @@ class HaveAccountOrNot extends StatelessWidget {
             TextButton(
               onPressed: () {
                 if (isFromLogin) {
-                  navigateTo(SelectUserTypeView(isFormLogin: true,));
-                } else {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
+                  navigateTo(SelectUserTypeView(isFormLogin: isFromLogin,));
+                }else{
+                  navigateTo(SelectUserTypeView(isFormLogin: false));
                 }
               },
               child: Text(

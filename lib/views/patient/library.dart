@@ -7,8 +7,39 @@ import '../../../core/utils/styles.dart';
 import 'book_details.dart';
 import 'podcast.dart';
 
-class LibraryView extends StatelessWidget {
+class LibraryView extends StatefulWidget {
   const LibraryView({super.key});
+
+  @override
+  State<LibraryView> createState() => _LibraryViewState();
+}
+
+class _LibraryViewState extends State<LibraryView> {
+  List<String> books = [
+    "3.png",
+    "1.png",
+    "2.png",
+  ];
+  List<String> booksName = [
+    "THE NOONDAY DEMON",
+    "FEELING GOOD ",
+    "THE HAPPINESS TRAP",
+  ];
+  List<String> podcastsName = [
+    "‘Owning It: The Anxiety Podcast’",
+    "‘On Purpose with Jay Shetty’",
+    "‘Owning It: The Anxiety Podcast’",
+  ];
+  List<String> booksSubName = [
+    "AN ATLAS OF DEPRESSION BY ANDREW SOLOMON",
+    "THE NEW MOOD THERAPY BY DAVID BURNS",
+    "HOW TO STOP STRUGGLING AND START LIVING BY RUSS HARRIS",
+  ];
+  List<String> podcasts = [
+    "p3.png",
+    "p1.png",
+    "p2.png",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +72,15 @@ class LibraryView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => GestureDetector(
                     onTap: () {
-                      navigateTo(const BookView());
+                      navigateTo(BookView(image: books[index],name: booksName[index],));
                     },
-                    child: _BookItem()),
+                    child: _BookItem(
+                      image: books[index],
+                      name: booksName[index],
+                      description: booksSubName[index],
+                    )),
                 separatorBuilder: (context, index) => SizedBox(width: 32.w),
-                itemCount: 5),
+                itemCount: books.length),
           ),
           Padding(
             padding: EdgeInsetsDirectional.only(
@@ -62,11 +97,17 @@ class LibraryView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => GestureDetector(
                   onTap: () {
-                    navigateTo(const PodCastView());
+                    navigateTo(PodCastView(
+                      image: podcasts[index],
+                      name: podcastsName[index],
+                    ));
                   },
-                  child: _PodCastItem()),
+                  child: _PodCastItem(
+                    image: podcasts[index],
+                    name: podcastsName[index],
+                  )),
               separatorBuilder: (context, index) => SizedBox(width: 32.w),
-              itemCount: 5,
+              itemCount: podcasts.length,
             ),
           )
         ],
@@ -76,6 +117,14 @@ class LibraryView extends StatelessWidget {
 }
 
 class _BookItem extends StatelessWidget {
+  final String image, name, description;
+
+  const _BookItem(
+      {super.key,
+      required this.image,
+      required this.name,
+      required this.description});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -89,11 +138,11 @@ class _BookItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.r),
             ),
-            child: AppImage("book_cover_test.png"),
+            child: AppImage(image),
           ),
           SizedBox(height: 12.h),
           Text(
-            "THE NOONDAY DEMON",
+            name,
             style: TextStyle(
                 fontSize: 14.sp,
                 color: Colors.black.withOpacity(.69),
@@ -102,7 +151,7 @@ class _BookItem extends StatelessWidget {
           ),
           SizedBox(height: 4.h),
           Text(
-            "AN ATLAS OF DEPRESSION BY ANDREW SOLOMON",
+            description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -118,6 +167,10 @@ class _BookItem extends StatelessWidget {
 }
 
 class _PodCastItem extends StatelessWidget {
+  final String image,name;
+
+  const _PodCastItem({super.key, required this.image, required this.name});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -131,13 +184,13 @@ class _PodCastItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.r),
             ),
-            child: AppImage("podcast_img_cover_test.png"),
+            child: AppImage(image),
           ),
           SizedBox(
             height: 12.h,
           ),
           Text(
-            "‘The SelfWork Podcast’",
+            name,
             style: TextStyle(
                 fontSize: 14.sp,
                 color: Colors.black.withOpacity(.69),

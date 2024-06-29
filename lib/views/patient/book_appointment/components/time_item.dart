@@ -5,48 +5,47 @@ import '../../../../core/utils/app_theme.dart';
 import '../../../../core/utils/styles.dart';
 
 class SelectTimeItem extends StatefulWidget {
-  const SelectTimeItem({super.key});
+  const SelectTimeItem({super.key, required this.index, required this.selectedIndex});
+  final int index;
+  final int? selectedIndex;
 
   @override
   State<SelectTimeItem> createState() => _SelectTimeItemState();
 }
 
 class _SelectTimeItemState extends State<SelectTimeItem> {
-  List<int> indexes = [];
   int? newIndex;
-
+  final List<String> timeSlots = [
+    "09:00AM",
+    "10:00AM",
+    "11:00AM",
+    "12:00PM",
+    "01:00PM",
+    "02:00PM",
+    "03:00PM",
+    "04:00PM",
+  ];
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (indexes.contains(newIndex)) {
-          indexes.remove(newIndex);
-        } else {
-          newIndex = indexes.isNotEmpty ? indexes.last + 1 : 0;
-          indexes.add(newIndex!);
-        }
-        setState(() {});
-      },
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r),
-            color: indexes.contains(newIndex)
-                ? AppTheme.primaryColor.withOpacity(.7)
-                : Colors.black.withOpacity(.06)),
-        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(Icons.watch_later_outlined,
-              color: indexes.contains(newIndex)
-                  ? Colors.white
-                  : AppTheme.primaryColor.withOpacity(.7),
-              size: 21.sp),
-          SizedBox(width: 4.w),
-          Text("09:00AM",
-              style: indexes.contains(newIndex)
-                  ? TextStyles.poppins14Black55Medium.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.w600)
-                  : TextStyles.poppins14Black55Medium)
-        ]),
-      ),
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.r),
+          color: widget.selectedIndex==widget.index
+              ? AppTheme.primaryColor.withOpacity(.7)
+              : Colors.black.withOpacity(.06)),
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Icon(Icons.watch_later_outlined,
+            color: widget.selectedIndex==widget.index
+                ? Colors.white
+                : AppTheme.primaryColor.withOpacity(.7),
+            size: 21.sp),
+        SizedBox(width: 4.w),
+        Text(timeSlots[widget.index],
+            style: widget.selectedIndex==widget.index
+                ? TextStyles.poppins14Black55Medium.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.w600)
+                : TextStyles.poppins14Black55Medium)
+      ]),
     );
   }
 }

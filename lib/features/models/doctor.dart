@@ -15,295 +15,295 @@ class DoctorDetails {
 
 List<Map<String, dynamic>> docList = [
   {
-    "Name": "Dr. Ahmed Hassan",
+    "Name": "Ahmed Hassan",
     "Price": 300,
     "Qualification": "Clinical Psychologist",
     "Years of Experience": 12
   },
   {
-    "Name": "Dr. Nour Ibrahim",
+    "Name": "Nour Ibrahim",
     "Price": 250,
     "Qualification": "Licensed Professional Counselor",
     "Years of Experience": 8
   },
   {
-    "Name": "Dr. Sara Mahmoud",
+    "Name": "Sara Mahmoud",
     "Price": 350,
     "Qualification": "Psychiatrist",
     "Years of Experience": 15
   },
   {
-    "Name": "Dr. Mohamed Ali",
+    "Name": "Mohamed Ali",
     "Price": 200,
     "Qualification": "Counseling Psychologist",
     "Years of Experience": 10
   },
   {
-    "Name": "Dr. Aya Ahmed",
+    "Name": "Aya Ahmed",
     "Price": 280,
     "Qualification": "Marriage and Family Therapist",
     "Years of Experience": 6
   },
   {
-    "Name": "Dr. Mahmoud Khalil",
+    "Name": "Mahmoud Khalil",
     "Price": 320,
     "Qualification": "Licensed Clinical Social Worker",
     "Years of Experience": 14
   },
   {
-    "Name": "Dr. Yara Mansour",
+    "Name": "Yara Mansour",
     "Price": 270,
     "Qualification": "Psychiatric Nurse Practitioner",
     "Years of Experience": 9
   },
   {
-    "Name": "Dr. Omar Abdelaziz",
+    "Name": "Omar Abdelaziz",
     "Price": 230,
     "Qualification": "Child Psychologist",
     "Years of Experience": 7
   },
   {
-    "Name": "Dr. Salma Hassan",
+    "Name": "Salma Hassan",
     "Price": 280,
     "Qualification": "Clinical Psychologist",
     "Years of Experience": 11
   },
   {
-    "Name": "Dr. Mariam Ahmed",
+    "Name": "Mariam Ahmed",
     "Price": 250,
     "Qualification": "Licensed Professional Counselor",
     "Years of Experience": 7
   },
   {
-    "Name": "Dr. Khaled Mahmoud",
+    "Name": "Khaled Mahmoud",
     "Price": 400,
     "Qualification": "Psychiatrist",
     "Years of Experience": 18
   },
   {
-    "Name": "Dr. Nada Ali",
+    "Name": "Nada Ali",
     "Price": 180,
     "Qualification": "Counseling Psychologist",
     "Years of Experience": 9
   },
   {
-    "Name": "Dr. Amr Ibrahim",
+    "Name": "Amr Ibrahim",
     "Price": 320,
     "Qualification": "Marriage and Family Therapist",
     "Years of Experience": 5
   },
   {
-    "Name": "Dr. Rania Khalid",
+    "Name": "Rania Khalid",
     "Price": 290,
     "Qualification": "Licensed Clinical Social Worker",
     "Years of Experience": 13
   },
   {
-    "Name": "Dr. Ahmed Mansour",
+    "Name": "Ahmed Mansour",
     "Price": 260,
     "Qualification": "Psychiatric Nurse Practitioner",
     "Years of Experience": 8
   },
   {
-    "Name": "Dr. Hana Abdelrahim",
+    "Name": "Hana Abdelrahim",
     "Price": 210,
     "Qualification": "Child Psychologist",
     "Years of Experience": 6
   },
   {
-    "Name": "Dr. Yasmin Hassan",
+    "Name": "Yasmin Hassan",
     "Price": 290,
     "Qualification": "Clinical Psychologist",
     "Years of Experience": 10
   },
   {
-    "Name": "Dr. Kareem Salah",
+    "Name": "Kareem Salah",
     "Price": 240,
     "Qualification": "Licensed Professional Counselor",
     "Years of Experience": 6
   },
   {
-    "Name": "Dr. Dina Hamdi",
+    "Name": "Dina Hamdi",
     "Price": 350,
     "Qualification": "Psychiatrist",
     "Years of Experience": 17
   },
   {
-    "Name": "Dr. Ali Mahmoud",
+    "Name": "Ali Mahmoud",
     "Price": 190,
     "Qualification": "Counseling Psychologist",
     "Years of Experience": 8
   },
   {
-    "Name": "Dr. Fatma Abdelrahman",
+    "Name": "Fatma Abdelrahman",
     "Price": 270,
     "Qualification": "Clinical Psychologist",
     "Years of Experience": 13
   },
   {
-    "Name": "Dr. Ahmed Samir",
+    "Name": "Ahmed Samir",
     "Price": 320,
     "Qualification": "Licensed Professional Counselor",
     "Years of Experience": 9
   },
   {
-    "Name": "Dr. Hoda Mostafa",
+    "Name": "Hoda Mostafa",
     "Price": 280,
     "Qualification": "Psychiatrist",
     "Years of Experience": 16
   },
   {
-    "Name": "Dr. Samar Abdelaziz",
+    "Name": "Samar Abdelaziz",
     "Price": 230,
     "Qualification": "Counseling Psychologist",
     "Years of Experience": 7
   },
   {
-    "Name": "Dr. Mahmoud Ali",
+    "Name": "Mahmoud Ali",
     "Price": 260,
     "Qualification": "Marriage and Family Therapist",
     "Years of Experience": 10
   },
   {
-    "Name": "Dr. Amira Hassan",
+    "Name": "Amira Hassan",
     "Price": 220,
     "Qualification": "Licensed Clinical Social Worker",
     "Years of Experience": 8
   },
   {
-    "Name": "Dr. Tarek Ibrahim",
+    "Name": "Tarek Ibrahim",
     "Price": 270,
     "Qualification": "Psychiatric Nurse Practitioner",
     "Years of Experience": 7
   },
   {
-    "Name": "Dr. Salwa Ahmed",
+    "Name": "Salwa Ahmed",
     "Price": 200,
     "Qualification": "Child Psychologist",
     "Years of Experience": 5
   },
   {
-    "Name": "Dr. Youssef Khalid",
+    "Name": "Youssef Khalid",
     "Price": 280,
     "Qualification": "Clinical Psychologist",
     "Years of Experience": 9
   },
   {
-    "Name": "Dr. Layla Salah",
+    "Name": "Layla Salah",
     "Price": 240,
     "Qualification": "Licensed Professional Counselor",
     "Years of Experience": 5
   },
   {
-    "Name": "Dr. Ahmed Abdelrahman",
+    "Name": "Ahmed Abdelrahman",
     "Price": 370,
     "Qualification": "Psychiatrist",
     "Years of Experience": 14
   },
   {
-    "Name": "Dr. Reham Samir",
+    "Name": "Reham Samir",
     "Price": 190,
     "Qualification": "Counseling Psychologist",
     "Years of Experience": 6
   },
   {
-    "Name": "Dr. Hesham Mostafa",
+    "Name": "Hesham Mostafa",
     "Price": 310,
     "Qualification": "Marriage and Family Therapist",
     "Years of Experience": 12
   },
   {
-    "Name": "Dr. Mariam Ali",
+    "Name": "Mariam Ali",
     "Price": 280,
     "Qualification": "Licensed Clinical Social Worker",
     "Years of Experience": 9
   },
   {
-    "Name": "Dr. Sherif Hassan",
+    "Name": "Sherif Hassan",
     "Price": 270,
     "Qualification": "Psychiatric Nurse Practitioner",
     "Years of Experience": 6
   },
   {
-    "Name": "Dr. Hana Abdelaziz",
+    "Name": "Hana Abdelaziz",
     "Price": 220,
     "Qualification": "Child Psychologist",
     "Years of Experience": 4
   },
   {
-    "Name": "Dr. Yara Khalid",
+    "Name": "Yara Khalid",
     "Price": 290,
     "Qualification": "Clinical Psychologist",
     "Years of Experience": 8
   },
   {
-    "Name": "Dr. Ahmed Sami",
+    "Name": "Ahmed Sami",
     "Price": 230,
     "Qualification": "Licensed Professional Counselor",
     "Years of Experience": 4
   },
   {
-    "Name": "Dr. Amira Hossam",
+    "Name": "Amira Hossam",
     "Price": 360,
     "Qualification": "Psychiatrist",
     "Years of Experience": 13
   },
   {
-    "Name": "Dr. Mahmoud Samir",
+    "Name": "Mahmoud Samir",
     "Price": 180,
     "Qualification": "Counseling Psychologist",
     "Years of Experience": 7
   },
   {
-    "Name": "Dr. Rania Ibrahim",
+    "Name": "Rania Ibrahim",
     "Price": 330,
     "Qualification": "Marriage and Family Therapist",
     "Years of Experience": 11
   },
   {
-    "Name": "Dr. Kareem Hassan",
+    "Name": "Kareem Hassan",
     "Price": 250,
     "Qualification": "Licensed Clinical Social Worker",
     "Years of Experience": 8
   },
   {
-    "Name": "Dr. Dina Tarek",
+    "Name": "Dina Tarek",
     "Price": 260,
     "Qualification": "Psychiatric Nurse Practitioner",
     "Years of Experience": 5
   },
   {
-    "Name": "Dr. Kareem Ali",
+    "Name": "Kareem Ali",
     "Price": 220,
     "Qualification": "Child Psychologist",
     "Years of Experience": 3
   },
   {
-    "Name": "Dr. Yasmin Hussein",
+    "Name": "Yasmin Hussein",
     "Price": 300,
     "Qualification": "Clinical Psychologist",
     "Years of Experience": 7
   },
   {
-    "Name": "Dr. Nour Ibrahim",
+    "Name": "Nour Ibrahim",
     "Price": 240,
     "Qualification": "Licensed Professional Counselor",
     "Years of Experience": 5
   },
   {
-    "Name": "Dr. Ahmed Youssef",
+    "Name": "Ahmed Youssef",
     "Price": 350,
     "Qualification": "Psychiatrist",
     "Years of Experience": 12
   },
   {
-    "Name": "Dr. Salma Samir",
+    "Name": "Salma Samir",
     "Price": 170,
     "Qualification": "Counseling Psychologist",
     "Years of Experience": 6
   },
   {
-    "Name": "Dr. Mahmoud Hesham",
+    "Name": "Mahmoud Hesham",
     "Price": 290,
     "Qualification": "Marriage and Family Therapist",
     "Years of Experience": 10

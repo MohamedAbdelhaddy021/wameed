@@ -16,6 +16,13 @@ class DoctorScheduleView extends StatefulWidget {
 }
 
 class _DoctorScheduleViewState extends State<DoctorScheduleView> {
+  List<String> names = [
+    "Mohamed Abdelhady",
+    "Ali Ahmed",
+    "Kareem Mohamed",
+    "Radwa Fathy"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +31,7 @@ class _DoctorScheduleViewState extends State<DoctorScheduleView> {
         Padding(
           padding: EdgeInsetsDirectional.only(start: 24.w),
           child: Text(
-            "New consultation",
+            "Consultation",
             style: TextStyles.inter20BlackSemiBold
                 .copyWith(color: Colors.black.withOpacity(.58)),
           ),
@@ -39,33 +46,11 @@ class _DoctorScheduleViewState extends State<DoctorScheduleView> {
               ),
               itemBuilder: (context, index) => GestureDetector(
                   onTap: () {
-                    navigateTo(const PatientInfoView());
+                    navigateTo(PatientInfoView(name: names[index]));
                   },
-                  child: _Item(patientName: "Mohamed Abdelhady")),
+                  child: _Item(patientName: names[index],index: index,)),
               separatorBuilder: (context, index) => SizedBox(height: 24.h),
-              itemCount: 5),
-        ),
-        SizedBox(height: 16.h),
-        Padding(
-          padding: EdgeInsetsDirectional.only(start: 24.w),
-          child: Text(
-            "Old consultation",
-            style: TextStyles.inter20BlackSemiBold
-                .copyWith(color: Colors.black.withOpacity(.58)),
-          ),
-        ),
-        SizedBox(height: 24.h),
-        Expanded(
-          child: ListView.separated(
-              padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 24.h),
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    navigateTo(const PatientInfoView());
-                  },
-                  child: _Item(patientName: "Mohamed Abdelhady")),
-              separatorBuilder: (context, index) => SizedBox(height: 24.h),
-              itemCount: 5),
+              itemCount: names.length),
         ),
       ]),
     );
@@ -73,9 +58,16 @@ class _DoctorScheduleViewState extends State<DoctorScheduleView> {
 }
 
 class _Item extends StatelessWidget {
-  const _Item({required this.patientName});
+  _Item({required this.patientName, required this.index});
 
   final String patientName;
+  final int index;
+  List<String> time = [
+    "2:00 - 2:30",
+    "8:00 - 8:30",
+    "4:00 - 4:15",
+    "5:00 - 5:30",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +94,8 @@ class _Item extends StatelessWidget {
             decoration: BoxDecoration(
                 color: AppTheme.primaryColor.withOpacity(.22),
                 shape: BoxShape.circle),
-            child: Center(
-                child: AppImage("profile.png", width: 29.w, height: 29.w)),
+            child:
+                Center(child: AppImage("user.png", width: 29.w, height: 29.w)),
           ),
           SizedBox(width: 16.w),
           Expanded(
@@ -138,7 +130,7 @@ class _Item extends StatelessWidget {
                       fontFamily: "poppins"),
                 ),
                 Text(
-                  "From 2:00 - 2:30 Pm",
+                  "From ${time[index]} Pm",
                   maxLines: 1,
                   style: TextStyle(
                       fontSize: 12.sp,
@@ -150,7 +142,7 @@ class _Item extends StatelessWidget {
             ),
           )),
           const Icon(Icons.arrow_forward_ios_outlined,
-              weight: 4, color: Colors.grey),
+              weight: 2, color: Colors.grey),
         ],
       ),
     );

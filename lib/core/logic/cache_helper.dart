@@ -69,12 +69,22 @@ class CacheHelper {
   static String? get userName {
     return _prefs.getString("userName");
   }
+  static String? get firebaseToken {
+    return _prefs.getString("userToken");
+  }
 
   static String? get userImg {
     return _prefs.getString("userImg");
   }
   static Future<bool> clear() async {
     return await _prefs.clear();
+  }
+  static Future<void> isFromFirebase({required bool bool}) async {
+    await _prefs.setBool("isFromFirebase", bool);
+  }
+
+  static bool get isFirebase {
+    return _prefs.getBool("isFromFirebase")!;
   }
 
 
@@ -87,6 +97,8 @@ class CacheHelper {
   static String? get getToken {
     return _prefs.getString("access_token")??"";
   }
+
+
 }
 
 

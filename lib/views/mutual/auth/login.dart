@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/core/design/custom_app_bar.dart';
+import 'package:wameed/core/logic/cache_helper.dart';
+import 'package:wameed/features/states/auth/login.dart';
 import '../../../core/design/app_input.dart';
 import '../../../core/design/app_filled_button.dart';
 import '../../../core/design/text_logo.dart';
@@ -32,10 +35,10 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:CustomAppBar(),
       body: SafeArea(
           child: Form(
         key: formKey,
-        autovalidateMode: AutovalidateMode.always,
         child: Center(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -79,17 +82,24 @@ class _LoginViewState extends State<LoginView> {
                 BlocBuilder(
                     bloc: bloc,
                     builder: (context, state) {
-                      return AppButton(
-                        text: "Log In",
-                        onPressed: () {
-                          if (formKey.currentState!.validate()) {
-                            print(bloc.emailController);
-                            print(bloc.passwordController);
-                            bloc.logIn(
-                                bloc.isDoctor ? "doc-auth/login" : "auth/login");
-                          }
-                        },
-                      );
+
+                      if(state is LoginLoadingState){
+                        return CircularProgressIndicator();
+                      }
+                      else{
+                        return AppButton(
+                          text: "Log In",
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              print(bloc.emailController);
+                              print(bloc.passwordController);
+                              bloc.logIn(
+                                  CacheHelper.isDoctor ? "doc-auth/login" : "auth/login");
+                            }
+                          },
+                        );
+
+                      }
                     }),
                 HaveAccountOrNot(isFromLogin: true)
               ],
@@ -98,5 +108,13 @@ class _LoginViewState extends State<LoginView> {
         ),
       )),
     );
+  }
+
+
+  @override
+  void dispose() {
+    bloc.emailController.clear();
+    bloc.passwordController.clear();
+    super.dispose();
   }
 }

@@ -6,18 +6,72 @@ import '../../core/utils/app_theme.dart';
 import '../../core/utils/styles.dart';
 
 class MotivzonePage extends StatefulWidget {
- const  MotivzonePage({super.key});
+  const MotivzonePage({super.key});
 
   @override
   State<MotivzonePage> createState() => _MotivzonePageState();
 }
 
 class _MotivzonePageState extends State<MotivzonePage> {
-   List<String>quotes=[
-    "When your healthy self is strong enough to deal with all that comes your way in life,your eating disorder self will no longer be useful or necessary.",
-    "Messi is the best for ever",
+  final List<String> quotes = [
+    "Every person has the ability to achieve something great.",
+    "Differences are beauty, so be proud of being unique.",
+    "A different mind makes a difference.",
+    "Don't be ashamed of yourself, you are enough.",
+    "Hope is the key to every closed door.",
+    "Everyone has their own way to success.",
+    "Creativity begins when we look at things from a different angle.",
+    "Strength comes from within, just discover it.",
+    "Acceptance is the first step towards happiness.",
+    "The road to success is full of challenges, but you can overcome them.",
+    "Self-confidence is the secret to excellence.",
+    "Nothing is impossible when you believe in yourself.",
+    "Smiling is a universal language understood by everyone.",
+    "Failure is just an opportunity for a better start.",
+    "Life doesn't need to be perfect to be beautiful.",
+    "You have the strength to overcome all difficulties.",
+    "Learn from challenges to become stronger and better.",
+    "Big dreams start with small steps.",
+    "Every moment is a new opportunity for growth and development.",
+    "Optimism is the belief that leads to success.",
+    "Positivity makes a difference in your life and the lives around you.",
+    "You are not alone, there is always someone supporting and encouraging you.",
+    "Success is not measured by status, but by determination and perseverance.",
+    "Be proud of yourself and all you have achieved so far.",
+    "Happiness begins from within, always stay positive.",
+    "You can achieve the impossible when you believe in yourself.",
+    "Do what you can, with what you have, where you are.",
+    "Victory is not in never falling, but in rising every time we fall.",
+    "Learning is the path to personal growth.",
+    "Be bold enough to be different.",
+    "Faith accomplishes the impossible.",
+    "Perseverance is the key to success.",
+    "Everyone has a unique and special story.",
+    "Success is the result of continuous effort.",
+    "Change starts from within.",
+    "Don't let anyone diminish your worth.",
+    "Self-confidence opens doors to success.",
+    "Always be the best version of yourself.",
+    "Don't wait for opportunity, create it yourself.",
+    "Enjoy the journey no matter the challenges.",
+    "Hope is the light that guides us in darkness.",
+    "Success is believing in your abilities.",
+    "Hard work always pays off.",
+    "Challenges make champions.",
+    "Every day is a new opportunity for success.",
+    "Confidence opens doors to success.",
+    "Every obstacle is an opportunity to learn.",
+    "Creativity knows no bounds.",
+    "Dreaming is the beginning of success.",
+    "Courage is continuing despite fear.",
+    "Success starts with determination.",
+    "Don't compare yourself to others, just be yourself.",
+    "Persistence is the secret to success.",
+    "Happiness comes from within.",
+    "Optimism opens close"
   ];
-   int index=0;
+
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -95,56 +149,58 @@ class _MotivzonePageState extends State<MotivzonePage> {
                   ],
                 ),
                 SizedBox(height: 56.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios_new,
-                          size: 22, color: Colors.black.withOpacity(.19)), onPressed: () {
-                        if(index>0){
-                          index-=1;
-                        }
-                        setState(() {
-
-                        });
-                    },
-                    ),
-                    Expanded(
-                      child: Text(
-                        quotes[index],
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 5,
-                        style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "poppins",
-                            color: AppTheme.primaryColor),
+                SizedBox(height: 120,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.arrow_back_ios_new,
+                            size: 22, color: Colors.black.withOpacity(.19)),
+                        onPressed: () {
+                          if (index > 0) {
+                            index -= 1;
+                          }
+                          setState(() {});
+                        },
                       ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.arrow_forward_ios,
-                          size: 22, color: Colors.black.withOpacity(.19)), onPressed: () {
-                        if(index<quotes.length-1){
-                          index+=1;
-                        print(index);}
-                        setState(() {});
-                    },
-                    ),
-                    SizedBox(width: 16.w)
-                  ],
+                      Expanded(
+                        child: Text(
+                          quotes[index],
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 5,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "poppins",
+                              color: AppTheme.primaryColor),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.arrow_forward_ios,
+                            size: 22, color: Colors.black.withOpacity(.19)),
+                        onPressed: () {
+                          if (index < quotes.length - 1) {
+                            index += 1;
+                            print(index);
+                          }
+                          setState(() {});
+                        },
+                      ),
+                      SizedBox(width: 16.w)
+                    ],
+                  ),
                 ),
-                Spacer(),
-                Text("- Carolyn Costin",
-                    style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: "poppins",
-                        color: AppTheme.primaryColor)),
+                // Spacer(),z
+                // Text("- Carolyn Costin",
+                //     style: TextStyle(
+                //         fontSize: 14.sp,
+                //         fontWeight: FontWeight.w600,
+                //         fontFamily: "poppins",
+                //         color: AppTheme.primaryColor)),
               ]),
             ),
-            SizedBox(
-              height: 104.h,
-            ),
+            SizedBox(height: 104.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

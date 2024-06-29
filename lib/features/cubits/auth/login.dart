@@ -14,9 +14,9 @@ class LoginCubit extends Cubit<LoginStates> {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  bool isDoctor = true;
 
   void logIn(String endPoint) async {
+    emit(LoginLoadingState());
     final response = await DioHelper()
         .postData(url: "http://10.0.2.2:8000/api/$endPoint", data: {
       'email': emailController.text,
@@ -25,12 +25,13 @@ class LoginCubit extends Cubit<LoginStates> {
     if (response.statusCode == 200) {
       final model = LoginData.fromJson(response.data);
       CacheHelper.saveToken(model.accessToken);
+      CacheHelper.isFromFirebase(bool: false);
       print(response.data);
-      navigateTo(isDoctor ? DoctorProfileView() : HomeView(),
+      navigateTo(CacheHelper.isDoctor ? DoctorProfileView() : HomeView(),
           removeHistory: true);
       emit(LoginSuccessState());
     } else {
-      print(response.data["message"]);
+      print(response.data);
       emit(LoginFailedState());
     }
   }

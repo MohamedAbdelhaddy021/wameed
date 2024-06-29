@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wameed/core/logic/helper_methods.dart';
 
 import '../../core/design/app_image.dart';
 import '../../core/design/custom_app_bar.dart';
 import '../../core/utils/app_theme.dart';
 import '../../core/utils/styles.dart';
+import '../mutual/chat.dart';
 
 class DoctorChatsView extends StatelessWidget {
   const DoctorChatsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<String> list = ["Ahmed", "John", "Jillian", "Jessy", "Roma", "Geen"];
+    List<String> list = ["Ahmed Ali", "Wael", "Nasseef Ibrahim", "Rowida Ahmed", "Kareem Mohamed", "Ali Metwaly"];
     List<String> msgNumber = ["1", "0", "1", "0", "0", "0"];
 
     return Scaffold(
@@ -28,11 +30,14 @@ class DoctorChatsView extends StatelessWidget {
           Expanded(
             child: ListView.separated(
               padding: EdgeInsets.all(24.h),
-              itemBuilder: (context, index) => _Item(
-                msgContent: "Thank you for you support ",
-                name: list[index],
-                time: "2:35 Pm",
-                msgNumber: msgNumber[index],
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => navigateTo(ChatDetailView()),
+                child: _Item(
+                  msgContent: "Thank you for you support ",
+                  name: list[index],
+                  time: "2:35 Pm",
+                  msgNumber: msgNumber[index],
+                ),
               ),
               separatorBuilder: (context, index) => SizedBox(height: 24.h),
               itemCount: list.length,

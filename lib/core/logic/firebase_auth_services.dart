@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:wameed/views/mutual/auth/select_user_type.dart';
 
 import '../../views/patient/home/view.dart';
 import 'cache_helper.dart';
@@ -8,6 +11,18 @@ import 'helper_methods.dart';
 
 class FirebaseAuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+
+
+
+  Future <void> signOut()  async{
+    Timer(Duration(seconds: 1),() {
+      CacheHelper.clear();
+      showToast("Successfully logged out");
+      navigateTo(SelectUserTypeView(isFormLogin: false),removeHistory: true);
+    },);
+
+  }
 
   Future<User?> signUpWithEmailAndPassword(
       String email, String password) async {

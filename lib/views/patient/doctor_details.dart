@@ -10,7 +10,9 @@ import 'book_appointment/view.dart';
 import 'patient_reviews.dart';
 
 class DoctorDetailsView extends StatelessWidget {
-  const DoctorDetailsView({super.key});
+  const DoctorDetailsView({super.key, required this.name, required this.price, required this.details, required this.experience});
+  final String name,details ;
+  final int price,experience ;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +73,7 @@ class DoctorDetailsView extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Dr. John Smith",
+                  name,
                   style:
                       TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
                 ),
@@ -97,7 +99,7 @@ class DoctorDetailsView extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               fontSize: 16.sp,
                               fontFamily: "poppins")),
-                      Text(" 500 \$",
+                      Text(" $price EGP",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16.sp,
@@ -118,7 +120,7 @@ class DoctorDetailsView extends StatelessWidget {
                   SizedBox(height: 3.h),
                   Row(
                     children: [
-                      Text("5 years",
+                      Text("$experience years",
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 16.sp,
@@ -141,9 +143,7 @@ class DoctorDetailsView extends StatelessWidget {
                     children: [
                       Expanded(
                           child: Text(
-                              """Education at the University of Northern Iowa.
-He received his PhD in Educational Policy 
-Studies from the University of Wisconsin-Madison in 1971.""",
+                              details,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 16.sp,
@@ -179,7 +179,7 @@ Studies from the University of Wisconsin-Madison in 1971.""",
             AppButton(
                 text: "Book an appointment",
                 onPressed: () {
-                  navigateTo(BookAppointmentView());
+                  navigateTo(BookAppointmentView(name: name,));
                 }),
           ],
         ),

@@ -24,6 +24,9 @@ class DioHelper {
       url,
       data: data,
       options: Options(
+        headers: {
+          "Authorization": "Bearer ${CacheHelper.getToken}",
+        },
         contentType: Headers.jsonContentType,
         followRedirects: false,
         validateStatus: (status) => true,
@@ -38,7 +41,7 @@ class DioHelper {
       data: data,
       options: Options(
         headers: {
-          'Content-Type': 'application/json',
+          // 'Content-Type': 'application/json',
           "Authorization": "Bearer ${CacheHelper.getToken}",
         },
         receiveDataWhenStatusError: true,

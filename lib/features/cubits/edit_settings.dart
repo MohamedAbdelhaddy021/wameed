@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wameed/core/logic/cache_helper.dart';
 import '../../core/logic/dio_helper.dart';
 
 import '../../core/logic/helper_methods.dart';
@@ -15,7 +16,7 @@ class EditSettingsCubit extends Cubit<EditSettingsStates> {
 
   void editSetting() async {
     final response = await DioHelper()
-        .postData(url: "http://10.0.2.2:8000/api/edit-user-data", data: {
+        .postData(url: "http://10.0.2.2:8000/api/${CacheHelper.isDoctor?"edit-doc-data":"edit-user-data"}", data: {
       "name": nameController.text,
       "email": emailController.text,
       "password": passwordController.text,

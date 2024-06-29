@@ -43,7 +43,7 @@ class PaymentView extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Text("Dr. John Smith",
+                              Text("John Smith",
                                   style: TextStyle(
                                       fontSize: 18.sp,
                                       fontWeight: FontWeight.w600)),
