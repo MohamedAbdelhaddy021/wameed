@@ -13,29 +13,12 @@ class RegisterCubit extends Cubit<RegisterStates> {
   final passController = TextEditingController();
   final nameController = TextEditingController();
   final vodafoneNumController = TextEditingController();
+  final nationalIDController = TextEditingController();
+  final experianceYearsController = TextEditingController();
+  final priceController = TextEditingController();
+  final qualificationsController = TextEditingController();
 
-  // void signUP() async {
-  //   try
-  //   final response = await DioHelper()
-  //       .postData(url: "http://10.0.2.2:8000/api/auth/register", data: {
-  //     'email': emailController.text,
-  //     'name': nameController.text,
-  //     'password': passController.text,
-  //     'birth_day': '2024-05-13',
-  //     'gender': 'male',
-  //     'credit_number': '123456789',
-  //     'vodafone_cash': "01098603578",
-  //   });
-  //
-  //   if (response.statusCode == 201) {
-  //     print(response.data);
-  //     navigateTo(HomeView(), removeHistory: true);
-  //     emit(RegisterSuccessState());
-  //   } else {
-  //     print(response.data['message']);
-  //     emit(RegisterFailedState());
-  //   }
-  // }
+
   void signUP() async {
     try {
       Map<String, dynamic> data = {
@@ -78,16 +61,16 @@ class RegisterCubit extends Cubit<RegisterStates> {
         "email": emailController.text,
         "name": nameController.text,
         "password": passController.text,
-        "qualifications": "5",
-        "experiance": "5",
+        "qualifications": qualificationsController.text,
+        "experiance": experianceYearsController.text,
         "work_days": ["Sunday"],
         "work_time": "9:00 am",
-        "national_id": "30301011210591",
-        "price": "50",
+        "national_id": nationalIDController.text,
+        "price": priceController.text,
         "birth_day": '2024-05-13',
         "gender": 'male',
         "credit_number": '123456789',
-        "vodafone_cash": "01098603578",
+        "vodafone_cash": vodafoneNumController.text,
       };
       final response = await DioHelper().postData(
         url: "http://10.0.2.2:8000/api/doc-auth/register",

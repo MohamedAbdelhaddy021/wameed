@@ -3,18 +3,17 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:wameed/features/cubits/auth/logout.dart';
+import 'package:wameed/features/cubits/auth/profile.dart';
 import '../../core/design/app_image.dart';
 import '../../core/design/custom_app_bar.dart';
 import '../../core/logic/cache_helper.dart';
 import '../../core/logic/helper_methods.dart';
 import '../../core/utils/app_theme.dart';
 import '../../core/utils/styles.dart';
-import '../mutual/auth/login.dart';
 import '../mutual/settings.dart';
 import 'chats.dart';
-import 'reservation_receipts.dart';
 import 'schedule.dart';
 
 class DoctorProfileView extends StatefulWidget {
@@ -25,10 +24,12 @@ class DoctorProfileView extends StatefulWidget {
 }
 
 class _DoctorProfileViewState extends State<DoctorProfileView> {
-  late LogoutCubit bloc;
+   LogoutCubit? bloc;
+   ProfileCubit? cubit;
   @override
   void initState() {
     bloc=BlocProvider.of(context);
+    cubit=BlocProvider.of(context)..getUserData();
     super.initState();
   }
   @override
@@ -70,64 +71,49 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
                         blurStyle: BlurStyle.outer)
                   ]),
               child: Row(children: [
-                Stack(
-                  alignment: AlignmentDirectional.bottomEnd,
-                  children: [
-                    Container(
-                        width: 84.w,
-                        height: 84.w,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.white),
-                        child: CacheHelper.profileImage == null
-                            ? AppImage(
-                                "https://pbs.twimg.com/profile_images/1767101324884115457/q8QaIZRe_400x400.jpg",
-                                fit: BoxFit.cover)
-                            : Image.file(
-                                File(CacheHelper.profileImage!),
-                                fit: BoxFit.cover,
-                              )),
-                    GestureDetector(
-                        onTap: () async {
-                          var file = await ImagePicker.platform
-                              .getImageFromSource(source: ImageSource.gallery);
-                          if (file != null) {
-                            CacheHelper.saveProfileImg(file.path);
-                            setState(() {});
-                          }
-                        },
-                        child: CircleAvatar(
-                          radius: 14.r,
-                          backgroundColor: Colors.white,
-                          child: Icon(Icons.edit, size: 18.sp),
-                        ))
-                  ],
-                ),
-                Expanded(
-                    child: Padding(
-                  padding: EdgeInsetsDirectional.only(
-                      start: 18.w, top: 49.h, end: 16.w),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Dr.john smith",
-                            style: TextStyles.inter16Medium
-                                .copyWith(fontSize: 18.sp)),
-                        SizedBox(height: 12.h),
-                        Row(children: [
-                          const Icon(Icons.email_outlined, color: Colors.white),
-                          SizedBox(width: 8.w),
-                          Expanded(
-                              child: Text("Drjohn_23@gmail.com",
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyles.inter16Medium.copyWith(
-                                    color: Colors.black.withOpacity(.56),
-                                    fontSize: 14.sp,
-                                  )))
-                        ])
-                      ]),
-                ))
+
+                  Container(
+                  width: 80.w,
+                  height: 90.w,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.blueGrey),
+                  child: CacheHelper.profileImage == null
+                      ? AppImage(
+                      "doctor_logo.png",
+                      fit: BoxFit.cover)
+                      : Image.file(
+                    File(CacheHelper.profileImage!),
+                    fit: BoxFit.cover,
+                  )),
+                BlocBuilder(
+                  bloc: cubit,
+                  builder: (context, state) => Expanded(
+                      child: Padding(
+                    padding: EdgeInsetsDirectional.only(
+                        start: 18.w, top: 49.h, end: 16.w),
+                    child: cubit?.doctorData==null?Shimmer(child: Container(width: 100,height: 40,), gradient: LinearGradient(colors: [Colors.grey,Colors.blue])):Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(cubit?.doctorData!.name??"",
+                              style: TextStyles.inter16Medium
+                                  .copyWith(fontSize: 18.sp)),
+                          SizedBox(height: 12.h),
+                          Row(children: [
+                            const Icon(Icons.email_outlined, color: Colors.white),
+                            SizedBox(width: 8.w),
+                            Expanded(
+                                child: Text(cubit?.doctorData!.email??"",
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyles.inter16Medium.copyWith(
+                                      color: Colors.black.withOpacity(.56),
+                                      fontSize: 14.sp,
+                                    )))
+                          ])
+                        ]),
+                  )),
+                )
               ]),
             ),
             SizedBox(height: 24.h),
@@ -159,7 +145,7 @@ class _DoctorProfileViewState extends State<DoctorProfileView> {
               bloc: bloc,
                 builder: (context, state) => _Item(
                     onTap: () {
-                      bloc.logOut("doc-auth");
+                      bloc?.logOut("doc-auth");
 
                     }, imgPath: "logout.png", title: "Log out")),
           ],

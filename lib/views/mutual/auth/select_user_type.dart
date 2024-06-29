@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wameed/core/logic/cache_helper.dart';
 import 'package:wameed/views/mutual/auth/login.dart';
 import '../../../core/design/app_image.dart';
-import '../../../core/design/custom_app_bar.dart';
 import '../../../core/logic/helper_methods.dart';
 import '../../../core/utils/app_theme.dart';
 import '../../../core/utils/styles.dart';
@@ -15,7 +14,6 @@ class SelectUserTypeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -49,7 +47,7 @@ class SelectUserTypeView extends StatelessWidget {
                       text: "Patient",
                       img: "profile.png",
                       onTap: () {
-                        isFormLogin? navigateTo(RegisterView(isDoctor: CacheHelper.isDoctor,)):navigateTo(LoginView());
+                        isFormLogin? navigateTo(RegisterView(isDoctor: false,)):navigateTo(LoginView());
                         CacheHelper.setIsDoctor(bool: false);
                       }),
                   SizedBox(height: 32.h),
@@ -57,7 +55,7 @@ class SelectUserTypeView extends StatelessWidget {
                       text: "Doctor",
                       img: "doctor.png",
                       onTap: () {
-                        isFormLogin? navigateTo(RegisterView(isDoctor: CacheHelper.isDoctor,)):navigateTo(LoginView());
+                        isFormLogin? navigateTo(RegisterView(isDoctor: true,)):navigateTo(LoginView());
                         CacheHelper.setIsDoctor(bool: true);
                       }),
                 ]),

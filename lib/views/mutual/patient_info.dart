@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wameed/core/utils/styles.dart';
 
 import '../../core/design/custom_app_bar.dart';
+import '../../core/utils/styles.dart';
 
 class PatientInfoView extends StatefulWidget {
   const PatientInfoView({super.key});
@@ -33,10 +33,7 @@ class _PatientInfoViewState extends State<PatientInfoView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "About",
-                style: TextStyles.inter20BlackSemiBold,
-              ),
+              Text("About", style: TextStyles.inter20BlackSemiBold),
               Padding(
                 padding: EdgeInsets.only(top: 24.w),
                 child: Row(
@@ -75,10 +72,7 @@ class _PatientInfoViewState extends State<PatientInfoView> {
                 padding: EdgeInsets.only(top: 24.w),
                 child: Row(
                   children: [
-                    Text(
-                      "Gender : ",
-                      style: TextStyles.inter20BlackSemiBold,
-                    ),
+                    Text("Gender : ", style: TextStyles.inter20BlackSemiBold),
                     Text(
                       "Male",
                       style: TextStyles.inter16Medium.copyWith(
@@ -92,10 +86,7 @@ class _PatientInfoViewState extends State<PatientInfoView> {
                 padding: EdgeInsets.only(top: 24.w),
                 child: Row(
                   children: [
-                    Text(
-                      "Disease : ",
-                      style: TextStyles.inter20BlackSemiBold,
-                    ),
+                    Text("Disease : ", style: TextStyles.inter20BlackSemiBold),
                     Text(
                       "Depression",
                       style: TextStyles.inter16Medium.copyWith(
@@ -105,39 +96,36 @@ class _PatientInfoViewState extends State<PatientInfoView> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 32.h,
-              ),
-              Text(
-                "History",
-                style: TextStyles.inter20BlackSemiBold,
-              ),
-              SizedBox(
-                height: 16.h,
-              ),
+              SizedBox(height: 32.h),
+              Text("History", style: TextStyles.inter20BlackSemiBold),
+              SizedBox(height: 16.h),
               Text(
                 "Last consultation",
                 style:
                     TextStyles.inter20BlackSemiBold.copyWith(fontSize: 18.sp),
               ),
-              SizedBox(
-                height: 24.h,
-              ),
-              ...List.generate(list.length, (index) => Padding(
-                padding:  EdgeInsetsDirectional.only(bottom: 12.h,start: 8.w),
-                child: Row(
-                  children: [
-                    const CircleAvatar(radius: 2.5,backgroundColor: Colors.grey,),
-                    SizedBox(width: 8.w,),
-                    Text(
-                      list[index],
-                      maxLines: 1,
-                      style: TextStyles.inter20BlackSemiBold.copyWith(
-                          color: Colors.grey, fontSize: 12.sp),
-                    )
-                  ],
-                ),
-              )),
+              SizedBox(height: 24.h),
+              ...List.generate(
+                  list.length,
+                  (index) => Padding(
+                        padding: EdgeInsetsDirectional.only(
+                            bottom: 12.h, start: 8.w),
+                        child: Row(
+                          children: [
+                            const CircleAvatar(
+                                radius: 2.5, backgroundColor: Colors.grey),
+                            SizedBox(
+                              width: 8.w,
+                            ),
+                            Text(
+                              list[index],
+                              maxLines: 1,
+                              style: TextStyles.inter20BlackSemiBold.copyWith(
+                                  color: Colors.grey, fontSize: 12.sp),
+                            )
+                          ],
+                        ),
+                      )),
               Padding(
                 padding: EdgeInsets.only(top: 24.w),
                 child: Row(
@@ -155,9 +143,7 @@ class _PatientInfoViewState extends State<PatientInfoView> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 48.h,
-              ),
+              SizedBox(height: 48.h),
               FilledButton(
                 onPressed: () {},
                 style: FilledButton.styleFrom(

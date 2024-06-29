@@ -76,28 +76,32 @@ class _ScanViewState extends State<BeforeScanView> {
           onPressed: () {
             showModalBottomSheet(
                 context: context,
-                builder: (context) => Container(
-                  padding: EdgeInsetsDirectional.symmetric(vertical: 100.h,horizontal: 32.w),
-                  child: Row(
-                        children: [
-                          Expanded(child: AppButton(text: "Gallery", onPressed: ()async{
-                            var file = await ImagePicker.platform.getImageFromSource(source: ImageSource.gallery);
-                            if (file != null){
-                              bloc.img =File(file.path);
-                              // setState(() {});
-                            }
-                          })),
-                          SizedBox(width: 24.h),
-                          Expanded(child: AppButton(text: "Camera", onPressed: () async{
-                            var file = await ImagePicker.platform.getImageFromSource(source: ImageSource.camera);
-                            if (file != null){
-                              bloc.img =File(file.path) ;
-                              bloc.scanImage();
-                              // setState(() {});
-                            }
-                          })),
-                        ],
-                      ),
+                builder: (context) => BlocBuilder(
+                  bloc: bloc,
+                  builder: (context, state) => Container(
+                    padding: EdgeInsetsDirectional.symmetric(vertical: 100.h,horizontal: 32.w),
+                    child: Row(
+                          children: [
+                            Expanded(child: AppButton(text: "Gallery", onPressed: ()async{
+                              var file = await ImagePicker.platform.getImageFromSource(source: ImageSource.gallery);
+                              if (file != null){
+                                bloc.img =file.path;
+                                bloc.scanImage();
+                                setState(() {});
+                              }
+                            })),
+                            SizedBox(width: 24.h),
+                            Expanded(child: AppButton(text: "Camera", onPressed: () async{
+                              var file = await ImagePicker.platform.getImageFromSource(source: ImageSource.camera);
+                              if (file != null){
+                                bloc.img =file.path ;
+                                bloc.scanImage();
+                                // setState(() {});
+                              }
+                            })),
+                          ],
+                        ),
+                  ),
                 ));
           },
           style: FilledButton.styleFrom(

@@ -6,6 +6,7 @@ import 'package:wameed/features/states/edit_settings.dart';
 
 import '../../core/design/app_back.dart';
 import '../../core/design/app_image.dart';
+import '../../core/logic/cache_helper.dart';
 import '../../core/logic/helper_methods.dart';
 import '../../core/utils/styles.dart';
 import '../../features/cubits/edit_settings.dart';
@@ -25,8 +26,8 @@ class _SettingsViewState extends State<SettingsView> {
 
   @override
   void initState() {
-    bloc = BlocProvider.of(context);
-    cubit = BlocProvider.of(context)..getUserData();
+    bloc =(BlocProvider.of(context));
+    cubit =( BlocProvider.of(context)..getUserData());
     super.initState();
   }
 
@@ -58,7 +59,7 @@ class _SettingsViewState extends State<SettingsView> {
                 headText: "Personal information",
                 text: "Name",
                 valueText:
-                    cubit.profileData!.name,
+                CacheHelper.isFirebase?"${CacheHelper.userName}":CacheHelper.isDoctor?cubit.doctorData!.name:cubit.profileData!.name,
                 onFieldSubmitted: (val) {
                   if (val.length==0) {
                     val = cubit.profileData!.name;
@@ -70,9 +71,8 @@ class _SettingsViewState extends State<SettingsView> {
               ),
               _Item(
                   text: "Email",
-                  valueText: cubit.profileData == null
-                      ? "email"
-                      : cubit.profileData!.email,
+                  valueText:
+                  CacheHelper.isFirebase?"${CacheHelper.userEmail}":CacheHelper.isDoctor?cubit.doctorData!.email:cubit.profileData!.email,
                   onFieldSubmitted: (val) {
                     if (val.length==0) {
                       val = cubit.profileData!.email;
@@ -89,12 +89,14 @@ class _SettingsViewState extends State<SettingsView> {
                     val = "********";
                   } else {
                     bloc.passwordController.text = val;
+                    val.characters;
                     bloc.editSetting();
                     cubit.getUserData();
 
                   }
                 },
                 controller: bloc.passwordController,
+                isSecure: true,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 24.h),
@@ -203,12 +205,14 @@ class _Item extends StatefulWidget {
     required this.valueText,
     this.headText = "",
     this.controller,
-    this.onFieldSubmitted,
+    this.onFieldSubmitted,  this.isSecure=false,
   });
 
   late final String text, valueText, headText;
   final TextEditingController? controller;
   final void Function(String)? onFieldSubmitted;
+
+  final bool isSecure;
 
   @override
   State<_Item> createState() => _ItemState();
@@ -275,6 +279,7 @@ class _ItemState extends State<_Item> {
                   child: isEnabled
                       ? BlocBuilder<EditSettingsCubit, EditSettingsStates>(
                           builder: (context, state) => TextFormField(
+                             obscureText: widget.isSecure,
                             controller: widget.controller,
                             focusNode: myFocusNode,
                             onTapOutside: (event) {

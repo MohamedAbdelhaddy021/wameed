@@ -1,10 +1,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wameed/views/mutual/auth/otp.dart';
-
 import '../../../core/logic/dio_helper.dart';
 import '../../../core/logic/helper_methods.dart';
+import '../../../views/mutual/auth/otp.dart';
 import '../../states/auth/otp.dart';
 
 class OTPCubit extends Cubit<OTPStates> {

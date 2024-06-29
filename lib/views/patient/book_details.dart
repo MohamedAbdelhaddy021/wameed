@@ -6,8 +6,8 @@ import 'package:wameed/core/design/custom_app_bar_with_text_logo.dart';
 import '../../core/utils/styles.dart';
 
 class BookView extends StatelessWidget {
-  const BookView({super.key});
-
+  const BookView({super.key, required this.name, required this.image});
+final String name,image;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,11 +25,11 @@ class BookView extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.r),
                 ),
-                child: AppImage("book_cover_test.png", fit: BoxFit.fill),
+                child: AppImage(image, fit: BoxFit.fill),
               ),
               SizedBox(height: 19.h),
               Text(
-                "THE NOONDAY DEMON",
+                name,
                 style: TextStyles.poppins16BlackSemiBold.copyWith(
                     color: Colors.black.withOpacity(.69),
                     fontWeight: FontWeight.bold),

@@ -6,7 +6,9 @@ import '../../core/design/custom_app_bar_with_text_logo.dart';
 import '../../core/utils/styles.dart';
 
 class PodCastView extends StatelessWidget {
-  const PodCastView({super.key});
+  const PodCastView({super.key, required this.image, required this.name});
+
+  final String image, name;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +22,12 @@ class PodCastView extends StatelessWidget {
             Container(
               width: 253.w,
               height: 249.w,
-              child: AppImage("podcast_img_cover_test.png"),
+              child: AppImage(image),
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(15.r)),
             ),
             SizedBox(height: 19.h),
-            Text("‘The SelfWork Podcast’",
+            Text(name,
                 style: TextStyles.poppins16BlackSemiBold.copyWith(
                     color: Colors.black.withOpacity(.69),
                     decoration: TextDecoration.underline)),
@@ -70,8 +72,7 @@ Podcast,” you don’t have to feel so alone.""",
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15.r),
                     image: DecorationImage(
-                      image: AssetImage(
-                          "assets/images/podcast_img_cover_test.png"),
+                      image: AssetImage("assets/images/$image"),
                     ),
                   ),
                   child: Center(
@@ -81,9 +82,7 @@ Podcast,” you don’t have to feel so alone.""",
                     height: 28.w,
                   )),
                 ),
-                SizedBox(
-                  width: 18.w,
-                ),
+                SizedBox(width: 18.w),
                 Expanded(
                     child: Container(
                   height: 114.h,
@@ -92,14 +91,12 @@ Podcast,” you don’t have to feel so alone.""",
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "‘The SelfWork Podcast’",
+                        name,
                         style: TextStyles.poppins16BlackSemiBold.copyWith(
                             color: Colors.black.withOpacity(.69),
                             decoration: TextDecoration.underline),
                       ),
-                      SizedBox(
-                        height: 4.h,
-                      ),
+                      SizedBox(height: 4.h),
                       Text(
                         "Apple Podcasts rating: 4.9",
                         maxLines: 2,
@@ -110,15 +107,17 @@ Podcast,” you don’t have to feel so alone.""",
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      Text(
-                        "Available on: Apple, Audible,and Pod bean",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Colors.black.withOpacity(.38),
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "poppins"),
+                      Expanded(
+                        child: Text(
+                          "Available on: Apple, Audible,and Pod bean",
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 12.sp,
+                              color: Colors.black.withOpacity(.38),
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "poppins"),
+                        ),
                       ),
                       Spacer(),
                       Row(
@@ -151,8 +150,7 @@ Podcast,” you don’t have to feel so alone.""",
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15.r),
                     image: DecorationImage(
-                      image: AssetImage(
-                          "assets/images/podcast_img_cover_test.png"),
+                      image: AssetImage("assets/images/$image"),
                     ),
                   ),
                   child: Center(
@@ -171,29 +169,33 @@ Podcast,” you don’t have to feel so alone.""",
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "‘The SelfWork Podcast’",
+                        name,
                         style: TextStyles.poppins16BlackSemiBold.copyWith(
                             color: Colors.black.withOpacity(.69),
                             decoration: TextDecoration.underline),
                       ),
                       SizedBox(height: 4.h),
-                      Text("Apple Podcasts rating: 4.9",
+                      Expanded(
+                        child: Text("Apple Podcasts rating: 4.9",
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              color: Colors.black.withOpacity(.38),
+                              fontWeight: FontWeight.w500,
+                            )),
+                      ),
+                      Expanded(
+                        child: Text(
+                          "Available on: Apple, Audible,and Pod bean",
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Colors.black.withOpacity(.38),
-                            fontWeight: FontWeight.w500,
-                          )),
-                      Text(
-                        "Available on: Apple, Audible,and Pod bean",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Colors.black.withOpacity(.38),
-                            fontWeight: FontWeight.w500,
-                            fontFamily: "poppins"),
+                              fontSize: 12.sp,
+                              color: Colors.black.withOpacity(.38),
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "poppins"),
+                        ),
                       ),
                       const Spacer(),
                       Row(children: [

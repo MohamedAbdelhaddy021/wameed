@@ -1,9 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wameed/views/mutual/auth/select_user_type.dart';
 
-import '../../../core/logic/cache_helper.dart';
 import '../../../core/logic/dio_helper.dart';
 import '../../../core/logic/helper_methods.dart';
-import '../../../views/mutual/auth/login.dart';
 import '../../states/auth/logOut.dart';
 
 class LogoutCubit extends Cubit<LogoutStates> {
@@ -14,11 +13,11 @@ class LogoutCubit extends Cubit<LogoutStates> {
         .postData(url: "http://10.0.2.2:8000/api/$endPoint/logout",data: {});
     if (response.statusCode == 200) {
       print(response.data);
-      navigateTo(LoginView(), removeHistory: true);
-      CacheHelper.clear();
+      showToast(response.data['message']);
+      navigateTo(SelectUserTypeView(isFormLogin: false), removeHistory: true);
       emit(LogoutSuccessState());
     } else {
-      print(response.data["message"]);
+      // print(response.data["error"]);
       emit(LogoutFailedState());
     }
   }
