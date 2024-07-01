@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:wameed/features/cubits/auth/logout.dart';
 import 'package:wameed/features/cubits/auth/profile.dart';
+import 'package:wameed/views/doctor/reservation_receipts.dart';
 import '../../core/design/app_image.dart';
 import '../../core/design/custom_app_bar.dart';
 import '../../core/logic/cache_helper.dart';
