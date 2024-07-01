@@ -14,7 +14,6 @@ import '../../core/utils/app_theme.dart';
 import '../../core/utils/styles.dart';
 import '../mutual/settings.dart';
 import 'chats.dart';
-import 'reservation_receipts.dart';
 import 'schedule.dart';
 
 class DoctorProfileView extends StatefulWidget {
